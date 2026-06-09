@@ -24,6 +24,7 @@ from feedback_store import check_dedup, mark_sent, update_last_seen
 
 try:
     from telegram import InlineKeyboardButton, InlineKeyboardMarkup, Update
+    from telegram.request import HTTPXRequest
     from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
     HAS_TELEGRAM = True
 except ImportError:
@@ -329,7 +330,7 @@ async def send_car_card_async(bot, chat_id, card, config, price_drop=False):
         log.info(f"  [OK] {card_id}: {card.get('title', '')} ({card.get('year', '')})")
         return True
     except Exception as e:
-        log.error(f"  [ERROR] {card_id}: {e}")
+        log.error(f"  [SEND ERROR] card={card_id} chat={chat_id} error={type(e).__name__}: {e}")
         # Fallback: отправить текстом
         try:
             if len(text) > 4000:
@@ -337,7 +338,7 @@ async def send_car_card_async(bot, chat_id, card, config, price_drop=False):
             await bot.send_message(chat_id=chat_id, text=text, reply_markup=keyboard)
             return True
         except Exception as e2:
-            log.error(f"  [FALLBACK ERROR] {card_id}: {e2}")
+            log.error(f"  [FALLBACK ERROR] card={card_id} chat={chat_id} error={type(e2).__name__}: {e2}")
             return False
 
 
@@ -345,8 +346,17 @@ def send_car_card_sync(bot_token, chat_id, card, config, price_drop=False):
     """Синхронная обёртка для отправки одной карточки."""
     import asyncio
     from telegram import Bot
+    from telegram.request import HTTPXRequest
 
-    bot = Bot(token=bot_token)
+    # VPS-safe timeouts: connect 30s, read/write 90s
+    request = HTTPXRequest(
+        connect_timeout=30.0,
+        read_timeout=90.0,
+        write_timeout=90.0,
+        pool_timeout=30.0,
+    )
+    
+    bot = Bot(token=bot_token, request=request)
     return asyncio.run(send_car_card_async(bot, chat_id, card, config, price_drop=price_drop))
 
 
@@ -482,13 +492,14 @@ def run_send(limit: int = None):
 
     sent = 0
     skipped = 0
+    failed = 0
 
     for i, card in enumerate(candidates):
         # Send to each recipient with per-recipient dedup
         for recipient in recipients:
             r_chat_id = recipient["chat_id"]
             dedup_status = check_dedup_with_chat_id(card, r_chat_id)
-            
+
             # Debug log
             log.info(f"  [{i+1}] Card {card.get('card_id')} -> {recipient['role']} ({r_chat_id}) | Key: {_build_stable_key(card)} | Status: {dedup_status}")
 
@@ -509,12 +520,13 @@ def run_send(limit: int = None):
                 mark_sent_with_chat_id(card, r_chat_id, status=status)
                 sent += 1
             else:
-                skipped += 1
+                failed += 1
 
     log.info(f"\n{'='*60}")
     log.info("SEND SUMMARY:")
     log.info(f"  Sent: {sent}")
-    log.info(f"  Skipped: {skipped}")
+    log.info(f"  Skipped (duplicate): {skipped}")
+    log.info(f"  Failed (error): {failed}")
     log.info(f"{'='*60}")
 
     # Финальный отчёт
@@ -524,6 +536,7 @@ def run_send(limit: int = None):
         "total_candidates": len(candidates),
         "sent": sent,
         "skipped_duplicate": skipped,
+        "failed": failed,
         "skipped_do_not_send": 0,
         "feedback_db_ready": True,
         "buttons_ready": True,
