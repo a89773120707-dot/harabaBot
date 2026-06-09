@@ -10,6 +10,7 @@ session_manager.py — надёжное сохранение и восстано
 """
 
 import json
+import os
 import time
 import shutil
 import logging
@@ -17,6 +18,10 @@ from pathlib import Path
 from playwright.sync_api import sync_playwright, Page
 
 from base import STATE_PATH, BASE_DIR, log
+
+# Default to True for VPS (no GUI), can be overridden by env var HEADLESS=false
+HEADLESS_DEFAULT = os.getenv("HEADLESS", "true").lower() == "true"
+
 
 SESSION_LOG_PATH = BASE_DIR / "logs" / "session.log"
 BACKUP_PATH = BASE_DIR / "data" / "state_backup.json"
@@ -147,6 +152,10 @@ def refresh_session_manual() -> bool:
     backup_state()
 
     with sync_playwright() as p:
+        # Manual refresh usually needs GUI to see the login form, so force headless=False here unless specified otherwise
+        # But for VPS, maybe they use X11 forwarding or similar. Let's respect env var but default to False for manual interaction
+        # Actually, if HEADLESS is true (VPS), manual login is impossible without GUI.
+        # Let's force headless=False for this specific function to allow user to login, assuming they have a display.
         browser = p.chromium.launch(headless=False)
         context = browser.new_context()  # Без storage_state!
         page = context.new_page()
@@ -182,27 +191,16 @@ def refresh_session_manual() -> bool:
             return False
 
 
-def get_authenticated_page(headless: bool = False):
+def get_authenticated_page(headless: bool = None):
     """
     Открыть браузер с сохранённой сессией и перейти на Haraba.
 
     Args:
-        headless: Если True — браузер без GUI (по умолчанию False)
+        headless: Если True — браузер без GUI. 
+                  Если None — берется из переменной окружения HEADLESS (по умолчанию true).
 
     Returns:
         tuple: (page, context, browser)
-
-    Raises:
-        FileNotFoundError: если state.json отсутствует
-        ValueError: если сессия истекла
-
-    Пример:
-        page, context, browser = get_authenticated_page()
-        try:
-            page.goto("https://haraba.ru/search?mode=online")
-            # ... работа со страницей
-        finally:
-            browser.close()
     """
     status = check_session_status()
 
@@ -222,8 +220,11 @@ def get_authenticated_page(headless: bool = False):
     # status == "VALID"
     session_log.info("Сессия валидна — открываю браузер...")
 
+    # Determine headless mode: arg -> env var -> default (True)
+    is_headless = headless if headless is not None else HEADLESS_DEFAULT
+    
     p = sync_playwright().start()
-    browser = p.chromium.launch(headless=headless)
+    browser = p.chromium.launch(headless=is_headless)
     context = browser.new_context(storage_state=str(STATE_PATH))
     page = context.new_page()
 
