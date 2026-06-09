@@ -19,6 +19,7 @@ __pycache__/
 # Trash/Archive
 _trash/
 _archive/
+move_files.py
 
 # OS
 .DS_Store

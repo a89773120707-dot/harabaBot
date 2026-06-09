@@ -3,11 +3,11 @@ cards_enriched: 30
 do_not_send: 4
 failed: 0
 feedback_count: 0
-run_id: 2026-06-09_1929
+run_id: 2026-06-09_2009
 send_ready: 17
 sent_new: 0
 skipped_duplicate: 0
-started_at: '2026-06-09T19:29:57.715804'
+started_at: '2026-06-09T20:09:44.412197'
 steps:
   audit:
     result:
@@ -21,8 +21,26 @@ steps:
       session: VALID
     status: ok
   collect_cards:
-    note: Using existing cards
-    status: skipped
+    error: "Collector failed: 2026-06-09 20:09:34,875 [INFO] \n[STEP 1] Проверка активности\
+      \ 17 поисков...\n2026-06-09 20:09:34,889 [INFO]   \\u2705 status == PASS\n2026-06-09\
+      \ 20:09:34,889 [INFO]   \\u2705 expected == 17\n2026-06-09 20:09:34,889 [INFO]\
+      \   \\u2705 found == 17\n2026-06-09 20:09:34,889 [INFO]   \\u2705 checked ==\
+      \ 17\n2026-06-09 20:09:34,889 [INFO]   \\u2705 missing == 0\n2026-06-09 20:09:34,889\
+      \ [INFO]   \\u2705 result_count > 0\n2026-06-09 20:09:34,889 [INFO]   \\u2705\
+      \ 17 поисков активны, можно собирать карточки\n2026-06-09 20:09:34,889 [INFO]\
+      \ \n[STEP 2] Открываю Haraba...\n2026-06-09 20:09:34,894 [SESSION] state.json\
+      \ валиден (файл)\n2026-06-09 20:09:34,894 [INFO] state.json валиден (файл)\n\
+      2026-06-09 20:09:34,894 [SESSION] Сессия валидна — открываю браузер...\n2026-06-09\
+      \ 20:09:34,894 [INFO] Сессия валидна — открываю браузер...\n2026-06-09 20:09:38,145\
+      \ [SESSION] Браузер открыт с авторизованной сессией \\u2713\n2026-06-09 20:09:38,145\
+      \ [INFO] Браузер открыт с авторизованной сессией \\u2713\n2026-06-09 20:09:42,824\
+      \ [INFO]   Результаты не найдены — активирую 17 поисков...\nTraceback (most\
+      \ recent call last):\n  File \"C:\\Users\\Admin\\haraba-mini\\mobile_first_page_sampler.py\"\
+      , line 663, in <module>\n    main()\n    ~~~~^^\n  File \"C:\\Users\\Admin\\\
+      haraba-mini\\mobile_first_page_sampler.py\", line 515, in main\n    from apply_all_searches_17\
+      \ import (\n        EXPECTED_ALL, _clear_overlay_js, _js_click\n    )\nModuleNotFoundError:\
+      \ No module named 'apply_all_searches_17'\n"
+    status: error
   enrich_cards:
     result:
       cards_enriched: 30
@@ -36,19 +54,19 @@ steps:
     result:
       sent: 0
       skipped: 0
-      stdout: ':29:57,661 [INFO]   Send ready: 17
+      stdout: ':09:44,353 [INFO]   Send ready: 17
 
-        2026-06-09 19:29:57,661 [INFO]   Hold: 9
+        2026-06-09 20:09:44,353 [INFO]   Hold: 9
 
-        2026-06-09 19:29:57,661 [INFO]   Duplicates: 0
+        2026-06-09 20:09:44,353 [INFO]   Duplicates: 0
 
-        2026-06-09 19:29:57,661 [INFO]   Would send: 26
+        2026-06-09 20:09:44,353 [INFO]   Would send: 26
 
-        2026-06-09 19:29:57,661 [INFO]   \U0001f4be Report: C:\Users\Admin\haraba-mini\results\telegram_send_dry_run_report.yaml
+        2026-06-09 20:09:44,353 [INFO]   \U0001f4be Report: C:\Users\Admin\haraba-mini\results\telegram_send_dry_run_report.yaml
 
-        2026-06-09 19:29:57,662 [INFO]   \U0001f4be Preview: C:\Users\Admin\haraba-mini\results\telegram_dry_run_preview.md
+        2026-06-09 20:09:44,353 [INFO]   \U0001f4be Preview: C:\Users\Admin\haraba-mini\results\telegram_dry_run_preview.md
 
-        2026-06-09 19:29:57,662 [INFO] ============================================================
+        2026-06-09 20:09:44,353 [INFO] ============================================================
 
         '
     status: ok

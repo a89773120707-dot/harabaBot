@@ -60,25 +60,27 @@ def step_check_searches():
 
 def step_collect_cards(limit=30):
     """Собрать свежие карточки из mobile_first_page_sampler."""
-    from mobile_first_page_sampler import run_pipeline, get_authenticated_page
-    from mobile_first_page_sampler import get_search_queries, load_searches_config
+    import subprocess
 
-    page, context, browser = get_authenticated_page()
+    sampler_script = Path(__file__).parent / "mobile_first_page_sampler.py"
+    if not sampler_script.exists():
+        raise FileNotFoundError("mobile_first_page_sampler.py not found")
+
+    cmd = [sys.executable, str(sampler_script), "--limit", str(limit)]
+    logger.info(f"Running collector: {' '.join(cmd)}")
+
     try:
-        searches = load_searches_config()
-        search_queries = get_search_queries(searches)
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=600)
+        if result.returncode != 0:
+            logger.error(f"Collector stderr: {result.stderr}")
+            raise RuntimeError(f"Collector failed: {result.stderr}")
+        
+        logger.info(f"Collector stdout: {result.stdout}")
+        return {"cards_collected": True} # Simplified check
+    except subprocess.TimeoutExpired:
+        logger.error("Collector timed out (600s)")
+        raise RuntimeError("Collector timed out")
 
-        cards = run_pipeline(page, search_queries, limit=limit, debug=False)
-        logger.info(f"Collected {len(cards)} cards")
-
-        # Сохранить raw cards
-        raw_path = RESULTS_DIR / "latest_cards_raw.json"
-        with open(raw_path, 'w', encoding='utf-8') as f:
-            json.dump({"cards": cards, "collected_at": datetime.now().isoformat()}, f, ensure_ascii=False, indent=2)
-
-        return {"cards_collected": len(cards)}
-    finally:
-        browser.close()
 
 
 def step_enrich_cards():

@@ -1,6 +1,6 @@
 # Telegram Dry-Run Preview — 26 карточек
 
-Generated: 2026-06-09T19:29:57.661298
+Generated: 2026-06-09T20:09:44.353139
 
 ### [send_ready] Hyundai Santa Fe (2014) — 710 chars
 

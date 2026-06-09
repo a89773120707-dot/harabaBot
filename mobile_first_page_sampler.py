@@ -30,6 +30,16 @@ from base import log, RESULTS_DIR
 REPORT_PATH = RESULTS_DIR / "apply_all_searches_17_report.yaml"
 DEFAULT_OUT = RESULTS_DIR / "mobile_first_page_sample.json"
 CACHE_OUT = RESULTS_DIR / "mobile_details_cache_17.json"
+TIMING_LOG = RESULTS_DIR / "mobile_sampler_timing.log"
+
+# Timing helpers
+_start_time = time.time()
+def log_step(msg):
+    t = time.time() - _start_time
+    msg_with_time = f"[{t:.1f}s] {msg}"
+    log.info(msg_with_time)
+    with open(TIMING_LOG, "a", encoding="utf-8") as f:
+        f.write(msg_with_time + "\n")
 
 
 # ============================================================
