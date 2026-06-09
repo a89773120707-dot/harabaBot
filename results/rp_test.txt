@@ -1,0 +1,11 @@
+Котельники -> {'value': 'котельники', 'normalized': 'Московская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Чехов -> {'value': 'чехов', 'normalized': 'Московская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Новомосковск -> {'value': 'новомосковск', 'normalized': 'Тульская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Кесова Гора -> {'value': 'кесова гора', 'normalized': 'Тверская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Подольск -> {'value': 'подольск', 'normalized': 'Московская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Щербинка -> {'value': 'щербинка', 'normalized': 'Москва', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Электросталь -> {'value': 'электросталь', 'normalized': 'Московская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Тверская область -> {'value': 'тверская область', 'normalized': 'Тверская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Тульская область -> {'value': 'тульская область', 'normalized': 'Тульская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Владимир -> {'value': 'владимир', 'normalized': 'Владимирская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}
+Ярославль -> {'value': 'ярославль', 'normalized': 'Ярославская область', 'allowed': True, 'confidence': 'high', 'source': 'city_match'}

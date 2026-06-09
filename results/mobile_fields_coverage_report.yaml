@@ -1,0 +1,30 @@
+total_cards: 30
+coverage:
+  engine:
+    found: 27
+    missing: 3
+    coverage_percent: 90.0
+  transmission:
+    found: 27
+    missing: 3
+    coverage_percent: 90.0
+  drive:
+    found: 27
+    missing: 3
+    coverage_percent: 90.0
+  region:
+    found: 26
+    missing: 4
+    coverage_percent: 86.7
+  owners:
+    found: 27
+    missing: 3
+    coverage_percent: 90.0
+  autoteka_status:
+    found: 19
+    missing: 11
+    coverage_percent: 63.3
+decision:
+  primary_source: mobile_detail
+  telegram_ready: true
+  reason: All fields above threshold

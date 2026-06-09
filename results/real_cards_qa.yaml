@@ -1,0 +1,18 @@
+total_in_cars_db: 312
+matched_cards: 160
+skipped_unknown: 152
+model_counts:
+  kia_sportage: 42
+  ford_kuga: 27
+  nissan_xtrail: 31
+  mitsubishi_pajero_iv: 3
+  mazda_cx5: 9
+  nissan_qashqai_j11: 25
+  volkswagen_tiguan: 18
+  audi_q5: 4
+  volvo_xc90: 1
+has_price: 160
+has_year: 160
+has_mileage: 160
+has_url: 160
+has_title: 160

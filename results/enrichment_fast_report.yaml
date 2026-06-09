@@ -1,0 +1,13 @@
+total_cards: 312
+enriched_from_cache: 0
+enriched_from_title: 312
+drive_from_search_filter: 312
+engine_unknown: 252
+transmission_unknown: 307
+region_unknown: 312
+manual_transmission_found: 0
+quality_check:
+  engine_found_rate: 19.2
+  transmission_found_rate: 1.6
+  drive_found_rate: 100.0
+  region_found_rate: 0.0

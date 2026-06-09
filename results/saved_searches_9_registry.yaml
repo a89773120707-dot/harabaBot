@@ -1,0 +1,163 @@
+saved_searches:
+  audi_q5:
+    id: audi_q5
+    save_name: Audi Q5 2012-2018
+    status: saved
+    brand: Audi
+    model: Q5
+    year_from: 2012
+    year_to: 2018
+    expanded_price_from: 1676600
+    expanded_price_to: 2339840
+    price_margin: 50000
+    mileage_max: 230000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:41:54'
+  hyundai_santa_fe:
+    id: hyundai_santa_fe
+    save_name: Hyundai Santa Fe 2012-2018
+    status: saved
+    brand: Hyundai
+    model: Santa Fe
+    year_from: 2012
+    year_to: 2018
+    expanded_price_from: 1744500
+    expanded_price_to: 2372880
+    price_margin: 50000
+    mileage_max: 230000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:42:57'
+  kia_sorento:
+    id: kia_sorento
+    save_name: Kia Sorento 2012-2018
+    status: saved
+    brand: Kia
+    model: Sorento
+    year_from: 2012
+    year_to: 2018
+    expanded_price_from: 1596090
+    expanded_price_to: 2370800
+    price_margin: 50000
+    mileage_max: 240000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 20:02:31'
+  kia_sportage:
+    id: kia_sportage
+    save_name: Kia Sportage 2012-2018
+    status: saved
+    brand: Kia
+    model: Sportage
+    year_from: 2012
+    year_to: 2018
+    expanded_price_from: 1164440
+    expanded_price_to: 1736000
+    price_margin: 50000
+    mileage_max: 220000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 20:03:24'
+  mazda_cx5:
+    id: mazda_cx5
+    save_name: Mazda CX-5 2012-2020
+    status: saved
+    brand: Mazda
+    model: CX-5
+    year_from: 2012
+    year_to: 2020
+    expanded_price_from: 1866720
+    expanded_price_to: 2701400
+    price_margin: 50000
+    mileage_max: 220000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:43:56'
+  mitsubishi_pajero_iv:
+    id: mitsubishi_pajero_iv
+    save_name: Mitsubishi Pajero IV 2008-2015
+    status: saved
+    brand: Mitsubishi
+    model: Pajero
+    year_from: 2008
+    year_to: 2015
+    expanded_price_from: 1720250
+    expanded_price_to: 2615000
+    price_margin: 50000
+    mileage_max: 300000
+    results_count: 0
+    price_confidence: medium
+    need_manual_review: false
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:44:33'
+  hyundai_grand_santa_fe:
+    id: hyundai_grand_santa_fe
+    save_name: Hyundai Grand Santa Fe 2014-2019
+    status: saved
+    brand: Hyundai
+    model: Grand Santa Fe
+    year_from: 2014
+    year_to: 2019
+    expanded_price_from: 1701290
+    expanded_price_to: 2718750
+    price_margin: 100000
+    mileage_max: 220000
+    results_count: 0
+    price_confidence: low
+    need_manual_review: true
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:45:11'
+  nissan_pathfinder:
+    id: nissan_pathfinder
+    save_name: Nissan Pathfinder R51 2011-2014
+    status: saved
+    brand: Nissan
+    model: Pathfinder
+    year_from: 2011
+    year_to: 2014
+    expanded_price_from: 1387980
+    expanded_price_to: 2331250
+    price_margin: 100000
+    mileage_max: 280000
+    results_count: 0
+    price_confidence: low
+    need_manual_review: true
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:45:48'
+  volvo_xc90:
+    id: volvo_xc90
+    save_name: Volvo XC90 2011-2014
+    status: saved
+    brand: Volvo
+    model: XC90
+    year_from: 2011
+    year_to: 2014
+    expanded_price_from: 1307955
+    expanded_price_to: 2248125
+    price_margin: 100000
+    mileage_max: 280000
+    results_count: 0
+    price_confidence: low
+    need_manual_review: true
+    error: null
+    created_at: '2026-06-08 19:40:57'
+    updated_at: '2026-06-08 19:46:25'

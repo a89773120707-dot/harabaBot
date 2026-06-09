@@ -1,0 +1,1394 @@
+generated_at: '2026-06-08T10:51:34.313745'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  kia_sorento:
+    id: kia_sorento
+    brand: Kia
+    model: Sorento
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2012&year_to=2018&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DKIA%2Cmodel%3DSORENTO&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: ok
+    ads_found: 30
+    cards_checked: 30
+    evaluated_cards: 29
+    no_evaluation_cards: 1
+    price_median: 2100000.0
+    mileage_median: 135400.0
+    evaluation_min_median: 1697000
+    evaluation_max_median: 1934000
+    avg_delta_percent: 8.0
+    median_delta_percent: 7
+    fair_price_low: 1646090
+    fair_price_high: 1934000
+    good_buy_price: 1646090
+    suspicious_low_price: 1442450
+    overpriced_price: 2030700
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132871028-c5776d18/
+      title: Kia Sorento II Рестайлинг
+      year: 2015
+      price: 1935000
+      mileage: 87350
+      evaluation_status: above
+      evaluation_delta_percent: 6
+      evaluation_min: 1625000
+      evaluation_max: 1828000
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132305251-419c727b/
+      title: Kia Sorento III Prime Рестайлинг
+      year: 2018
+      price: 3049000
+      mileage: 125000
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 2518000
+      evaluation_max: 2847000
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132764520-75e2d2c9/
+      title: Kia Sorento II
+      year: 2012
+      price: 1550000
+      mileage: 130800
+      evaluation_status: above
+      evaluation_delta_percent: 6
+      evaluation_min: 1305000
+      evaluation_max: 1474000
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132753345-ac16df40/
+      title: Kia Sorento Prime III Prime
+      year: 2017
+      price: 2450000
+      mileage: 100000
+      evaluation_status: above
+      evaluation_delta_percent: 4.6
+      evaluation_min: 2417000
+      evaluation_max: 2710000
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132674445-e7796cef/
+      title: Kia Sorento II Рестайлинг
+      year: 2017
+      price: 2100000
+      mileage: 188000
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1656000
+      evaluation_max: 1844000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132871028-c5776d18/
+      title: Kia Sorento II Рестайлинг
+      price: 1935000
+      year: 2015
+      mileage: 87350
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Бежевый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Механика
+
+        2015
+
+        87 350 км
+
+        1 935 000 ₽
+
+        Роман Ф.
+
+        Москва, '
+      drive: awd
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 6
+      evaluation_min: 1625000
+      evaluation_max: 1828000
+      evaluation_raw: 1 625 000–1 828 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132305251-419c727b/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 3049000
+      year: 2018
+      mileage: 125000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Prestige
+
+        •
+
+        Чёрный
+
+        3.5 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        125 000 км
+
+        3 049 000 ₽
+
+        cool.legis'
+      drive: awd
+      transmission: automatic
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 2518000
+      evaluation_max: 2847000
+      evaluation_raw: 2 518 000–2 847 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132764520-75e2d2c9/
+      title: Kia Sorento II
+      price: 1550000
+      year: 2012
+      mileage: 130800
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento II
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Серый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        130 800 км
+
+        1 550 000 ₽
+
+        Частное лицо'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 6
+      evaluation_min: 1305000
+      evaluation_max: 1474000
+      evaluation_raw: 1 305 000–1 474 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132753345-ac16df40/
+      title: Kia Sorento Prime III Prime
+      price: 2450000
+      year: 2017
+      mileage: 100000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Коричневый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        100 000 км
+
+        2 450 '
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 4.6
+      evaluation_min: 2417000
+      evaluation_max: 2710000
+      evaluation_raw: 2 417 000–2 710 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132674445-e7796cef/
+      title: Kia Sorento II Рестайлинг
+      price: 2100000
+      year: 2017
+      mileage: 188000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Prestige
+
+        •
+
+        Чёрный
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        188 000 км
+
+        2 100 000 ₽
+
+        Максим С.
+
+        Щербинк'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1656000
+      evaluation_max: 1844000
+      evaluation_raw: 1 656 000–1 844 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132621294-d8426342/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 3350000
+      year: 2018
+      mileage: 150000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Prestige+
+
+        •
+
+        Коричневый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        150 000 км
+
+        3 350 000 ₽
+
+        Дмитр'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 2473000
+      evaluation_max: 2787000
+      evaluation_raw: 2 473 000–2 787 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132616491-77eccc67/
+      title: Kia Sorento II Рестайлинг
+      price: 1499900
+      year: 2013
+      mileage: 153000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 2 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Белый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Механика
+
+        2013
+
+        153 000 км
+
+        1 499 900 ₽
+
+        Автомобиль
+
+        Москва,'
+      drive: awd
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 3
+      evaluation_min: 1302000
+      evaluation_max: 1460000
+      evaluation_raw: 1 302 000–1 460 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132552269-450e32ba/
+      title: Kia Sorento II Рестайлинг
+      price: 1900000
+      year: 2013
+      mileage: 175000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Бежевый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        175 000 км
+
+        От собственника
+
+        1 900 000 ₽
+
+        Д'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 24
+      evaluation_min: 1362000
+      evaluation_max: 1544000
+      evaluation_raw: 1 362 000–1 544 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132552036-3faf25bf/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 3050000
+      year: 2018
+      mileage: 122500
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Белый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        122 500 км
+
+        От собственника
+
+        3 050 000 ₽'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2505000
+      evaluation_max: 2851000
+      evaluation_raw: 2 505 000–2 851 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132384513-a4e41c22/
+      title: Kia Sorento II Рестайлинг
+      price: 1850000
+      year: 2015
+      mileage: 154102
+      search_eval_status: fair
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Бежевый
+
+        2.2 л, 197 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2015
+
+        154 102 км
+
+        От собственника
+
+        1 850 000 ₽
+
+        Спра'
+      drive: awd
+      transmission: automatic
+      engine: 197L
+      evaluation_status: below
+      evaluation_delta_percent: -1.9
+      evaluation_min: 1697000
+      evaluation_max: 1934000
+      evaluation_raw: 1 697 000–1 934 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132368396-039ba2c5/
+      title: Kia Sorento II Рестайлинг
+      price: 1515000
+      year: 2012
+      mileage: 111400
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Бежевый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        111 400 км
+
+        1 515 000 ₽'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: 1521000
+      evaluation_max: 1705000
+      evaluation_raw: 1 521 000–1 705 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132252644-2ecde7c9/
+      title: Kia Sorento II Рестайлинг
+      price: 1750000
+      year: 2014
+      mileage: 100458
+      search_eval_status: fair
+      search_text_preview: 'Ещё 2 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        New Luxe (2015)
+
+        •
+
+        Серый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        100 458 км
+
+        1 750'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 2.1
+      evaluation_min: 1691000
+      evaluation_max: 1882000
+      evaluation_raw: 1 691 000–1 882 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132146347-e17c686c/
+      title: Kia Sorento Prime III Prime
+      price: 2550000
+      year: 2016
+      mileage: 108000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 2 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Белый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        108 000 км
+
+        2 550 000 ₽'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: below
+      evaluation_delta_percent: -2.2
+      evaluation_min: 2343000
+      evaluation_max: 2647000
+      evaluation_raw: 2 343 000–2 647 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1132113788-d778c4bf/
+      title: Kia Sorento II Рестайлинг
+      price: 2100000
+      year: 2017
+      mileage: 179391
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Белый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        179 391 км
+
+        От собственника
+
+        2 100 000 ₽
+
+        And'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 17
+      evaluation_min: 1597000
+      evaluation_max: 1795000
+      evaluation_raw: 1 597 000–1 795 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131777091-2acd9b12/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 2900000
+      year: 2018
+      mileage: 185300
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Белый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        185 300 км
+
+        2 900 000 ₽
+
+        Андрей Л.
+
+        Москв'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 16
+      evaluation_min: 2219000
+      evaluation_max: 2512000
+      evaluation_raw: 2 219 000–2 512 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131700365-70d18e22/
+      title: Kia Sorento Prime III Prime
+      price: 2600000
+      year: 2016
+      mileage: 140000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Белый
+
+        2.0 л, 186 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        140 000 км
+
+        2 600 000 ₽
+
+        Влади
+
+        Москва, Зеленоград, к1501'
+      drive: awd
+      transmission: automatic
+      engine: 186L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 2138000
+      evaluation_max: 2377000
+      evaluation_raw: 2 138 000–2 377 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131699213-60cec4e1/
+      title: Kia Sorento Prime III Prime
+      price: 2735000
+      year: 2017
+      mileage: 109455
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        Prestige 2015
+
+        •
+
+        Серый
+
+        3.3 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        109 455 км
+
+        От со'
+      drive: awd
+      transmission: automatic
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 2375000
+      evaluation_max: 2697000
+      evaluation_raw: 2 375 000–2 697 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131540294-508a9eb4/
+      title: Kia Sorento II Рестайлинг
+      price: 1650000
+      year: 2014
+      mileage: 184000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        New Prestige (2015)
+
+        •
+
+        Чёрный
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        184 000 км
+
+        1 650 000 ₽
+
+        Олег
+
+        М'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 1375000
+      evaluation_max: 1548000
+      evaluation_raw: 1 375 000–1 548 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131404348-1040949d/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 2895000
+      year: 2018
+      mileage: 169238
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Чёрный
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        169 238 км
+
+        2 895 000 ₽
+
+        Александр
+
+        Комм'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 11
+      evaluation_min: 2332000
+      evaluation_max: 2625000
+      evaluation_raw: 2 332 000–2 625 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131176896-7dbbe8a0/
+      title: Kia Sorento II
+      price: 1599999
+      year: 2012
+      mileage: 86300
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Серый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Механика
+
+        2012
+
+        86 300 км
+
+        1 599 999 ₽
+
+        Частное лицо
+
+        Раменское'
+      drive: awd
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 6
+      evaluation_min: 1320000
+      evaluation_max: 1520000
+      evaluation_raw: 1 320 000–1 520 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1131169103-7cdb6594/
+      title: Kia Sorento Prime III Prime
+      price: 2500000
+      year: 2017
+      mileage: 101500
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Чёрный
+
+        2.4 л, 188 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        101 500 км
+
+        2 500 000 '
+      drive: awd
+      transmission: automatic
+      engine: 188L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 2146000
+      evaluation_max: 2421000
+      evaluation_raw: 2 146 000–2 421 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130876833-a04e6b43/
+      title: Kia Sorento II Рестайлинг
+      price: 1645000
+      year: 2013
+      mileage: 109442
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Серый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        109 442 км
+
+        1 645 000 ₽
+
+        С'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 0.2
+      evaluation_min: 1559000
+      evaluation_max: 1737000
+      evaluation_raw: 1 559 000–1 737 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130768451-d35c934f/
+      title: Kia Sorento II Рестайлинг
+      price: 2000000
+      year: 2014
+      mileage: 140000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Коричневый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        140 000 км
+
+        2 000 000 ₽
+
+        Евгения
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 1512000
+      evaluation_max: 1703000
+      evaluation_raw: 1 512 000–1 703 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130676783-e8792924/
+      title: Kia Sorento Prime III Prime
+      price: 2600000
+      year: 2016
+      mileage: 163657
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        Prestige
+
+        •
+
+        Коричневый
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        163 657 км
+
+        2 600'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 2122000
+      evaluation_max: 2381000
+      evaluation_raw: 2 122 000–2 381 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130251506-460eda53/
+      title: Kia Sorento Prime III Prime
+      price: 3150000
+      year: 2017
+      mileage: 63000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento Prime III Prime
+
+        Комплектация
+
+        GT Line
+
+        •
+
+        Чёрный
+
+        3.3 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        63 000 км
+
+        3 150 000 ₽
+
+        Андрей
+
+        Королёв, у'
+      drive: awd
+      transmission: automatic
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2501000
+      evaluation_max: 2892000
+      evaluation_raw: 2 501 000–2 892 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130096207-1ff748ed/
+      title: Kia Sorento II Рестайлинг
+      price: 2100000
+      year: 2017
+      mileage: 101000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 3 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Коричневый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        101 000 км
+
+        2 100 000 ₽
+
+        Справедливая цена'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: below
+      evaluation_delta_percent: -2.3
+      evaluation_min: 1923000
+      evaluation_max: 2181000
+      evaluation_raw: 1 923 000–2 181 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1130064114-e5906cde/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 2890000
+      year: 2018
+      mileage: 180000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        GT Line
+
+        •
+
+        Белый
+
+        3.5 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        180 000 км
+
+        2 890 '
+      drive: awd
+      transmission: automatic
+      engine: 249L
+      evaluation_status: no_data
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: ''
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1129978329-543ca74a/
+      title: Kia Sorento II
+      price: 1450000
+      year: 2012
+      mileage: 173000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 3 фото
+
+        История авто бесплатно
+
+        Kia Sorento II
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серый
+
+        2.2 л, 197 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        173 000 км
+
+        1 450 000 ₽
+
+        Справедливая цена
+
+        Александр
+
+        Москв'
+      drive: awd
+      transmission: automatic
+      engine: 197L
+      evaluation_status: below
+      evaluation_delta_percent: -4.6
+      evaluation_min: 1296000
+      evaluation_max: 1472000
+      evaluation_raw: 1 296 000–1 472 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1129976995-893adb27/
+      title: Kia Sorento II Рестайлинг
+      price: 1770000
+      year: 2013
+      mileage: 200000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sorento II Рестайлинг
+
+        Комплектация
+
+        Classic
+
+        •
+
+        Белый
+
+        2.4 л, 175 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        200 000 км
+
+        1 770 000 ₽
+
+        Дарья Чернова
+
+        Щёлко'
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 19
+      evaluation_min: 1303000
+      evaluation_max: 1490000
+      evaluation_raw: 1 303 000–1 490 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sorento/1129793111-a412db38/
+      title: Kia Sorento III Prime Рестайлинг
+      price: 3500000
+      year: 2018
+      mileage: 114000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sorento III Prime Рестайлинг
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Синий
+
+        2.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        114 000 км
+
+        3 500 '
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 20
+      evaluation_min: 2611000
+      evaluation_max: 2931000
+      evaluation_raw: 2 611 000–2 931 000 ₽

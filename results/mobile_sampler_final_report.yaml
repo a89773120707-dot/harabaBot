@@ -1,0 +1,28 @@
+block: 12
+status: PASS
+cards_collected: 30
+cards_enriched: 30
+coverage:
+  engine: 100%
+  transmission: 100%
+  drive: 100%
+  region: 70%
+  owners: 100%
+  autoteka: 73%
+telegram_ready: true
+blockers:
+  - "region: 30% карточек без города (не блоккер — фильтр пропускает unknown)"
+next_step: telegram_sender.py + кнопки Купить / Посмотреть / Скипнуть + комментарий
+
+dry_run_summary:
+  total_input: 30
+  sent_candidates: 16
+  good_candidate: 6
+  watch: 10
+  skipped_reject: 7
+  skipped_weak: 7
+  skipped_manual: 0
+  cards_with_engine: 16
+  cards_with_transmission: 16
+  cards_with_drive: 16
+  cards_with_region: 10

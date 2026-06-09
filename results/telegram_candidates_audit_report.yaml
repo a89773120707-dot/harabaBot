@@ -1,0 +1,39 @@
+block: 15
+generated_at: '2026-06-09T14:27:41.692499'
+total_candidates: 19
+send_ready: 17
+hold_manual_review: 0
+do_not_send: 2
+checks:
+  region:
+    passed: 17
+    failed: 0
+    warnings: 2
+  legal_restrictions:
+    passed: 11
+    failed: 0
+    warnings: 8
+  engine:
+    passed: 17
+    failed: 2
+    warnings: 0
+  transmission:
+    passed: 17
+    failed: 2
+    warnings: 0
+  drive:
+    passed: 17
+    failed: 2
+    warnings: 0
+  completeness:
+    passed: 17
+    failed: 0
+    warnings: 2
+  score_explanation:
+    passed: 19
+    failed: 0
+    warnings: 0
+blockers:
+- 2 карточек отклонено (legal/wrong_region/manual/not_awd)
+next_step: telegram_sender.py
+telegram_sender_ready: true

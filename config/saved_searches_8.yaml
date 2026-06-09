@@ -1,0 +1,129 @@
+saved_searches:
+  kia_sorento_prime:
+    id: kia_sorento_prime
+    save_name: Kia Sorento Prime 2016-2019
+    status: saved
+    brand: Kia
+    model: Sorento Prime
+    year_from: 2016
+    year_to: 2019
+    price_from_real: 1750000
+    price_to_real: 2650000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:32:45'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  volkswagen_touareg_nf:
+    id: volkswagen_touareg_nf
+    save_name: Volkswagen Touareg NF 2010-2016
+    status: saved
+    brand: Volkswagen
+    model: Touareg
+    year_from: 2010
+    year_to: 2016
+    price_from_real: 1450000
+    price_to_real: 2250000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:33:56'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  volkswagen_tiguan:
+    id: volkswagen_tiguan
+    save_name: Volkswagen Tiguan 2011-2018
+    status: saved
+    brand: Volkswagen
+    model: Tiguan
+    year_from: 2011
+    year_to: 2018
+    price_from_real: 850000
+    price_to_real: 1600000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:35:07'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  nissan_xtrail:
+    id: nissan_xtrail
+    save_name: Nissan X-Trail 2011-2018
+    status: saved
+    brand: Nissan
+    model: X-Trail
+    year_from: 2011
+    year_to: 2018
+    price_from_real: 800000
+    price_to_real: 1950000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:36:17'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  nissan_qashqai_j11:
+    id: nissan_qashqai_j11
+    save_name: Nissan Qashqai J11 2014-2018
+    status: saved
+    brand: Nissan
+    model: Qashqai
+    year_from: 2014
+    year_to: 2018
+    price_from_real: 1100000
+    price_to_real: 1700000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:37:28'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  ford_kuga:
+    id: ford_kuga
+    save_name: Ford Kuga 2013-2018
+    status: saved
+    brand: Ford
+    model: Kuga
+    year_from: 2013
+    year_to: 2018
+    price_from_real: 800000
+    price_to_real: 1600000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:38:40'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  mercedes_glk_220_cdi:
+    id: mercedes_glk_220_cdi
+    save_name: Mercedes-Benz GLK 220 CDI 2012-2015
+    status: saved
+    brand: Mercedes-Benz
+    model: GLK-Класс
+    year_from: 2012
+    year_to: 2015
+    price_from_real: 1400000
+    price_to_real: 1950000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:39:50'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null
+  volkswagen_multivan_t5:
+    id: volkswagen_multivan_t5
+    save_name: Volkswagen Multivan T5 2010-2015
+    status: saved
+    brand: Volkswagen
+    model: Multivan
+    year_from: 2010
+    year_to: 2015
+    price_from_real: 1650000
+    price_to_real: 2650000
+    results_count: 30
+    last_error: null
+    updated_at: '2026-06-07 22:41:07'
+    verified_at: '2026-06-07 22:41:56'
+    verify_status: verified
+    verify_error: null

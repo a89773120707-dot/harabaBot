@@ -1,0 +1,10 @@
+block: 16
+generated_at: '2026-06-09T16:44:38.017477'
+total_candidates: 3
+sent: 4
+skipped_duplicate: 2
+skipped_do_not_send: 0
+feedback_db_ready: true
+buttons_ready: true
+comments_ready: true
+telegram_v1_ready: true

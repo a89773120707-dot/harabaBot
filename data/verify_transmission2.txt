@@ -1,0 +1,8 @@
+kia_sorento_prime: transmission=automatic
+volkswagen_touareg_nf: transmission=automatic
+volkswagen_tiguan: transmission=['automatic', 'dsg']
+nissan_xtrail: transmission=cvt
+nissan_qashqai_j11: transmission=cvt
+ford_kuga: transmission=automatic
+mercedes_glk_220_cdi: transmission=automatic
+volkswagen_multivan_t5: transmission=['automatic', 'dsg', 'manual']

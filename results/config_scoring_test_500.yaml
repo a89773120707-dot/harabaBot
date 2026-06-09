@@ -1,0 +1,2904 @@
+generated_at: '2026-06-08T13:50:16.684231'
+config_version: '1.0'
+summary:
+  total_cards: 160
+  scored: 124
+  rejected: 36
+  skipped_unknown: 0
+  by_decision:
+    watch: 60
+    reject: 36
+    weak: 55
+    good_candidate: 9
+  distribution_pct:
+    watch: 37.5
+    reject: 22.5
+    weak: 34.4
+    good_candidate: 5.6
+  avg_score: 56.4
+model_distribution:
+  kia_sportage:
+    total: 42
+    decisions:
+      watch: 10
+      reject: 22
+      weak: 10
+    distribution_pct:
+      watch: 23.8
+      reject: 52.4
+      weak: 23.8
+  ford_kuga:
+    total: 27
+    decisions:
+      weak: 15
+      watch: 11
+      reject: 1
+    distribution_pct:
+      weak: 55.6
+      watch: 40.7
+      reject: 3.7
+  nissan_xtrail:
+    total: 31
+    decisions:
+      watch: 20
+      weak: 10
+      reject: 1
+    distribution_pct:
+      watch: 64.5
+      weak: 32.3
+      reject: 3.2
+  mitsubishi_pajero_iv:
+    total: 3
+    decisions:
+      watch: 1
+      weak: 2
+    distribution_pct:
+      watch: 33.3
+      weak: 66.7
+  mazda_cx5:
+    total: 9
+    decisions:
+      reject: 1
+      good_candidate: 3
+      watch: 5
+    distribution_pct:
+      reject: 11.1
+      good_candidate: 33.3
+      watch: 55.6
+  nissan_qashqai_j11:
+    total: 25
+    decisions:
+      watch: 8
+      weak: 10
+      good_candidate: 4
+      reject: 3
+    distribution_pct:
+      watch: 32.0
+      weak: 40.0
+      good_candidate: 16.0
+      reject: 12.0
+  volkswagen_tiguan:
+    total: 18
+    decisions:
+      good_candidate: 1
+      watch: 3
+      reject: 7
+      weak: 7
+    distribution_pct:
+      good_candidate: 5.6
+      watch: 16.7
+      reject: 38.9
+      weak: 38.9
+  audi_q5:
+    total: 4
+    decisions:
+      watch: 2
+      reject: 1
+      good_candidate: 1
+    distribution_pct:
+      watch: 50.0
+      reject: 25.0
+      good_candidate: 25.0
+  volvo_xc90:
+    total: 1
+    decisions:
+      weak: 1
+    distribution_pct:
+      weak: 100.0
+results:
+- url: https://haraba.ru/common/click?id=172875978&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,220,000 в диапазоне good (1,214,440-1,252,000)
+  penalty_reasons:
+  - Пробег 174,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,220,000 ₽ → good (+20) | Mileage: 174,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880091&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,500,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,500,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 190,000 км → unknown (+0)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880082&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 145,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,320,000 ₽ → unknown_price (+0) | Mileage: 145,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172878142&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 108,587 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 2,000,000 ₽ → unknown_price (+0) | Mileage: 108,587 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172878084&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 114,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,750,000 ₽ → unknown_price (+0) | Mileage: 114,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172873188&source=1
+  title: Mitsubishi Pajero Sport
+  model_id: mitsubishi_pajero_iv
+  decision: watch
+  score: 75
+  price_score: 5
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,900,000 в диапазоне fair (1,825,000-2,137,500)
+  - Пробег 175,000 < 180,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: mitsubishi_pajero_iv | Price: 1,900,000 ₽ → fair (+5) | Mileage: 175,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172877549&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,550,000 < 1,679,600 (подозрительно дёшево)
+  - Пробег 154,000 > 120000 (penalty)
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,550,000 ₽ → suspicious_low (-15) | Mileage: 154,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172877333&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 123,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,900,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,900,000 ₽ → reject_if_weak (-30) | Mileage: 123,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172876534&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,449,000 в диапазоне good (1,300,000-1,500,000)
+  penalty_reasons:
+  - Пробег 167,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,449,000 ₽ → good (+20) | Mileage: 167,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172872208&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,420,000 выше рынка, но OK если топ-комплектация
+  - Пробег 144,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,420,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 144,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172873806&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 114,746 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,600,000 ₽ → unknown_price (+0) | Mileage: 114,746 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172873980&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 132,934 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,350,000 ₽ → unknown_price (+0) | Mileage: 132,934 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172872999&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: good_candidate
+  score: 85
+  price_score: 35
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,860,000 в диапазоне excellent (<1,916,720)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,860,000 ₽ → excellent (+35) | Mileage: 190,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172872560&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: good_candidate
+  score: 85
+  price_score: 35
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,860,000 в диапазоне excellent (<1,916,720)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,860,000 ₽ → excellent (+35) | Mileage: 190,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172872586&source=1
+  title: Mitsubishi Pajero Sport
+  model_id: mitsubishi_pajero_iv
+  decision: weak
+  score: 45
+  price_score: 5
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,950,000 в диапазоне fair (1,825,000-2,137,500)
+  penalty_reasons:
+  - Пробег 194,000 > 180000 (penalty)
+  warnings: []
+  explanation: 'Model: mitsubishi_pajero_iv | Price: 1,950,000 ₽ → fair (+5) | Mileage: 194,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172872065&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 184,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,425,000 ₽ → unknown_price (+0) | Mileage: 184,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172871526&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,370,000 ₽ → unknown_price (+0) | Mileage: 181,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172871288&source=1
+  title: Mitsubishi Pajero Sport
+  model_id: mitsubishi_pajero_iv
+  decision: weak
+  score: 45
+  price_score: 5
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,950,000 в диапазоне fair (1,825,000-2,137,500)
+  penalty_reasons:
+  - Пробег 194,000 > 180000 (penalty)
+  warnings: []
+  explanation: 'Model: mitsubishi_pajero_iv | Price: 1,950,000 ₽ → fair (+5) | Mileage: 194,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172870806&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,400,000 в диапазоне good (1,300,000-1,500,000)
+  penalty_reasons:
+  - Пробег 150,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,400,000 ₽ → good (+20) | Mileage: 150,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172870510&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 130,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,500,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,500,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 130,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172868563&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,449,900 в диапазоне good (1,300,000-1,500,000)
+  penalty_reasons:
+  - Пробег 148,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,449,900 ₽ → good (+20) | Mileage: 148,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172868601&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 143,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,550,000 ₽ → unknown_price (+0) | Mileage: 143,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172867347&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 107,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,800,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,800,000 ₽ → reject_if_weak (-30) | Mileage: 107,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172866984&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 111,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,730,000 ₽ → unknown_price (+0) | Mileage: 111,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172866441&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 89,200 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,730,000 ₽ → unknown_price (+0) | Mileage: 89,200 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172866286&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,760,000 ₽ → unknown_price (+0) | Mileage: 181,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172866166&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,520,000 выше рынка, но OK если топ-комплектация
+  - Пробег 152,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,520,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 152,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172865731&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,260,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,260,000 ₽ → fair (+5) | Mileage: 190,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172865611&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 109,289 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,550,000 ₽ → unknown_price (+0) | Mileage: 109,289 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172864981&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 115,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,635,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,635,000 ₽ → reject_if_weak (-30) | Mileage: 115,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172864971&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 127,500 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 127,500 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172864596&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: good_candidate
+  score: 90
+  price_score: 20
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,200,000 в диапазоне good (1,150,000-1,350,000)
+  - Пробег 122,000 < 150,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,200,000 ₽ → good (+20) | Mileage: 122,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172864753&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 115,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,635,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,635,000 ₽ → reject_if_weak (-30) | Mileage: 115,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172864241&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,605,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 148,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,605,000 ₽ → reject_if_weak (-30) | Mileage: 148,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863752&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 114,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,630,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,630,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 114,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863667&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 116,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,800,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,800,000 ₽ → reject_if_weak (-30) | Mileage: 116,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863632&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,390,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,390,000 ₽ → fair (+5) | Mileage: 190,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863331&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 75,160 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,350,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 75,160 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863244&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 45
+  price_score: 5
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,350,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons:
+  - Пробег 157,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,350,000 ₽ → fair (+5) | Mileage: 157,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863224&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 62,374 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 62,374 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863218&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,700,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,700,000 ₽ → reject_if_weak (-30) | Mileage: 196,000 км → unknown (+0)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863005&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 113,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,750,000 ₽ → unknown_price (+0) | Mileage: 113,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172863195&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 62,374 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 62,374 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172862937&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,440,000 выше рынка, но OK если топ-комплектация
+  - Пробег 140,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,440,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 140,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172862560&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 2,000,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 2,000,000 ₽ → reject_if_weak (-30) | Mileage: 196,653 км → unknown (+0) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172862149&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 147,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,950,000 ₽ → unknown_price (+0) | Mileage: 147,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172861827&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 162,700 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,949,999 ₽ → unknown_price (+0) | Mileage: 162,700 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172861450&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 174,167 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,730,000 ₽ → unknown_price (+0) | Mileage: 174,167 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172860392&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,200,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,200,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 200,000 км → unknown
+    (+0) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172860331&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 45
+  price_score: 5
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,380,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons:
+  - Пробег 136,700 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,380,000 ₽ → fair (+5) | Mileage: 136,700 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172859936&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 143,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,820,000 ₽ → unknown_price (+0) | Mileage: 143,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172859417&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 45
+  price_score: 5
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,300,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons:
+  - Пробег 170,100 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,300,000 ₽ → fair (+5) | Mileage: 170,100 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172894645&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 163,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 163,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172894429&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,600,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 134,765 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,600,000 ₽ → reject_if_weak (-30) | Mileage: 134,765 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172894141&source=1
+  title: Audi Q5
+  model_id: audi_q5
+  decision: watch
+  score: 70
+  price_score: 20
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,750,000 в диапазоне good (1,726,600-1,780,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: audi_q5 | Price: 1,750,000 ₽ → good (+20) | Mileage: 187,000 км → unknown (+0) | Trans: unknown → neutral
+    (+0)'
+- url: https://haraba.ru/common/click?id=172894038&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,700,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 169,364 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,700,000 ₽ → reject_if_weak (-30) | Mileage: 169,364 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172893689&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: good_candidate
+  score: 90
+  price_score: 20
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,300,000 в диапазоне good (1,300,000-1,500,000)
+  - Пробег 93,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,300,000 ₽ → good (+20) | Mileage: 93,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172893674&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 102,603 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,640,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,640,000 ₽ → reject_if_weak (-30) | Mileage: 102,603 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172893191&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: good_candidate
+  score: 90
+  price_score: 20
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,400,000 в диапазоне good (1,300,000-1,500,000)
+  - Пробег 120,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,400,000 ₽ → good (+20) | Mileage: 120,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172892938&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,299,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,299,000 ₽ → fair (+5) | Mileage: 186,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172892586&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 119,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,575,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,575,000 ₽ → reject_if_weak (-30) | Mileage: 119,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172892868&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 192,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,350,000 ₽ → unknown_price (+0) | Mileage: 192,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172892850&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 150,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,200,000 ₽ → unknown_price (+0) | Mileage: 150,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172886543&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: watch
+  score: 75
+  price_score: 35
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,700,000 в диапазоне excellent (<1,916,720)
+  penalty_reasons:
+  - Пробег 136,200 > 120000 (penalty)
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,700,000 ₽ → excellent (+35) | Mileage: 136,200 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172886496&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 80,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 80,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891586&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 75
+  price_score: 5
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,300,000 в диапазоне fair (1,252,000-1,405,000)
+  - Пробег 102,500 < 130,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,300,000 ₽ → fair (+5) | Mileage: 102,500 км → excellent (+20) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891939&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 170,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,800,000 ₽ → unknown_price (+0) | Mileage: 170,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891302&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,610,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,610,000 ₽ → reject_if_weak (-30) | Mileage: 181,000 км → unknown (+0) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172890809&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 178,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,550,000 ₽ → unknown_price (+0) | Mileage: 178,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172890795&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 124,000 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,450,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,450,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 124,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891040&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 140,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,990,000 ₽ → unknown_price (+0) | Mileage: 140,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172890634&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,400,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,400,000 ₽ → fair (+5) | Mileage: 189,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172890897&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 126,000 < 170,000 (excellent)
+  penalty_reasons:
+  - Цена 1,150,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,150,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 126,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172890829&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 167,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,330,000 ₽ → unknown_price (+0) | Mileage: 167,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172889141&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: good_candidate
+  score: 90
+  price_score: 20
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,970,000 в диапазоне good (1,916,720-1,976,000)
+  - Пробег 112,500 < 120,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,970,000 ₽ → good (+20) | Mileage: 112,500 км → excellent (+20) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172889241&source=1
+  title: Audi Q5
+  model_id: audi_q5
+  decision: watch
+  score: 75
+  price_score: 35
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,540,000 в диапазоне excellent (<1,726,600)
+  penalty_reasons:
+  - Пробег 158,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: audi_q5 | Price: 1,540,000 ₽ → excellent (+35) | Mileage: 158,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172888658&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 160,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,650,000 ₽ → unknown_price (+0) | Mileage: 160,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172888924&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 130,040 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,400,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,400,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 130,040 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172888771&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 40,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,800,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,800,000 ₽ → reject_if_weak (-30) | Mileage: 40,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172888626&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 160,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,650,000 ₽ → unknown_price (+0) | Mileage: 160,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172888123&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,800,000 >= 1,650,000 (reject_if_weak)
+  - Пробег 155,517 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,800,000 ₽ → reject_if_weak (-30) | Mileage: 155,517 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172887937&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,400,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,400,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 198,000 км → unknown
+    (+0) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172887911&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: good_candidate
+  score: 85
+  price_score: 35
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,250,000 в диапазоне excellent (<1,300,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,250,000 ₽ → excellent (+35) | Mileage: 198,392 км → unknown (+0) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172887259&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 116,761 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,540,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,540,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 116,761 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172881692&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,450,000 выше рынка, но OK если топ-комплектация
+  - Пробег 164,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,450,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 164,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172886960&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 149,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,670,000 ₽ → unknown_price (+0) | Mileage: 149,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172886699&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 177,500 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,550,000 ₽ → unknown_price (+0) | Mileage: 177,500 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172885905&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  - Пробег 155,000 > 150000 (penalty)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,350,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 155,000 км → penalty
+    (-10) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172885681&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 189,600 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,250,000 ₽ → unknown_price (+0) | Mileage: 189,600 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172885104&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 165,000 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,420,000 ₽ → unknown_price (+0) | Mileage: 165,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172885277&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,750,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 150,500 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,750,000 ₽ → reject_if_weak (-30) | Mileage: 150,500 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172884918&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 55,300 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,430,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,430,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 55,300 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172883611&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 137,667 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,300,000 ₽ → unknown_price (+0) | Mileage: 137,667 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172883662&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 123,700 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 123,700 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172884019&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 126,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,800,000 ₽ → unknown_price (+0) | Mileage: 126,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172883849&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,650,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,650,000 ₽ → reject_if_weak (-30) | Mileage: 198,000 км → unknown (+0) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172883563&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,600,000 выше рынка, но OK если топ-комплектация
+  - Пробег 140,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,600,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 140,000 км → penalty
+    (-10) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172882487&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 80,750 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,950,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,950,000 ₽ → reject_if_weak (-30) | Mileage: 80,750 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172881984&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,850,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,850,000 ₽ → reject_if_weak (-30) | Mileage: 192,000 км → unknown (+0)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172882320&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,425,000 выше рынка, но OK если топ-комплектация
+  - Пробег 133,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,425,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 133,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172881849&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: watch
+  score: 75
+  price_score: 35
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,897,000 в диапазоне excellent (<1,916,720)
+  penalty_reasons:
+  - Пробег 128,000 > 120000 (penalty)
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,897,000 ₽ → excellent (+35) | Mileage: 128,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172881106&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 20
+  price_score: -30
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,550,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,550,000 ₽ → reject_if_weak (-30) | Mileage: 187,000 км → unknown (+0) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172881437&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,256,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,256,000 ₽ → fair (+5) | Mileage: 180,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880978&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 170,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,650,000 ₽ → unknown_price (+0) | Mileage: 170,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880877&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 130,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,200,000 ₽ → unknown_price (+0) | Mileage: 130,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880805&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,970,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 133,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,970,000 ₽ → reject_if_weak (-30) | Mileage: 133,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172880733&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,999,999 >= 1,503,350 (reject_if_weak)
+  - Пробег 170,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,999,999 ₽ → reject_if_weak (-30) | Mileage: 170,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172896462&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,785,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 146,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,785,000 ₽ → reject_if_weak (-30) | Mileage: 146,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172896405&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 132,911 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,350,000 ₽ → unknown_price (+0) | Mileage: 132,911 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891493&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 126,000 < 170,000 (excellent)
+  penalty_reasons:
+  - Цена 1,150,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,150,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 126,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172896222&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,350,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 185,000 км → unknown
+    (+0) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172896210&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: good_candidate
+  score: 100
+  price_score: 35
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,200,000 в диапазоне excellent (<1,300,000)
+  - Пробег 101,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,200,000 ₽ → excellent (+35) | Mileage: 101,000 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172896063&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 125,950 < 130,000 (excellent)
+  penalty_reasons:
+  - Цена 1,720,000 >= 1,503,350 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,720,000 ₽ → reject_if_weak (-30) | Mileage: 125,950 км → excellent (+20) |
+    Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172891236&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 130,047 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,400,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,400,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 130,047 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172895885&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: watch
+  score: 55
+  price_score: 5
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,320,000 в диапазоне fair (1,252,000-1,405,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,320,000 ₽ → fair (+5) | Mileage: 195,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172895103&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 118,000 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,820,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,820,000 ₽ → reject_if_weak (-30) | Mileage: 118,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172882535&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: watch
+  score: 70
+  price_score: 20
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,920,000 в диапазоне good (1,916,720-1,976,000)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,920,000 ₽ → good (+20) | Mileage: 195,000 км → unknown (+0) | Trans: unknown →
+    neutral (+0)'
+- url: https://haraba.ru/common/click?id=172899257&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,150,000 ₽ → unknown_price (+0) | Mileage: 173,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172898668&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,950,000 в диапазоне good (1,916,720-1,976,000)
+  penalty_reasons:
+  - Пробег 154,000 > 120000 (penalty)
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,950,000 ₽ → good (+20) | Mileage: 154,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172898861&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 151,539 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,600,000 ₽ → unknown_price (+0) | Mileage: 151,539 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172898606&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 80,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,850,000 ₽ → unknown_price (+0) | Mileage: 80,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172898193&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 121,000 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 2,000,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 2,000,000 ₽ → reject_if_weak (-30) | Mileage: 121,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172897974&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 98,995 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,690,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,690,000 ₽ → reject_if_weak (-30) | Mileage: 98,995 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172897753&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 151,539 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,547,000 ₽ → unknown_price (+0) | Mileage: 151,539 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172892465&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,900,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 153,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,900,000 ₽ → reject_if_weak (-30) | Mileage: 153,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172897556&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 122,100 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,750,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,750,000 ₽ → reject_if_weak (-30) | Mileage: 122,100 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172897472&source=1
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  decision: watch
+  score: 60
+  price_score: 20
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,950,000 в диапазоне good (1,916,720-1,976,000)
+  penalty_reasons:
+  - Пробег 154,000 > 120000 (penalty)
+  warnings: []
+  explanation: 'Model: mazda_cx5 | Price: 1,950,000 ₽ → good (+20) | Mileage: 154,000 км → penalty (-10) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172897241&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 121,000 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 2,000,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 2,000,000 ₽ → reject_if_weak (-30) | Mileage: 121,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172895372&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,350,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 185,000 км → unknown
+    (+0) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172856590&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 97,317 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,800,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,800,000 ₽ → reject_if_weak (-30) | Mileage: 97,317 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172854151&source=1
+  title: Audi Q5
+  model_id: audi_q5
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,500,000 < 1,513,000 (подозрительно дёшево)
+  warnings: []
+  explanation: 'Model: audi_q5 | Price: 1,500,000 ₽ → suspicious_low (-15) | Mileage: 190,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172853194&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 119,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,550,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,550,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 119,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172852512&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: watch
+  score: 55
+  price_score: -15
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 119,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,550,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,550,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 119,000 км → excellent
+    (+20) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172848479&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,690,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 151,163 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,690,000 ₽ → reject_if_weak (-30) | Mileage: 151,163 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172846817&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 156,750 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,300,000 ₽ → unknown_price (+0) | Mileage: 156,750 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172840962&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 137,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,689,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,689,000 ₽ → reject_if_weak (-30) | Mileage: 137,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172846497&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 156,750 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,300,000 ₽ → unknown_price (+0) | Mileage: 156,750 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172846235&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 135,964 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,850,000 ₽ → unknown_price (+0) | Mileage: 135,964 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172842189&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 163,500 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,500,000 ₽ → unknown_price (+0) | Mileage: 163,500 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172840384&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 83,000 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,700,000 ₽ → unknown_price (+0) | Mileage: 83,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172835177&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 186,000 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,980,000 ₽ → unknown_price (+0) | Mileage: 186,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172912919&source=1
+  title: Audi Q5
+  model_id: audi_q5
+  decision: good_candidate
+  score: 85
+  price_score: 35
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,650,000 в диапазоне excellent (<1,726,600)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: audi_q5 | Price: 1,650,000 ₽ → excellent (+35) | Mileage: 180,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172912473&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 110,150 < 140,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,600,000 ₽ → unknown_price (+0) | Mileage: 110,150 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172910651&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,702,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 131,300 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,702,000 ₽ → reject_if_weak (-30) | Mileage: 131,300 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172909606&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 127,113 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 2,000,000 ₽ → unknown_price (+0) | Mileage: 127,113 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172909481&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 85,000 < 140,000 (excellent)
+  penalty_reasons:
+  - Цена 1,950,000 >= 1,650,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,950,000 ₽ → reject_if_weak (-30) | Mileage: 85,000 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172908364&source=1
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,840,000 >= 1,650,000 (reject_if_weak)
+  - Пробег 163,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_qashqai_j11 | Price: 1,840,000 ₽ → reject_if_weak (-30) | Mileage: 163,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172907582&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,280,000 ₽ → unknown_price (+0) | Mileage: 186,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172905088&source=1
+  title: KIA Sportage
+  model_id: kia_sportage
+  decision: reject
+  score: 10
+  price_score: -30
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,900,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 165,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,900,000 ₽ → reject_if_weak (-30) | Mileage: 165,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172902221&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,280,000 ₽ → unknown_price (+0) | Mileage: 186,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172902105&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 145,000 > 140000 (penalty)
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,750,000 ₽ → unknown_price (+0) | Mileage: 145,000 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172902122&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 128,300 < 150,000 (excellent)
+  penalty_reasons:
+  - Цена 1,900,000 >= 1,550,000 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,900,000 ₽ → reject_if_weak (-30) | Mileage: 128,300 км → excellent (+20)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172901261&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 139,435 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,380,000 ₽ → unknown_price (+0) | Mileage: 139,435 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172901023&source=1
+  title: 'KIA Sportage
+
+    история'
+  model_id: kia_sportage
+  decision: reject
+  score: 25
+  price_score: -15
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,450,000 выше рынка, но OK если топ-комплектация
+  - Пробег 178,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,450,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 178,000 км → penalty (-10)
+    | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172900572&source=1
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  decision: reject
+  score: 35
+  price_score: -15
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Цена 1,370,000 выше рынка, но OK если топ-комплектация
+  warnings: []
+  explanation: 'Model: volkswagen_tiguan | Price: 1,370,000 ₽ → expensive_but_ok_if_top (-15) | Mileage: 192,923 км → unknown
+    (+0) | Trans: unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172900685&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: watch
+  score: 70
+  price_score: 0
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 139,435 < 170,000 (excellent)
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,380,000 ₽ → unknown_price (+0) | Mileage: 139,435 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172911735&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,100,000 ₽ → unknown_price (+0) | Mileage: 183,200 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172887090&source=1
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  decision: weak
+  score: 40
+  price_score: 0
+  mileage_score: -10
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons:
+  - Пробег 177,500 > 170000 (penalty)
+  warnings: []
+  explanation: 'Model: nissan_xtrail | Price: 1,550,000 ₽ → unknown_price (+0) | Mileage: 177,500 км → penalty (-10) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172877241&source=1
+  title: Volvo XC90
+  model_id: volvo_xc90
+  decision: weak
+  score: 40
+  price_score: -30
+  mileage_score: 20
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Пробег 122,000 < 170,000 (excellent)
+  penalty_reasons:
+  - Цена 2,000,000 >= 1,838,795 (reject_if_weak)
+  warnings: []
+  explanation: 'Model: volvo_xc90 | Price: 2,000,000 ₽ → reject_if_weak (-30) | Mileage: 122,000 км → excellent (+20) | Trans:
+    unknown → neutral (+0)'
+- url: https://haraba.ru/common/click?id=172857814&source=1
+  title: Ford Kuga
+  model_id: ford_kuga
+  decision: weak
+  score: 50
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons: []
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: ford_kuga | Price: 1,100,000 ₽ → unknown_price (+0) | Mileage: 180,000 км → unknown (+0) | Trans: unknown
+    → neutral (+0)'

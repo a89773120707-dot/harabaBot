@@ -1,0 +1,90 @@
+generated_at: '2026-06-08'
+source: auto_ru_evaluation
+models:
+  hyundai_grand_santa_fe:
+    id: hyundai_grand_santa_fe
+    brand: Hyundai
+    model: Grand Santa Fe
+    year_from: 2014
+    year_to: 2019
+    drive: awd
+    search_url: ''
+    status: low_evaluation_sample
+    ads_found: 3
+    cards_checked: 3
+    evaluated_cards: 3
+    no_evaluation_cards: 0
+    price_median: 2190000
+    mileage_median: 120000
+    evaluation_min_median: 1857000
+    evaluation_max_median: 2095000
+    avg_delta_percent: 9.8
+    median_delta_percent: 9
+    fair_price_low: 1801290
+    fair_price_high: 2095000
+    good_buy_price: 1801290
+    suspicious_low_price: 1578450
+    overpriced_price: 2199750
+    need_manual_review: true
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1128190389-3a935bbf/
+      title: Hyundai Santa Fe Grand III
+      year: 2014
+      price: 2030000
+      mileage: 123109
+      evaluation_status: below
+      evaluation_delta_percent: -2.7
+      evaluation_min: 1857000
+      evaluation_max: 2095000
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1125140461-1e19dba5/
+      title: Hyundai Santa Fe Grand III
+      year: 2014
+      price: 2190000
+      mileage: 100000
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1714000
+      evaluation_max: 2013000
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1103641282-aa66afe6/
+      title: Hyundai Santa Fe Grand III Рестайлинг
+      year: 2018
+      price: 3200000
+      mileage: 120000
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 2317000
+      evaluation_max: 2612000
+    all_cards:
+    - num: 1
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1128190389-3a935bbf/
+      title: Hyundai Santa Fe Grand III
+      year: 2014
+      price: 2030000
+      mileage: 123109
+      evaluation_status: below
+      evaluation_delta_percent: -2.7
+      evaluation_min: 1857000
+      evaluation_max: 2095000
+      evaluation_raw: 1 857 000–2 095 000 ₽
+    - num: 2
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1125140461-1e19dba5/
+      title: Hyundai Santa Fe Grand III
+      year: 2014
+      price: 2190000
+      mileage: 100000
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1714000
+      evaluation_max: 2013000
+      evaluation_raw: 1 714 000–2 013 000 ₽
+    - num: 3
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1103641282-aa66afe6/
+      title: Hyundai Santa Fe Grand III Рестайлинг
+      year: 2018
+      price: 3200000
+      mileage: 120000
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 2317000
+      evaluation_max: 2612000
+      evaluation_raw: 2 317 000–2 612 000 ₽

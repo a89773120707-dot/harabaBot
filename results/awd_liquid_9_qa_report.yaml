@@ -1,0 +1,72 @@
+qa_report:
+  file: config/awd_liquid_9.yaml
+  timestamp: "2026-06-08"
+  status: PASS
+  checks:
+    models_count:
+      expected: 9
+      actual: 9
+      status: PASS
+    no_duplicate_ids:
+      status: PASS
+      ids:
+        - audi_q5
+        - hyundai_santa_fe
+        - kia_sorento
+        - kia_sportage
+        - mazda_cx5
+        - mitsubishi_pajero_iv
+        - hyundai_grand_santa_fe
+        - nissan_pathfinder
+        - volvo_xc90
+    required_fields:
+      status: PASS
+      fields: [id, name, search_filters, brand, model, year_from, year_to, price_from, price_to, mileage_max, drivetrain, regions, legal_restrictions, transmission]
+    price_from_less_than_price_to:
+      status: PASS
+    mileage_max_filled:
+      status: PASS
+    drivetrain_is_awd:
+      status: PASS
+    regions_count_7:
+      status: PASS
+    legal_restrictions_none:
+      status: PASS
+    transmission_no_manual:
+      status: PASS
+    low_sample_marked:
+      status: PASS
+      models:
+        hyundai_grand_santa_fe:
+          price_confidence: low
+          need_manual_review: true
+        nissan_pathfinder:
+          price_confidence: low
+          need_manual_review: true
+        volvo_xc90:
+          price_confidence: low
+          need_manual_review: true
+    region_names_valid:
+      status: PASS
+      regions:
+        - Москва и МО
+        - Ярославская обл.
+        - Тверская обл.
+        - Владимирская обл.
+        - Калужская обл.
+        - Рязанская обл.
+        - Тульская обл.
+  price_summary:
+    audi_q5: [1726600, 2289840]
+    hyundai_santa_fe: [1794500, 2322880]
+    kia_sorento: [1646090, 2320800]
+    kia_sportage: [1214440, 1686000]
+    mazda_cx5: [1916720, 2651400]
+    mitsubishi_pajero_iv: [1770250, 2565000]
+    hyundai_grand_santa_fe: [1801290, 2618750]
+    nissan_pathfinder: [1487980, 2231250]
+    volvo_xc90: [1407955, 2148125]
+  source_files:
+    - config/saved_searches_9.yaml
+    - results/price_ranges_9_v2.yaml
+    - results/expert_rules_9_ready.yaml

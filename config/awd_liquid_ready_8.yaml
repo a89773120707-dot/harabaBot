@@ -1,0 +1,691 @@
+config_name: awd_liquid_ready_8
+description: Первые 8 почти готовых моделей для полноприводного поиска автосалона
+version: 0.2
+architecture:
+  search_filters: То, что реально выставляем на Haraba
+  must_have: Жесткие условия допуска
+  scoring_rules: Оценка объявления после парсинга
+  risk_check: Что проверять вручную/по описанию/по диагностике
+  market_rules: Правила цены и рыночной привлекательности
+global_rules:
+  search_strategy:
+    rule: Поиск делаем шире, скоринг делаем жестче
+    avoid_too_narrow_search: true
+  global_reject:
+  - red_autoteka
+  - airbags_deployed
+  - structural_damage
+  - geometry_damage
+  - heavy_accident
+  - taxi
+  - commercial_abuse
+  - registration_ban
+  - pledge
+  - twisted_mileage_suspected
+  global_bonus:
+    green_autoteka: 25
+    one_owner: 15
+    two_owners: 10
+    awd: 15
+    top_trim: 15
+    seven_seats: 15
+    low_mileage: 15
+    dealer_service_history: 10
+    panorama: 8
+    camera_360: 8
+    leather: 6
+    ventilation: 6
+    good_color: 5
+  global_penalty:
+    three_owners: -5
+    four_plus_owners: -20
+    high_mileage: -15
+    weak_trim: -15
+    many_cosmetic_repairs: -15
+    poor_interior: -10
+    no_service_history: -10
+    suspiciously_cheap: -25
+    above_market_without_reason: -15
+models:
+- id: kia_sorento_prime
+  name: Kia Sorento Prime
+  priority: very_high
+  segment: 7-seat family crossover
+  search_filters:
+    brand: Kia
+    model: Sorento Prime
+    year_from: 2016
+    year_to: 2019
+    price_from: 1800000
+    price_to: 2600000
+    transmission:
+    - automatic
+    - dsg
+    - cvt
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: &id001
+    - Москва и МО
+    - Ярославская обл.
+    - Тверская обл.
+    - Владимирская обл.
+    - Калужская обл.
+    - Рязанская обл.
+    - Тульская обл.
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 200000
+  must_have:
+  - green_autoteka
+  - awd
+  - automatic
+  - good_body
+  - no_major_accident
+  scoring_rules:
+    strong_plus:
+    - 7_seats
+    - 2_2_diesel
+    - premium_trim
+    - gt_line
+    - leather
+    - panorama
+    - ventilation
+    - 360_camera
+    - led
+    - blind_spot
+    - memory_seats
+    - adaptive_cruise
+    medium_plus:
+    - prestige_trim
+    - white_color
+    - black_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 2_4_petrol
+    - no_7_seats
+    - weak_trim
+    - mileage_over_200000
+    - 4_plus_owners
+    - body_repairs_many
+    - poor_service_history
+    reject:
+    - taxi
+    - commercial_use
+    - red_autoteka
+    - airbag_deployed
+    - structural_damage
+    - mileage_twisted_suspected
+  risk_check:
+  - engine_condition
+  - gearbox_condition
+  - awd_condition
+  - body_paint_thickness
+  - service_history
+  market_rules:
+    excellent_price: 1800000-2150000
+    good_price: 2150000-2400000
+    expensive_but_ok_if_top: 2400000-2600000
+    reject_if_not_top: 2600000+
+- id: volkswagen_touareg_nf
+  name: Volkswagen Touareg NF
+  priority: very_high
+  segment: premium SUV
+  search_filters:
+    brand: Volkswagen
+    model: Touareg
+    year_from: 2010
+    year_to: 2016
+    price_from: 1500000
+    price_to: 2200000
+    transmission:
+    - automatic
+    - dsg
+    - cvt
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 230000
+  must_have:
+  - green_autoteka
+  - no_major_accident
+  - clean_body
+  - good_service_history
+  - awd
+  scoring_rules:
+    strong_plus:
+    - 3_0_tdi
+    - executive_trim
+    - exclusive_trim
+    - r_line
+    - panorama
+    - air_suspension
+    - leather
+    - memory_seats
+    - ventilation
+    - keyless
+    - rear_camera
+    - 360_camera
+    - adaptive_cruise
+    - webasto
+    medium_plus:
+    - highline_trim
+    - white_color
+    - black_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 3_6_petrol
+    - 4_2_engine
+    - mileage_over_230000
+    - 4_plus_owners
+    - no_service_history
+    - weak_trim
+    - no_panorama
+    - many_cosmetic_repairs
+    reject:
+    - red_autoteka
+    - heavy_accident
+    - airbag_deployed
+    - frame_or_geometry_damage
+    - active_engine_errors
+    - active_air_suspension_errors
+  risk_check:
+  - air_suspension_condition
+  - gearbox_condition
+  - turbine_condition
+  - injectors
+  - timing_chain_history
+  - diesel_leaks
+  - electronic_errors
+  market_rules:
+    excellent_price: 1500000-1700000
+    good_price: 1700000-1950000
+    expensive_but_ok_if_top: 1950000-2200000
+    reject_if_weak: 2200000+
+- id: volkswagen_tiguan
+  name: Volkswagen Tiguan
+  priority: high
+  segment: compact crossover
+  search_filters:
+    brand: Volkswagen
+    model: Tiguan
+    year_from: 2011
+    year_to: 2018
+    price_from: 900000
+    price_to: 1550000
+    transmission:
+    - automatic
+    - dsg
+    fuel:
+    - petrol
+    - diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 180000
+  must_have:
+  - awd
+  - green_autoteka
+  - no_major_accident
+  - automatic_or_dsg_good_condition
+  scoring_rules:
+    strong_plus:
+    - 2_0_tsi
+    - 2_0_diesel
+    - highline
+    - r_line
+    - xenon
+    - alcantara_or_leather
+    - rear_camera
+    - parking_sensors
+    - keyless
+    - good_wheels
+    medium_plus:
+    - track_and_field
+    - sport_and_style
+    - white_color
+    - black_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 1_4_twincharger
+    - mileage_over_180000
+    - weak_trim
+    - front_wheel_drive
+    - 4_plus_owners
+    - many_small_repairs
+    - poor_interior
+    reject:
+    - red_autoteka
+    - serious_accident
+    - gearbox_errors
+    - engine_errors
+    - haldex_not_working
+    - twisted_mileage_suspected
+  risk_check:
+  - dsg_condition
+  - timing_chain
+  - oil_consumption
+  - haldex_service
+  - turbo_condition
+  - corrosion_doors_arcs_thresholds
+  market_rules:
+    excellent_price: 900000-1150000
+    good_price: 1150000-1350000
+    expensive_but_ok_if_top: 1350000-1550000
+    reject_if_weak: 1550000+
+- id: nissan_xtrail
+  name: Nissan X-Trail
+  priority: very_high
+  segment: family crossover
+  search_filters:
+    brand: Nissan
+    model: X-Trail
+    year_from: 2011
+    year_to: 2018
+    price_from: 850000
+    price_to: 1900000
+    transmission:
+    - cvt
+    fuel:
+    - petrol
+    - diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 200000
+  must_have:
+  - awd
+  - green_autoteka
+  - clean_cvt_diagnostics
+  - no_major_accident
+  scoring_rules:
+    strong_plus:
+    - 2_5_petrol
+    - le_trim
+    - le_plus_trim
+    - tekna_trim
+    - leather
+    - panorama
+    - 360_camera
+    - keyless
+    - led_or_xenon
+    - roof_rails
+    medium_plus:
+    - se_plus_trim
+    - se_top_trim
+    - white_color
+    - black_color
+    - grey_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 2_0_petrol
+    - diesel
+    - mileage_over_180000_t32
+    - mileage_over_220000_t31
+    - weak_trim
+    - no_panorama
+    - front_wheel_drive
+    - 4_plus_owners
+    - bad_interior
+    reject:
+    - cvt_slipping
+    - cvt_overheat_history
+    - red_autoteka
+    - serious_accident
+    - airbag_deployed
+    - mileage_twisted_suspected
+  risk_check:
+  - cvt_condition
+  - cvt_service_history
+  - rear_coupling
+  - suspension
+  - corrosion
+  - catalytic_converter
+  - oil_leaks
+  market_rules:
+    t31:
+      excellent_price: 850000-1000000
+      good_price: 1000000-1150000
+      expensive_but_ok_if_top: 1150000-1250000
+    t32:
+      excellent_price: 1350000-1550000
+      good_price: 1550000-1750000
+      expensive_but_ok_if_top: 1750000-1900000
+- id: nissan_qashqai_j11
+  name: Nissan Qashqai J11
+  priority: high
+  segment: compact crossover
+  search_filters:
+    brand: Nissan
+    model: Qashqai
+    year_from: 2014
+    year_to: 2018
+    price_from: 1150000
+    price_to: 1650000
+    transmission:
+    - cvt
+    fuel: petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 170000
+  must_have:
+  - green_autoteka
+  - clean_cvt_diagnostics
+  - good_body
+  - good_interior
+  scoring_rules:
+    strong_plus:
+    - awd
+    - 2_0_petrol
+    - le_trim
+    - le_plus_trim
+    - le_top_trim
+    - leather
+    - panorama
+    - 360_camera
+    - keyless
+    - led_or_xenon
+    - parking_sensors
+    medium_plus:
+    - se_plus_trim
+    - se_top_trim
+    - white_color
+    - black_color
+    - grey_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 1_2_turbo
+    - front_wheel_drive
+    - weak_trim
+    - no_panorama
+    - no_leather
+    - mileage_over_170000
+    - 4_plus_owners
+    - small_accidents_many
+    reject:
+    - cvt_slipping
+    - red_autoteka
+    - major_accident
+    - airbag_deployed
+    - taxi
+    - mileage_twisted_suspected
+  risk_check:
+  - cvt_condition
+  - suspension_noise
+  - steering_rack
+  - electronics
+  - paint_thickness
+  - mileage_consistency
+  market_rules:
+    excellent_price: 1150000-1300000
+    good_price: 1300000-1500000
+    expensive_but_ok_if_top: 1500000-1650000
+    reject_if_weak: 1650000+
+- id: ford_kuga
+  name: Ford Kuga
+  priority: medium_high
+  segment: compact crossover
+  search_filters:
+    brand: Ford
+    model: Kuga
+    year_from: 2013
+    year_to: 2018
+    price_from: 850000
+    price_to: 1550000
+    transmission:
+    - automatic
+    - dsg
+    - cvt
+    fuel:
+    - petrol
+    - diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 170000
+  must_have:
+  - green_autoteka
+  - good_body
+  - clean_engine_diagnostics
+  - no_major_accident
+  scoring_rules:
+    strong_plus:
+    - awd
+    - 2_5_petrol
+    - titanium
+    - titanium_plus
+    - leather
+    - keyless
+    - rear_camera
+    - parking_sensors
+    - heated_windshield
+    - electric_tailgate
+    medium_plus:
+    - trend_plus_if_price_good
+    - white_color
+    - black_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 1_5_ecoboost
+    - 1_6_ecoboost
+    - diesel_version
+    - weak_trim
+    - no_awd
+    - mileage_over_170000
+    - 4_plus_owners
+    - poor_interior
+    - cheap_repair_history
+    reject:
+    - red_autoteka
+    - engine_overheat_history
+    - gearbox_errors
+    - major_accident
+    - airbag_deployed
+    - twisted_mileage_suspected
+  risk_check:
+  - ecoboost_cooling_system
+  - gearbox_condition
+  - turbo_condition
+  - corrosion
+  - suspension
+  - steering
+  - electronics
+  market_rules:
+    years_2013_2015:
+      excellent_price: 850000-1000000
+      good_price: 1000000-1150000
+    years_2017_2018:
+      excellent_price: 1150000-1300000
+      good_price: 1300000-1450000
+      expensive_but_ok_if_top: 1450000-1550000
+- id: mercedes_glk_220_cdi
+  name: Mercedes-Benz GLK 220 CDI
+  priority: medium_high
+  segment: compact premium SUV
+  search_filters:
+    brand: Mercedes-Benz
+    model: GLK-Класс
+    year_from: 2012
+    year_to: 2015
+    price_from: 1450000
+    price_to: 1900000
+    transmission:
+    - automatic
+    - dsg
+    - cvt
+    fuel: diesel
+    drivetrain: 4matic
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 200000
+  must_have:
+  - 4matic
+  - green_autoteka
+  - clean_diesel_diagnostics
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 220_cdi
+    - 250_cdi_if_clean
+    - amg_package
+    - rich_trim
+    - leather
+    - xenon
+    - camera
+    - parking_sensors
+    - command_multimedia
+    - memory_seats
+    medium_plus:
+    - black_color
+    - white_color
+    - grey_color
+    - one_owner
+    - two_owners
+    penalty:
+    - petrol_version
+    - no_amg_package
+    - weak_trim
+    - mileage_over_200000
+    - 4_plus_owners
+    - poor_interior
+    - cheap_body_repairs
+    - no_service_history
+    reject:
+    - red_autoteka
+    - heavy_accident
+    - airbag_deployed
+    - active_engine_errors
+    - active_gearbox_errors
+    - twisted_mileage_suspected
+  risk_check:
+  - diesel_injectors
+  - turbine
+  - dpf_egr
+  - gearbox
+  - suspension_front
+  - electronics
+  - corrosion_edges
+  market_rules:
+    excellent_price: 1450000-1600000
+    good_price: 1600000-1750000
+    expensive_but_ok_if_top: 1750000-1900000
+    reject_if_weak: 1900000+
+- id: volkswagen_multivan_t5
+  name: Volkswagen Multivan T5
+  priority: high
+  segment: premium minivan family business
+  search_filters:
+    brand: Volkswagen
+    model: Multivan
+    year_from: 2010
+    year_to: 2015
+    price_from: 1700000
+    price_to: 2600000
+    transmission:
+    - automatic
+    - dsg
+    fuel: diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 300000
+  must_have:
+  - clean_legal_history
+  - green_autoteka
+  - no_commercial_abuse
+  - good_body
+  - good_interior
+  - clean_engine_gearbox_diagnostics
+  scoring_rules:
+    strong_plus:
+    - 4motion
+    - 2_0_tdi
+    - highline
+    - business_trim
+    - captain_seats
+    - webasto
+    - electric_doors
+    - table
+    - rails
+    - leather_or_alcantara
+    - navigation
+    - parking_heater
+    - family_use
+    medium_plus:
+    - comfortline
+    - white_color
+    - black_color
+    - grey_color
+    - one_owner
+    - two_owners
+    penalty:
+    - 2_0_bitdi
+    - fwd
+    - manual
+    - commercial_use
+    - mileage_over_300000
+    - poor_interior
+    - no_webasto
+    - weak_trim
+    - many_owners
+    - repainted_many_elements
+    - no_service_history
+    reject:
+    - red_autoteka
+    - taxi_or_shuttle_use
+    - serious_accident
+    - bad_engine
+    - bad_gearbox
+    - twisted_mileage_suspected
+    - documents_problem
+  risk_check:
+  - commercial_use_signs
+  - real_mileage
+  - engine_condition
+  - dsg_condition
+  - turbine
+  - injectors
+  - body_corrosion
+  - sliding_doors
+  - webasto
+  - interior_wear
+  market_rules:
+    excellent_price: 1700000-2000000
+    good_price: 2000000-2300000
+    expensive_but_ok_if_top: 2300000-2600000
+    reject_if_weak: 2600000+

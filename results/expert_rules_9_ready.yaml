@@ -1,0 +1,638 @@
+# expert_rules_9_ready.yaml — Блоки 4-9: моторы, коробки, пробеги, комплектации, риски, reject
+# Статус: ready
+# Источник: partial_models_expert_rules + ручная проверка
+
+partial_models_expert_rules:
+
+  # ───────────── 1. Audi Q5 ─────────────
+  audi_q5:
+    name: "Audi Q5"
+    priority: very_high
+    years: "2012-2018"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.0 TDI"
+        - "3.0 TDI"
+      acceptable:
+        - "2.0 TFSI_only_after_diagnostics"
+      avoid:
+        - "2.0_TFSI_oil_consumption_history"
+        - "unknown_timing_chain_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      acceptable:
+        - "s_tronic_if_clean_diagnostics"
+      avoid:
+        - "mechatronic_errors"
+        - "jerks_or_slips"
+
+    mileage:
+      excellent: "<130000"
+      good: "130000-180000"
+      penalty: "180000-230000"
+      reject: "230000+ unless perfect"
+
+    trims:
+      best:
+        - "s_line"
+        - "top_trim"
+      good:
+        - "business"
+        - "sport"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - quattro
+      - s_line
+      - black_headliner
+      - leather_or_alcantara
+      - led_or_xenon
+      - rear_camera
+      - parking_sensors
+      - panoramic_roof
+      - good_multimedia
+      - white_black_grey_color
+
+    risk_check:
+      - oil_consumption
+      - timing_chain
+      - water_pump
+      - s_tronic
+      - quattro_service
+      - suspension
+      - electronics
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - engine_oil_burning
+      - bad_engine
+      - gearbox_errors
+      - bad_gearbox
+      - cheap_body_repair
+      - twisted_mileage
+
+
+  # ───────────── 2. Hyundai Santa Fe ─────────────
+  hyundai_santa_fe:
+    name: "Hyundai Santa Fe"
+    priority: high
+    years: "2012-2018"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.2 CRDi diesel"
+      acceptable:
+        - "2.4 petrol_if_price_good"
+      avoid:
+        - "bad_dpf_history"
+        - "engine_warning_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      avoid:
+        - "hard_shifts"
+        - "overheat_history"
+
+    mileage:
+      excellent: "<130000"
+      good: "130000-180000"
+      penalty: "180000-230000"
+      reject: "230000+ unless perfect"
+
+    trims:
+      best:
+        - "top_trim"
+        - "executive"
+      good:
+        - "family"
+        - "travel"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - awd
+      - 7_seats
+      - leather
+      - panorama
+      - ventilation
+      - rear_camera
+      - keyless
+      - white_color
+      - green_autoteka
+
+    risk_check:
+      - dpf
+      - egr
+      - engine_management_errors
+      - automatic_transmission
+      - awd_coupling
+      - suspension
+      - steering
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - active_engine_errors
+      - bad_engine
+      - bad_dpf
+      - bad_gearbox
+      - twisted_mileage
+
+
+  # ───────────── 3. Kia Sorento ─────────────
+  kia_sorento:
+    name: "Kia Sorento"
+    priority: high
+    years: "2012-2018"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.2 CRDi diesel"
+      acceptable:
+        - "2.4 petrol_if_clean_and_price_good"
+      avoid:
+        - "bad_egr_history"
+        - "unknown_engine_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      avoid:
+        - "harsh_shifts"
+        - "awd_coupling_wear"
+
+    mileage:
+      excellent: "<140000"
+      good: "140000-190000"
+      penalty: "190000-240000"
+      reject: "240000+ unless perfect"
+
+    trims:
+      best:
+        - "gt_line"
+        - "luxury"
+        - "top_trim"
+      good:
+        - "comfort"
+        - "prestige"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - awd
+      - 7_seats
+      - leather
+      - panorama
+      - rear_camera
+      - keyless
+      - top_trim
+      - green_autoteka
+      - 1_2_owners
+
+    risk_check:
+      - automatic_transmission
+      - egr
+      - diesel_fuel_system
+      - awd_coupling
+      - towing_or_offroad_use
+      - suspension
+      - electronics
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - bad_gearbox
+      - bad_diesel
+      - heavy_towing_use
+      - twisted_mileage
+      - bad_engine
+
+
+  # ───────────── 4. Kia Sportage ─────────────
+  kia_sportage:
+    name: "Kia Sportage"
+    priority: medium_high
+    years: "2012-2018"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.0 petrol"
+      acceptable:
+        - "2.0 diesel_if_clean"
+      avoid:
+        - "engine_with_knocking_or_oil_pressure_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      acceptable:
+        - "manual_if_price_good"
+      avoid:
+        - "jerks_or_slips"
+        - "active_gearbox_errors"
+
+    mileage:
+      excellent: "<130000"
+      good: "130000-180000"
+      penalty: "180000-220000"
+      reject: "220000+ unless perfect"
+
+    trims:
+      best:
+        - "top_trim"
+        - "gt_line"
+        - "luxury"
+      good:
+        - "comfort"
+        - "prestige"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - awd
+      - leather
+      - panorama
+      - rear_camera
+      - keyless
+      - maximum_trim
+      - white_black_color
+      - green_autoteka
+
+    risk_check:
+      - engine_bearings
+      - oil_leaks
+      - awd_coupling
+      - automatic_transmission
+      - leather_wear
+      - stop_start_system
+      - fuel_filter_diesel
+      - rear_plate_lights_water
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - bad_engine
+      - bad_gearbox
+      - awd_not_working
+      - twisted_mileage
+
+
+  # ───────────── 5. Mazda CX-5 ─────────────
+  mazda_cx5:
+    name: "Mazda CX-5"
+    priority: high
+    years: "2012-2020"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.5 petrol"
+      acceptable:
+        - "2.0 petrol_if_price_good"
+      avoid:
+        - "diesel_without_full_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      avoid:
+        - "jerks_or_slips"
+
+    mileage:
+      excellent: "<120000"
+      good: "120000-170000"
+      penalty: "170000-220000"
+      reject: "220000+ unless perfect"
+
+    trims:
+      best:
+        - "supreme"
+        - "top_trim"
+        - "active_plus"
+      good:
+        - "active"
+        - "comfort"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - awd
+      - 2_5_engine
+      - leather
+      - bose_audio
+      - rear_camera
+      - keyless
+      - led
+      - white_red_black_color
+      - green_autoteka
+
+    risk_check:
+      - rear_brake_wear
+      - boot_struts
+      - drl_flicker
+      - windshield_cracks
+      - paint_chips
+      - infotainment
+      - suspension
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - bad_automatic
+      - twisted_mileage
+      - severe_body_repair
+      - bad_engine
+      - bad_gearbox
+
+
+  # ───────────── 6. Mitsubishi Pajero IV ─────────────
+  mitsubishi_pajero_iv:
+    name: "Mitsubishi Pajero IV"
+    priority: medium_high
+    years: "2008-2015"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "3.2 DI-D diesel_if_clean"
+      acceptable:
+        - "3.8 petrol_if_clean_and_price_good"
+        - "3.0 petrol_if_price_good"
+      avoid:
+        - "bad_diesel_pump"
+        - "black_smoke"
+        - "overheated_engine"
+
+    transmissions:
+      best:
+        - "automatic"
+      avoid:
+        - "jerks_after_150000km"
+        - "gearbox_overheat_history"
+
+    mileage:
+      excellent: "<180000"
+      good: "180000-240000"
+      penalty: "240000-300000"
+      reject: "300000+ unless perfect"
+
+    trims:
+      best:
+        - "instyle"
+        - "top_trim"
+        - "ultimate"
+      good:
+        - "invite"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - clean_frame
+      - no_offroad_abuse
+      - leather
+      - rear_camera
+      - seven_seats
+      - good_tires
+      - green_autoteka
+      - 1_2_owners
+
+    risk_check:
+      - diesel_fuel_pump
+      - injectors
+      - common_rail
+      - black_smoke
+      - automatic_transmission
+      - transfer_case
+      - frame_corrosion
+      - offroad_damage
+      - dashboard_display_glitches
+
+    reject:
+      - rusty_frame
+      - bad_diesel_pump
+      - bad_automatic
+      - heavy_offroad_use
+      - red_autoteka
+      - major_accident
+      - bad_engine
+      - bad_gearbox
+      - twisted_mileage
+
+
+  # ───────────── 7. Hyundai Grand Santa Fe ─────────────
+  hyundai_grand_santa_fe:
+    name: "Hyundai Grand Santa Fe"
+    priority: very_high
+    years: "2014-2019"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.2 CRDi diesel"
+      acceptable:
+        - "3.0 petrol_if_clean_and_price_good"
+      avoid:
+        - "unknown_engine_history"
+
+    transmissions:
+      best:
+        - "classic_automatic"
+      avoid:
+        - "hard_shifts"
+        - "overheat_history"
+
+    mileage:
+      excellent: "<120000"
+      good: "120000-170000"
+      penalty: "170000-220000"
+      reject: "220000+ unless perfect"
+
+    trims:
+      best:
+        - "top_trim"
+        - "executive"
+      good:
+        - "family"
+        - "travel"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - 7_seats
+      - awd
+      - high_tech_trim
+      - leather
+      - panorama
+      - ventilation
+      - memory_seats
+      - rear_camera
+      - white_color
+      - green_autoteka
+      - 1_2_owners
+
+    risk_check:
+      - turbo_actuator
+      - automatic_transmission_shifts
+      - fuel_system
+      - front_hub_bearings
+      - alternator
+      - dpf_egr
+      - engine_warning_lights
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - bad_transmission
+      - active_engine_errors
+      - 4_plus_owners_with_high_mileage
+      - twisted_mileage
+      - bad_engine
+      - bad_gearbox
+
+
+  # ───────────── 8. Nissan Pathfinder ─────────────
+  nissan_pathfinder:
+    name: "Nissan Pathfinder R51"
+    priority: very_high
+    years: "2011-2014"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "2.5 diesel_if_clean"
+      acceptable:
+        - "3.0 diesel_if_full_diagnostics"
+      avoid:
+        - "overheated_diesel"
+        - "unknown_chain_history"
+
+    transmissions:
+      best:
+        - "automatic"
+      avoid:
+        - "overheat_history"
+        - "jerks_or_slips"
+
+    mileage:
+      excellent: "<170000"
+      good: "170000-230000"
+      penalty: "230000-280000"
+      reject: "280000+ unless perfect"
+
+    trims:
+      best:
+        - "tekna"
+        - "top_trim"
+      good:
+        - "se"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - 7_seats
+      - diesel
+      - awd
+      - leather
+      - roof_rails
+      - clean_frame
+      - no_offroad_abuse
+      - green_autoteka
+
+    risk_check:
+      - timing_chain
+      - cracked_head_2_5
+      - cooling_system
+      - automatic_transmission
+      - frame_rust
+      - egr
+      - injectors
+      - offroad_damage
+
+    reject:
+      - rusty_frame
+      - bad_engine
+      - bad_gearbox
+      - heavy_offroad_use
+      - red_autoteka
+      - major_accident
+      - twisted_mileage
+
+
+  # ───────────── 9. Volvo XC90 ─────────────
+  volvo_xc90:
+    name: "Volvo XC90"
+    priority: medium_high
+    years: "2011-2014"
+    price_source: auto_ru_analyzer
+
+    engines:
+      best:
+        - "D5 diesel"
+      acceptable:
+        - "3.2 petrol_if_clean"
+      avoid:
+        - "T6_old_problematic"
+        - "diesel_hard_start"
+        - "bad_injectors"
+
+    transmissions:
+      best:
+        - "automatic_with_full_service_history"
+      avoid:
+        - "gearbox_noise"
+        - "jerks_or_slips"
+
+    mileage:
+      excellent: "<170000"
+      good: "170000-230000"
+      penalty: "230000-280000"
+      reject: "280000+ unless perfect"
+
+    trims:
+      best:
+        - "r_design"
+        - "top_trim"
+        - "sumum"
+      good:
+        - "momentum"
+      acceptable:
+        - "base"
+
+    strong_bonus:
+      - awd
+      - 7_seats
+      - leather
+      - family_use
+      - clean_service_book
+      - good_interior
+      - black_grey_white_color
+      - green_autoteka
+
+    risk_check:
+      - automatic_transmission
+      - diesel_injectors
+      - turbo
+      - overheating
+      - electrical_faults
+      - suspension
+      - steering_rack
+      - awd_system
+
+    reject:
+      - red_autoteka
+      - major_accident
+      - bad_gearbox
+      - diesel_hard_start
+      - active_electrical_errors
+      - twisted_mileage
+      - bad_engine

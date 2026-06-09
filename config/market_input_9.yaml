@@ -1,0 +1,67 @@
+config_name: market_input_9
+description: Входной список 9 моделей для анализа рынка и экспертных правил
+version: 0.1
+
+models:
+  - id: hyundai_grand_santa_fe
+    brand: Hyundai
+    model: Grand Santa Fe
+    year_from: 2014
+    year_to: 2019
+    drive: awd
+
+  - id: audi_q5
+    brand: Audi
+    model: Q5
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+
+  - id: nissan_pathfinder
+    brand: Nissan
+    model: Pathfinder
+    year_from: 2011
+    year_to: 2014
+    drive: awd
+
+  - id: hyundai_santa_fe
+    brand: Hyundai
+    model: Santa Fe
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+
+  - id: kia_sorento
+    brand: Kia
+    model: Sorento
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+
+  - id: mazda_cx5
+    brand: Mazda
+    model: CX-5
+    year_from: 2012
+    year_to: 2020
+    drive: awd
+
+  - id: kia_sportage
+    brand: Kia
+    model: Sportage
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+
+  - id: mitsubishi_pajero_iv
+    brand: Mitsubishi
+    model: Pajero
+    year_from: 2008
+    year_to: 2015
+    drive: awd
+
+  - id: volvo_xc90
+    brand: Volvo
+    model: XC90
+    year_from: 2011
+    year_to: 2014
+    drive: awd

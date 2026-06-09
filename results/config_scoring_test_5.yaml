@@ -1,0 +1,102 @@
+generated_at: '2026-06-08T13:28:12.646739'
+config_version: '1.0'
+summary:
+  total_cards: 5
+  scored: 1
+  rejected: 4
+  skipped_unknown: 0
+  by_decision:
+    reject: 4
+    excellent_candidate: 1
+  avg_score: 100.0
+results:
+- url: test://red_autoteka
+  title: Audi Q5 2015 2.0 TDI quattro
+  model_id: audi_q5
+  decision: reject
+  score: 0
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: &id001
+  - red_autoteka
+  bonus_reasons: []
+  penalty_reasons: *id001
+  warnings: []
+  explanation: 'REJECT: red_autoteka'
+- url: test://fwd_q5
+  title: Audi Q5 2014 2.0 TFSI передний привод
+  model_id: audi_q5
+  decision: reject
+  score: 0
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: &id002
+  - no_awd_when_required
+  bonus_reasons: []
+  penalty_reasons: *id002
+  warnings: []
+  explanation: 'REJECT: no_awd_when_required'
+- url: test://excellent_santa_fe
+  title: Hyundai Santa Fe III Рестайлинг 2.2 CRDi AWD Executive
+  model_id: hyundai_santa_fe
+  decision: excellent_candidate
+  score: 100
+  price_score: 40
+  mileage_score: 20
+  engine_score: 15
+  transmission_score: 0
+  equipment_score: 25
+  reject_reasons: []
+  bonus_reasons:
+  - Цена 1,750,000 в диапазоне excellent (<1,794,500)
+  - Пробег 80,000 < 130,000 (excellent)
+  - Двигатель '2.2 CRDi diesel' — рекомендованный (best)
+  - 'Найдено опций: top_trim: executive, executive: +10'
+  penalty_reasons: []
+  warnings: []
+  explanation: 'Model: hyundai_santa_fe | Price: 1,750,000 ₽ → excellent (+40) | Mileage: 80,000 км → excellent (+20) | Engine:
+    2.2 CRDi diesel → best (+15) | Trans: automatic → neutral (+0) | Equipment: +25 (top_trim: executive, executive: +10)'
+- url: test://overpriced_bare
+  title: Kia Sportage 2015 2.0 базовая
+  model_id: kia_sportage
+  decision: reject
+  score: 5
+  price_score: -50
+  mileage_score: -10
+  engine_score: 15
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Двигатель '2.0 petrol' — рекомендованный (best)
+  penalty_reasons:
+  - Цена 1,600,000 >= 1,503,350 (reject_if_weak)
+  - Пробег 160,000 > 130000 (penalty)
+  warnings: []
+  explanation: 'Model: kia_sportage | Price: 1,600,000 ₽ → reject_if_weak (-50) | Mileage: 160,000 км → penalty (-10) | Engine:
+    2.0 petrol → best (+15) | Trans: automatic → neutral (+0)'
+- url: test://high_mileage
+  title: Mitsubishi Pajero IV 3.2 DI-D 2010
+  model_id: mitsubishi_pajero_iv
+  decision: reject
+  score: 5
+  price_score: -25
+  mileage_score: -30
+  engine_score: 0
+  transmission_score: 10
+  equipment_score: 0
+  reject_reasons: []
+  bonus_reasons:
+  - Коробка 'automatic' — рекомендованная (best)
+  penalty_reasons:
+  - Цена 1,500,000 < 1,551,250 (подозрительно дёшево)
+  - Пробег 320,000 >= 300,000 (reject)
+  warnings: []
+  explanation: 'Model: mitsubishi_pajero_iv | Price: 1,500,000 ₽ → suspicious_low (-25) | Mileage: 320,000 км → reject (-30)
+    | Engine: 3.2 DI-D diesel → unknown (+0) | Trans: automatic → best (+10)'

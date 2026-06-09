@@ -1,0 +1,162 @@
+saved_searches_9:
+  hyundai_grand_santa_fe:
+    id: hyundai_grand_santa_fe
+    save_name: Hyundai Grand Santa Fe 2014-2019
+    status: pending
+    brand: Hyundai
+    model: Grand Santa Fe
+    year_from: 2014
+    year_to: 2019
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  audi_q5:
+    id: audi_q5
+    save_name: Audi Q5 2012-2018
+    status: pending
+    brand: Audi
+    model: Q5
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  nissan_pathfinder:
+    id: nissan_pathfinder
+    save_name: Nissan Pathfinder 2011-2014
+    status: pending
+    brand: Nissan
+    model: Pathfinder
+    year_from: 2011
+    year_to: 2014
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  hyundai_santa_fe:
+    id: hyundai_santa_fe
+    save_name: Hyundai Santa Fe 2012-2018
+    status: pending
+    brand: Hyundai
+    model: Santa Fe
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  kia_sorento:
+    id: kia_sorento
+    save_name: Kia Sorento 2012-2018
+    status: pending
+    brand: Kia
+    model: Sorento
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  mazda_cx5:
+    id: mazda_cx5
+    save_name: Mazda CX-5 2012-2020
+    status: pending
+    brand: Mazda
+    model: CX-5
+    year_from: 2012
+    year_to: 2020
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  kia_sportage:
+    id: kia_sportage
+    save_name: Kia Sportage 2012-2018
+    status: pending
+    brand: Kia
+    model: Sportage
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  mitsubishi_pajero_iv:
+    id: mitsubishi_pajero_iv
+    save_name: Mitsubishi Pajero 2008-2015
+    status: pending
+    brand: Mitsubishi
+    model: Pajero
+    year_from: 2008
+    year_to: 2015
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область
+
+  volvo_xc90:
+    id: volvo_xc90
+    save_name: Volvo XC90 2011-2014
+    status: pending
+    brand: Volvo
+    model: XC90
+    year_from: 2011
+    year_to: 2014
+    drive: awd
+    regions:
+      - Москва и МО
+      - Ярославская область
+      - Тверская область
+      - Владимирская область
+      - Калужская область
+      - Рязанская область
+      - Тульская область

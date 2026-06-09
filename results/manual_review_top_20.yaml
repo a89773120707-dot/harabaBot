@@ -1,0 +1,472 @@
+manual_review:
+- id: card_001
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  price: 1200000
+  year: 2014
+  mileage: 101000
+  score: 100
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172896210
+  pluses:
+  - Цена 1,200,000 в диапазоне excellent (<1,300,000)
+  - Пробег 101,000 < 140,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_002
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  price: 1200000
+  year: 2011
+  mileage: 122000
+  score: 90
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172864596
+  pluses:
+  - Цена 1,200,000 в диапазоне good (1,150,000-1,350,000)
+  - Пробег 122,000 < 150,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_003
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  price: 1300000
+  year: 2016
+  mileage: 93000
+  score: 90
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172893689
+  pluses:
+  - Цена 1,300,000 в диапазоне good (1,300,000-1,500,000)
+  - Пробег 93,000 < 140,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_004
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  price: 1400000
+  year: 2014
+  mileage: 120000
+  score: 90
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172893191
+  pluses:
+  - Цена 1,400,000 в диапазоне good (1,300,000-1,500,000)
+  - Пробег 120,000 < 140,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_005
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  price: 1970000
+  year: 2014
+  mileage: 112500
+  score: 90
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172889141
+  pluses:
+  - Цена 1,970,000 в диапазоне good (1,916,720-1,976,000)
+  - Пробег 112,500 < 120,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_006
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  price: 1860000
+  year: 2018
+  mileage: 190000
+  score: 85
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172872999
+  pluses:
+  - Цена 1,860,000 в диапазоне excellent (<1,916,720)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_007
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  price: 1860000
+  year: 2018
+  mileage: 190000
+  score: 85
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172872560
+  pluses:
+  - Цена 1,860,000 в диапазоне excellent (<1,916,720)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_008
+  title: Nissan Qashqai
+  model_id: nissan_qashqai_j11
+  price: 1250000
+  year: 2014
+  mileage: 198392
+  score: 85
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172887911
+  pluses:
+  - Цена 1,250,000 в диапазоне excellent (<1,300,000)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_009
+  title: Audi Q5
+  model_id: audi_q5
+  price: 1650000
+  year: 2012
+  mileage: 180000
+  score: 85
+  decision: good_candidate
+  url: https://m.haraba.ru/search/car/172912919
+  pluses:
+  - Цена 1,650,000 в диапазоне excellent (<1,726,600)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_010
+  title: Mitsubishi Pajero Sport
+  model_id: mitsubishi_pajero_iv
+  price: 1900000
+  year: 2014
+  mileage: 175000
+  score: 75
+  decision: watch
+  url: https://m.haraba.ru/search/car/172873188
+  pluses:
+  - Цена 1,900,000 в диапазоне fair (1,825,000-2,137,500)
+  - Пробег 175,000 < 180,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_011
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  price: 1700000
+  year: 2014
+  mileage: 136200
+  score: 75
+  decision: watch
+  url: https://m.haraba.ru/search/car/172886543
+  pluses:
+  - Цена 1,700,000 в диапазоне excellent (<1,916,720)
+  minuses:
+  - Пробег 136,200 > 120000 (penalty)
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_012
+  title: KIA Sportage
+  model_id: kia_sportage
+  price: 1300000
+  year: 2013
+  mileage: 102500
+  score: 75
+  decision: watch
+  url: https://m.haraba.ru/search/car/172891586
+  pluses:
+  - Цена 1,300,000 в диапазоне fair (1,252,000-1,405,000)
+  - Пробег 102,500 < 130,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_013
+  title: Audi Q5
+  model_id: audi_q5
+  price: 1540000
+  year: 2012
+  mileage: 158000
+  score: 75
+  decision: watch
+  url: https://m.haraba.ru/search/car/172889241
+  pluses:
+  - Цена 1,540,000 в диапазоне excellent (<1,726,600)
+  minuses:
+  - Пробег 158,000 > 130000 (penalty)
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_014
+  title: Mazda CX-5
+  model_id: mazda_cx5
+  price: 1897000
+  year: 2013
+  mileage: 128000
+  score: 75
+  decision: watch
+  url: https://m.haraba.ru/search/car/172881849
+  pluses:
+  - Цена 1,897,000 в диапазоне excellent (<1,916,720)
+  minuses:
+  - Пробег 128,000 > 120000 (penalty)
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_015
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  price: 2000000
+  year: 2018
+  mileage: 108587
+  score: 70
+  decision: watch
+  url: https://m.haraba.ru/search/car/172878142
+  pluses:
+  - Пробег 108,587 < 170,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_016
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1750000
+  year: 2015
+  mileage: 114000
+  score: 70
+  decision: watch
+  url: https://m.haraba.ru/search/car/172878084
+  pluses:
+  - Пробег 114,000 < 140,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_017
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1600000
+  year: 2018
+  mileage: 114746
+  score: 70
+  decision: watch
+  url: https://m.haraba.ru/search/car/172873806
+  pluses:
+  - Пробег 114,746 < 140,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_018
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  price: 1350000
+  year: 2012
+  mileage: 132934
+  score: 70
+  decision: watch
+  url: https://m.haraba.ru/search/car/172873980
+  pluses:
+  - Пробег 132,934 < 170,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_019
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  price: 1550000
+  year: 2011
+  mileage: 143000
+  score: 70
+  decision: watch
+  url: https://m.haraba.ru/search/car/172868601
+  pluses:
+  - Пробег 143,000 < 170,000 (excellent)
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_020
+  title: KIA Sportage
+  model_id: kia_sportage
+  price: 1500000
+  year: 2013
+  mileage: 190000
+  score: 35
+  decision: reject
+  url: https://m.haraba.ru/search/car/172880091
+  pluses: []
+  minuses:
+  - Цена 1,500,000 выше рынка, но OK если топ-комплектация
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_021
+  title: Nissan X-Trail
+  model_id: nissan_xtrail
+  price: 1200000
+  year: 2014
+  mileage: 200000
+  score: 35
+  decision: reject
+  url: https://m.haraba.ru/search/car/172860392
+  pluses: []
+  minuses:
+  - Цена 1,200,000 выше рынка, но OK если топ-комплектация
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_022
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  price: 1400000
+  year: 2014
+  mileage: 198000
+  score: 35
+  decision: reject
+  url: https://m.haraba.ru/search/car/172887937
+  pluses: []
+  minuses:
+  - Цена 1,400,000 выше рынка, но OK если топ-комплектация
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_023
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  price: 1350000
+  year: 2013
+  mileage: 185000
+  score: 35
+  decision: reject
+  url: https://m.haraba.ru/search/car/172896222
+  pluses: []
+  minuses:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_024
+  title: Volkswagen Tiguan
+  model_id: volkswagen_tiguan
+  price: 1350000
+  year: 2013
+  mileage: 185000
+  score: 35
+  decision: reject
+  url: https://m.haraba.ru/search/car/172895372
+  pluses: []
+  minuses:
+  - Цена 1,350,000 выше рынка, но OK если топ-комплектация
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_025
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1370000
+  year: 2015
+  mileage: 181000
+  score: 50
+  decision: weak
+  url: https://m.haraba.ru/search/car/172871526
+  pluses: []
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_026
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1760000
+  year: 2017
+  mileage: 181000
+  score: 50
+  decision: weak
+  url: https://m.haraba.ru/search/car/172866286
+  pluses: []
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_027
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1150000
+  year: 2013
+  mileage: 173000
+  score: 50
+  decision: weak
+  url: https://m.haraba.ru/search/car/172899257
+  pluses: []
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_028
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1280000
+  year: 2016
+  mileage: 186000
+  score: 50
+  decision: weak
+  url: https://m.haraba.ru/search/car/172907582
+  pluses: []
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+- id: card_029
+  title: Ford Kuga
+  model_id: ford_kuga
+  price: 1280000
+  year: 2016
+  mileage: 186000
+  score: 50
+  decision: weak
+  url: https://m.haraba.ru/search/car/172902221
+  pluses: []
+  minuses: []
+  reject_reasons: []
+  warnings: []
+  human_verdict: null
+  human_comment: null
+instructions: "\nhuman_verdict варианты:\n  - buy: реально купил бы в салон\n  - maybe: возможно, стоит посмотреть\n  - skip:\
+  \ не интересно / мусор\n\nhuman_comment: свободный комментарий (дорого, пустая, хороший вариант и т.д.)\n"

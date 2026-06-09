@@ -1,0 +1,148 @@
+price_ranges_9_v2:
+  audi_q5:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 23
+    evaluated_cards: 22
+    evaluation_min_median: 1780000.0
+    evaluation_max_median: 2044500.0
+    good_buy_price: 1726600
+    target:
+      suspicious_low: <1335000
+      excellent: <1726600
+      good: 1726600-1780000.0
+      fair: 1780000.0-2044500.0
+      expensive_but_ok_if_top: 2044500.0-2289840
+      reject_if_weak: 2453400+
+  hyundai_grand_santa_fe:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 3
+    evaluated_cards: 3
+    evaluation_min_median: 1857000
+    evaluation_max_median: 2095000
+    good_buy_price: 1801290
+    target:
+      suspicious_low: <1392750
+      excellent: <1801290
+      good: 1801290-1857000
+      fair: 1857000-2095000
+      expensive_but_ok_if_top: 2095000-2346400
+      reject_if_weak: 2618750+
+    need_manual_review: true
+  hyundai_santa_fe:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 30
+    evaluated_cards: 30
+    evaluation_min_median: 1850000
+    evaluation_max_median: 2074000
+    good_buy_price: 1794500
+    target:
+      suspicious_low: <1387500
+      excellent: <1794500
+      good: 1794500-1850000
+      fair: 1850000-2074000
+      expensive_but_ok_if_top: 2074000-2322880
+      reject_if_weak: 2488800+
+  kia_sorento:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 30
+    evaluated_cards: 29
+    evaluation_min_median: 1697000
+    evaluation_max_median: 1934000
+    good_buy_price: 1646090
+    target:
+      suspicious_low: <1272750
+      excellent: <1646090
+      good: 1646090-1697000
+      fair: 1697000-1934000
+      expensive_but_ok_if_top: 1934000-2166080
+      reject_if_weak: 2320800+
+  kia_sportage:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 24
+    evaluated_cards: 24
+    evaluation_min_median: 1252000.0
+    evaluation_max_median: 1405000.0
+    good_buy_price: 1214440
+    target:
+      suspicious_low: <939000
+      excellent: <1214440
+      good: 1214440-1252000.0
+      fair: 1252000.0-1405000.0
+      expensive_but_ok_if_top: 1405000.0-1573600
+      reject_if_weak: 1686000+
+  mazda_cx5:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 28
+    evaluated_cards: 28
+    evaluation_min_median: 1976000.0
+    evaluation_max_median: 2209500.0
+    good_buy_price: 1916720
+    target:
+      suspicious_low: <1482000
+      excellent: <1916720
+      good: 1916720-1976000.0
+      fair: 1976000.0-2209500.0
+      expensive_but_ok_if_top: 2209500.0-2474640
+      reject_if_weak: 2651400+
+  mitsubishi_pajero_iv:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 10
+    evaluated_cards: 10
+    evaluation_min_median: 1825000.0
+    evaluation_max_median: 2137500.0
+    good_buy_price: 1770250
+    target:
+      suspicious_low: <1368750
+      excellent: <1770250
+      good: 1770250-1825000.0
+      fair: 1825000.0-2137500.0
+      expensive_but_ok_if_top: 2137500.0-2394000
+      reject_if_weak: 2565000+
+  nissan_pathfinder:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 3
+    evaluated_cards: 3
+    evaluation_min_median: 1534000
+    evaluation_max_median: 1785000
+    good_buy_price: 1487980
+    target:
+      suspicious_low: <1150500
+      excellent: <1487980
+      good: 1487980-1534000
+      fair: 1534000-1785000
+      expensive_but_ok_if_top: 1785000-1999200
+      reject_if_weak: 2231250+
+    need_manual_review: true
+  volvo_xc90:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator_v2
+    cards_checked: 7
+    evaluated_cards: 6
+    evaluation_min_median: 1451500.0
+    evaluation_max_median: 1718500.0
+    good_buy_price: 1407955
+    target:
+      suspicious_low: <1088625
+      excellent: <1407955
+      good: 1407955-1451500.0
+      fair: 1451500.0-1718500.0
+      expensive_but_ok_if_top: 1718500.0-1924720
+      reject_if_weak: 2148125+
+    need_manual_review: true

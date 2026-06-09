@@ -1,0 +1,55 @@
+cards_collected: 0
+cards_enriched: 30
+do_not_send: 4
+failed: 0
+feedback_count: 0
+run_id: 2026-06-09_1929
+send_ready: 17
+sent_new: 0
+skipped_duplicate: 0
+started_at: '2026-06-09T19:29:57.715804'
+steps:
+  audit:
+    result:
+      do_not_send: 4
+      hold_manual_review: 9
+      send_ready: 17
+    status: ok
+  check_searches:
+    result:
+      searches_expected: 17
+      session: VALID
+    status: ok
+  collect_cards:
+    note: Using existing cards
+    status: skipped
+  enrich_cards:
+    result:
+      cards_enriched: 30
+      with_photos: 27
+    status: ok
+  feedback_count:
+    result:
+      feedback_count: 0
+    status: ok
+  send:
+    result:
+      sent: 0
+      skipped: 0
+      stdout: ':29:57,661 [INFO]   Send ready: 17
+
+        2026-06-09 19:29:57,661 [INFO]   Hold: 9
+
+        2026-06-09 19:29:57,661 [INFO]   Duplicates: 0
+
+        2026-06-09 19:29:57,661 [INFO]   Would send: 26
+
+        2026-06-09 19:29:57,661 [INFO]   \U0001f4be Report: C:\Users\Admin\haraba-mini\results\telegram_send_dry_run_report.yaml
+
+        2026-06-09 19:29:57,662 [INFO]   \U0001f4be Preview: C:\Users\Admin\haraba-mini\results\telegram_dry_run_preview.md
+
+        2026-06-09 19:29:57,662 [INFO] ============================================================
+
+        '
+    status: ok
+with_photos: 27

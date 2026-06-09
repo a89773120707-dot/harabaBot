@@ -1,0 +1,27 @@
+generated_at: '2026-06-08T13:28:06.339526'
+config_version: '1.0'
+summary:
+  total_cards: 1
+  scored: 0
+  rejected: 1
+  skipped_unknown: 0
+  by_decision:
+    reject: 1
+  avg_score: 0.0
+results:
+- url: test://red_autoteka
+  title: Audi Q5 2015 2.0 TDI quattro
+  model_id: audi_q5
+  decision: reject
+  score: 0
+  price_score: 0
+  mileage_score: 0
+  engine_score: 0
+  transmission_score: 0
+  equipment_score: 0
+  reject_reasons: &id001
+  - red_autoteka
+  bonus_reasons: []
+  penalty_reasons: *id001
+  warnings: []
+  explanation: 'REJECT: red_autoteka'

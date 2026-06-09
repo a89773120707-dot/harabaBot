@@ -1,0 +1,86 @@
+# REAL SCORING QA REPORT — БЛОК 13
+
+generated_at: "2026-06-08"
+source: cars_db.json (haraba_bot/data/)
+total_in_cars_db: 312
+matched_cards: 160
+skipped_unknown_model: 152
+
+## РАСПРЕДЕЛЕНИЕ РЕШЕНИЙ
+
+| Decision | Факт % | Целевой % | Статус |
+|----------|--------|-----------|--------|
+| watch | 37.5% | 25-40% | ✅ |
+| reject | 22.5% | 15-30% | ✅ |
+| weak | 34.4% | 15-30% | ⚠️ Чуть выше |
+| good | 5.6% | 15-25% | ⚠️ Ниже |
+| excellent | 0% | 5-12% | ❌ |
+
+## РАСПРЕДЕЛЕНИЕ ПО МОДЕЛЯМ
+
+| Модель | Total | watch | reject | weak | good | excellent |
+|--------|-------|-------|--------|------|------|-----------|
+| Kia Sportage | 42 | 24% | 52% | 24% | 0% | 0% |
+| Ford Kuga | 27 | 41% | 4% | 56% | 0% | 0% |
+| Nissan X-Trail | 31 | 65% | 3% | 32% | 0% | 0% |
+| Nissan Qashqai | 25 | 32% | 12% | 40% | 16% | 0% |
+| VW Tiguan | 18 | 17% | 39% | 39% | 6% | 0% |
+| Mazda CX-5 | 9 | 56% | 11% | 0% | 33% | 0% |
+| Audi Q5 | 4 | 50% | 25% | 0% | 25% | 0% |
+| Mitsubishi Pajero | 3 | 33% | 0% | 67% | 0% | 0% |
+| Volvo XC90 | 1 | 100% | 0% | 0% | 0% | 0% |
+
+## ТОП-5 GOOD КАРТОЧЕК
+
+1. Nissan Qashqai — score=100 — Цена 1.2M excellent, пробег 101k excellent
+2. VW Tiguan — score=90 — Цена 1.2M good, пробег 122k excellent
+3. Nissan Qashqai — score=90 — Цена 1.3M good, пробег 93k excellent
+4. Mazda CX-5 — score=90 — Цена 2.05M good, пробег 73k excellent
+5. Nissan Qashqai — score=85 — Цена 1.25M excellent, пробег 73k excellent
+
+## КАЧЕСТВО TOP GOOD
+
+Просмотрены первые 9 good карточек:
+- ✅ Все имеют цену в excellent/good диапазоне
+- ✅ Все имеют пробег < 150,000 км
+- ✅ Все с релевантными моделями из конфига
+- ✅ URL ведут на реальные объявления Haraba
+- ✅ Score логично объяснён
+
+## TELEGRAM PREVIEW
+
+Файл: results/telegram_preview_real.txt
+- ✅ Формат читаемый
+- ✅ Score и decision указаны
+- ✅ Цена и пробег есть
+- ✅ Ссылка кликабельная
+- ✅ Плюсы/минусы перечислены
+- ✅ Кириллица отображается корректно
+
+## TELEGRAM READINESS
+
+| Критерий | Значение | Статус |
+|----------|----------|--------|
+| scored_cards >= 50 | 160 | ✅ |
+| explanation у 95%+ | 100% | ✅ |
+| reject работает | 22.5% | ✅ |
+| good/excellent есть | 9 cards | ✅ |
+| Нет мусора в good | проверено | ✅ |
+| Дубли не отправлены | нужен dedup | ⏳ |
+
+## РЕКОМЕНДАЦИЯ
+
+✅ Скоринг v4 готов к тестовой отправке в Telegram
+
+Следующие шаги:
+1. Ручная проверка manual_review_top_20.yaml
+2. Создать telegram_sender.py
+3. Создать dedup (SQLite sent_ads.db)
+4. Тестовая отправка себе
+5. Включение автоматического пайплайна
+
+## БЛОКЕРЫ
+
+- Нет manual feedback от пользователя (нужна проверка 29 карточек)
+- Нет dedup-механизма
+- Нет telegram_sender.py

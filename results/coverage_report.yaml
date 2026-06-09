@@ -1,0 +1,22 @@
+total_cards: 160
+engine:
+  available: 0
+  missing: 160
+  pct: 0.0
+transmission:
+  available: 0
+  missing: 160
+  pct: 0.0
+drive:
+  available: 0
+  missing: 160
+  pct: 0.0
+region:
+  available: 0
+  missing: 160
+  pct: 0.0
+telegram_ready: false
+blockers:
+- engine coverage 0.0% < 80%
+- transmission coverage 0.0% < 80%
+- region coverage 0.0% < 90%

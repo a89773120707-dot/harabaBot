@@ -1,0 +1,16 @@
+[Unit]
+Description=Haraba Mini Telegram Feedback Bot
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/haraba-mini
+ExecStart=/opt/haraba-mini/venv/bin/python telegram_feedback_bot.py
+Restart=always
+RestartSec=10
+StandardOutput=append:/opt/haraba-mini/logs/bot.log
+StandardError=append:/opt/haraba-mini/logs/bot_error.log
+
+[Install]
+WantedBy=multi-user.target

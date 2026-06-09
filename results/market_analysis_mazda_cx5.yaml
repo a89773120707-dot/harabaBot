@@ -1,0 +1,1327 @@
+generated_at: '2026-06-08T11:07:26.858589'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  mazda_cx5:
+    id: mazda_cx5
+    brand: Mazda
+    model: CX-5
+    year_from: 2012
+    year_to: 2020
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/all/?year_from=2012&year_to=2020&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DMAZDA%2Cmodel%3DCX_5&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: ok
+    ads_found: 28
+    cards_checked: 28
+    evaluated_cards: 28
+    no_evaluation_cards: 0
+    price_median: 2274500.0
+    mileage_median: 141700.0
+    evaluation_min_median: 1976000.0
+    evaluation_max_median: 2209500.0
+    avg_delta_percent: 7.3
+    median_delta_percent: 6.0
+    fair_price_low: 1916720
+    fair_price_high: 2209500.0
+    good_buy_price: 1916720
+    suspicious_low_price: 1679600
+    overpriced_price: 2319975
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132903621-7218acd6/
+      title: Mazda CX-5 I
+      year: 2014
+      price: 1700000
+      mileage: 170000
+      evaluation_status: below
+      evaluation_delta_percent: -4.4
+      evaluation_min: 1520000
+      evaluation_max: 1730000
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132448968-31f77977/
+      title: Mazda CX-5 I Рестайлинг
+      year: 2016
+      price: 2249000
+      mileage: 148400
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1822000
+      evaluation_max: 2073000
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132825566-7fe0ae33/
+      title: Mazda CX-5 II
+      year: 2019
+      price: 3270000
+      mileage: 70500
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 2810000
+      evaluation_max: 3146000
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1127435730-2929afb5/
+      title: Mazda CX-5 II
+      year: 2018
+      price: 2400000
+      mileage: 87400
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: 2431000
+      evaluation_max: 2719000
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132772202-4fadb188/
+      title: Mazda CX-5 II
+      year: 2018
+      price: 2700000
+      mileage: 167600
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2231000
+      evaluation_max: 2539000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132903621-7218acd6/
+      title: Mazda CX-5 I
+      price: 1700000
+      year: 2014
+      mileage: 170000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active+
+
+        •
+
+        Белый
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        170 000 км
+
+        От собственника
+
+        1 700 000 ₽
+
+        Справедливая цен'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: below
+      evaluation_delta_percent: -4.4
+      evaluation_min: 1520000
+      evaluation_max: 1730000
+      evaluation_raw: 1 520 000–1 730 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132448968-31f77977/
+      title: Mazda CX-5 I Рестайлинг
+      price: 2249000
+      year: 2016
+      mileage: 148400
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I Рестайлинг
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Белый
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        148 400 км
+
+        От собственника
+
+        2 249 000 ₽
+
+        Кирил'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1822000
+      evaluation_max: 2073000
+      evaluation_raw: 1 822 000–2 073 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132825566-7fe0ae33/
+      title: Mazda CX-5 II
+      price: 3270000
+      year: 2019
+      mileage: 70500
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 10)
+
+        •
+
+        Красный
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2019
+
+        70 500 км
+
+        3 270 000 ₽
+
+        Иван
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 2810000
+      evaluation_max: 3146000
+      evaluation_raw: 2 810 000–3 146 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1127435730-2929afb5/
+      title: Mazda CX-5 II
+      price: 2400000
+      year: 2018
+      mileage: 87400
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Красный
+
+        2.0 л, 165 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        87 400 км
+
+        2 400 000 ₽
+
+        Александр
+
+        Москва, 1-й квартал Нагатина'
+      drive: awd
+      transmission: automatic
+      engine: 165L
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: 2431000
+      evaluation_max: 2719000
+      evaluation_raw: 2 431 000–2 719 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132772202-4fadb188/
+      title: Mazda CX-5 II
+      price: 2700000
+      year: 2018
+      mileage: 167600
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 2 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 3)
+
+        •
+
+        Чёрный
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        167 600 км
+
+        От собственник'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2231000
+      evaluation_max: 2539000
+      evaluation_raw: 2 231 000–2 539 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132680952-6b363f2d/
+      title: Mazda CX-5 II
+      price: 2620000
+      year: 2019
+      mileage: 158000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2019
+
+        158 000 км
+
+        2 620 000 ₽
+
+        Егор К.
+
+        Москва, Сормовская улиц'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 5
+      evaluation_min: 2265000
+      evaluation_max: 2515000
+      evaluation_raw: 2 265 000–2 515 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1131540202-789c6af1/
+      title: Mazda CX-5 I
+      price: 1550000
+      year: 2012
+      mileage: 185300
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 3 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        185 300 км
+
+        От собственника
+
+        1 550 000 ₽
+
+        Максим
+
+        Москва, Но'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 1287000
+      evaluation_max: 1447000
+      evaluation_raw: 1 287 000–1 447 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132626324-5103f956/
+      title: Mazda CX-5 I Рестайлинг
+      price: 1990000
+      year: 2016
+      mileage: 132750
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 I Рестайлинг
+
+        Серебристый
+
+        2.2 л, 175 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        132 750 км
+
+        1 990 000 ₽
+
+        Анатолий Алексеевич
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 175L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 1716000
+      evaluation_max: 1926000
+      evaluation_raw: 1 716 000–1 926 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132522150-ca044f35/
+      title: Mazda CX-5 I
+      price: 1780000
+      year: 2013
+      mileage: 158000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        158 000 км
+
+        1 780 000 ₽
+
+        Губченко Павел
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 15
+      evaluation_min: 1384000
+      evaluation_max: 1556000
+      evaluation_raw: 1 384 000–1 556 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132486986-494820ab/
+      title: Mazda CX-5 I
+      price: 1650000
+      year: 2014
+      mileage: 180000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        180 000 км
+
+        1 650 000 ₽
+
+        Владимир С.
+
+        Краснознаменск, улица'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 1414000
+      evaluation_max: 1589000
+      evaluation_raw: 1 414 000–1 589 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132422896-f68a384f/
+      title: Mazda CX-5 II
+      price: 2800000
+      year: 2020
+      mileage: 91000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Красный
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2020
+
+        91 000 км
+
+        2 800 000 ₽
+
+        Частное лицо
+
+        Москва, сити'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: 2833000
+      evaluation_max: 3175000
+      evaluation_raw: 2 833 000–3 175 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132314675-15ad02ea/
+      title: Mazda CX-5 II
+      price: 3099000
+      year: 2017
+      mileage: 76452
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 7)
+
+        •
+
+        Красный
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        76 452 км
+
+        От собственника
+
+        3 099 000 ₽
+
+        Викт'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 17
+      evaluation_min: 2417000
+      evaluation_max: 2667000
+      evaluation_raw: 2 417 000–2 667 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132262515-642593c0/
+      title: Mazda CX-5 II
+      price: 2200000
+      year: 2017
+      mileage: 135000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Красный
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        135 000 км
+
+        2 200 000 ₽
+
+        Лида Карапетян
+
+        Мытищи'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: 2222000
+      evaluation_max: 2528000
+      evaluation_raw: 2 222 000–2 528 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132187850-ee7dfc86/
+      title: Mazda CX-5 II
+      price: 2500000
+      year: 2017
+      mileage: 150000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 4)
+
+        •
+
+        Серый
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        150 000 км
+
+        2 500 000 ₽
+
+        Спр'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: below
+      evaluation_delta_percent: -5.7
+      evaluation_min: 2207000
+      evaluation_max: 2506000
+      evaluation_raw: 2 207 000–2 506 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1132044593-74479d06/
+      title: Mazda CX-5 I
+      price: 1450000
+      year: 2014
+      mileage: 122400
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Чёрный
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        122 400 км
+
+        1 450 000 ₽
+
+        михаил полевой
+
+        Москва, Кирпична'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: below
+      evaluation_delta_percent: -16
+      evaluation_min: 1732000
+      evaluation_max: 1925000
+      evaluation_raw: 1 732 000–1 925 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1131824189-b5333d60/
+      title: Mazda CX-5 II
+      price: 3600000
+      year: 2020
+      mileage: 108000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 3 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 5)
+
+        •
+
+        Синий
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2020
+
+        108 000 км
+
+        3 600 000 ₽
+
+        Гра'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 17
+      evaluation_min: 2715000
+      evaluation_max: 3082000
+      evaluation_raw: 2 715 000–3 082 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1131734520-d8fe4513/
+      title: Mazda CX-5 II
+      price: 3650000
+      year: 2019
+      mileage: 65000
+      search_eval_status: no_data
+      search_text_preview: 'История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Синий
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2019
+
+        65 000 км
+
+        3 650 000 ₽
+
+        Екатерина
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 2886000
+      evaluation_max: 3216000
+      evaluation_raw: 2 886 000–3 216 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1131384313-7966b892/
+      title: Mazda CX-5 I Рестайлинг
+      price: 2300000
+      year: 2015
+      mileage: 59428
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I Рестайлинг
+
+        Комплектация
+
+        Active+
+
+        •
+
+        Белый
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2015
+
+        59 428 км
+
+        От собственника
+
+        2 300 000 ₽
+
+        Справе'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: below
+      evaluation_delta_percent: -4.7
+      evaluation_min: 2075000
+      evaluation_max: 2308000
+      evaluation_raw: 2 075 000–2 308 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1131308058-c68f520a/
+      title: Mazda CX-5 I
+      price: 2000000
+      year: 2014
+      mileage: 194000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 2 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active+
+
+        •
+
+        Синий
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        194 000 км
+
+        2 000 000 ₽
+
+        mm136
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 1480000
+      evaluation_max: 1661000
+      evaluation_raw: 1 480 000–1 661 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1128939584-bfea260e/
+      title: Mazda CX-5 I Рестайлинг
+      price: 2100000
+      year: 2016
+      mileage: 160000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I Рестайлинг
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Белый
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        160 000 км
+
+        2 100 000 ₽
+
+        Частное лицо
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: above
+      evaluation_delta_percent: 1
+      evaluation_min: 1864000
+      evaluation_max: 2080000
+      evaluation_raw: 1 864 000–2 080 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1130891071-db338d4e/
+      title: Mazda CX-5 I
+      price: 1995000
+      year: 2014
+      mileage: 153000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Серый
+
+        2.5 л, 192 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        153 000 км
+
+        1 995 000 ₽
+
+        DK
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 192L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1623000
+      evaluation_max: 1825000
+      evaluation_raw: 1 623 000–1 825 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1129709135-65947fae/
+      title: Mazda CX-5 I
+      price: 1333333
+      year: 2012
+      mileage: 168510
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        168 510 км
+
+        1 333 333 ₽
+
+        Справедливая ц'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 0.5
+      evaluation_min: 1256000
+      evaluation_max: 1423000
+      evaluation_raw: 1 256 000–1 423 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1129009657-1cd98ba4/
+      title: Mazda CX-5 II
+      price: 3500000
+      year: 2019
+      mileage: 100000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Supreme (Пакет 8)
+
+        •
+
+        Серый
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2019
+
+        100 000 км
+
+        3 500 000 ₽
+
+        Час'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 20
+      evaluation_min: 2597000
+      evaluation_max: 2931000
+      evaluation_raw: 2 597 000–2 931 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1128967709-a351ba43/
+      title: Mazda CX-5 I
+      price: 1550000
+      year: 2013
+      mileage: 150000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Active
+
+        •
+
+        Красный
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        150 000 км
+
+        1 550 000 ₽
+
+        Справедливая цена
+
+        Людмила
+
+        Волок'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: below
+      evaluation_delta_percent: -3.5
+      evaluation_min: 1407000
+      evaluation_max: 1585000
+      evaluation_raw: 1 407 000–1 585 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1128779272-4cf1ade8/
+      title: Mazda CX-5 I
+      price: 2222222
+      year: 2014
+      mileage: 108888
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 I
+
+        Комплектация
+
+        Supreme
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        108 888 км
+
+        2 222 222 ₽
+
+        Сергей
+
+        Москва, Варшавское шоссе '
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 25
+      evaluation_min: 1630000
+      evaluation_max: 1792000
+      evaluation_raw: 1 630 000–1 792 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1128213138-c3aa8631/
+      title: Mazda CX-5 II
+      price: 2880000
+      year: 2018
+      mileage: 105000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Active
+
+        •
+
+        Коричневый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        105 000 км
+
+        2 880 000 ₽
+
+        Частное л'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 11
+      evaluation_min: 2358000
+      evaluation_max: 2596000
+      evaluation_raw: 2 358 000–2 596 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1128319023-60d5c8ea/
+      title: Mazda CX-5 II
+      price: 2950000
+      year: 2018
+      mileage: 100000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 1 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Active (2017-2020)
+
+        •
+
+        Коричневый
+
+        2.5 л, 194 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        100 000 км
+
+        2 950 000'
+      drive: awd
+      transmission: automatic
+      engine: 194L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2506000
+      evaluation_max: 2779000
+      evaluation_raw: 2 506 000–2 779 000 ₽
+    - url: https://auto.ru/cars/used/sale/mazda/cx_5/1127962434-3b9a281d/
+      title: Mazda CX-5 II
+      price: 3000000
+      year: 2017
+      mileage: 194000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mazda CX-5 II
+
+        Комплектация
+
+        Active (Пакет 2)
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        194 000 км
+
+        3 000 000 ₽
+
+        Частное лицо
+
+        Можайск, '
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 43
+      evaluation_min: 1877000
+      evaluation_max: 2111000
+      evaluation_raw: 1 877 000–2 111 000 ₽

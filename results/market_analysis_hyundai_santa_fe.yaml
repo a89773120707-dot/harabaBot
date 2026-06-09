@@ -1,0 +1,405 @@
+generated_at: '2026-06-08'
+source: auto_ru_evaluation
+models:
+  hyundai_santa_fe:
+    id: hyundai_santa_fe
+    brand: Hyundai
+    model: Santa Fe
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    search_url: ''
+    status: ok
+    ads_found: 30
+    cards_checked: 30
+    evaluated_cards: 30
+    no_evaluation_cards: 0
+    price_median: 2330000
+    mileage_median: 109000.0
+    evaluation_min_median: 1850000
+    evaluation_max_median: 2074000
+    avg_delta_percent: 7.4
+    median_delta_percent: 7
+    fair_price_low: 1794500
+    fair_price_high: 2074000
+    good_buy_price: 1794500
+    suspicious_low_price: 1572500
+    overpriced_price: 2177700
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132919874-60d09ea5/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2016
+      price: 2400000
+      mileage: 93800
+      evaluation_status: below
+      evaluation_delta_percent: -1.9
+      evaluation_min: 2209000
+      evaluation_max: 2501000
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132464844-65dbf24d/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2018
+      price: 2870000
+      mileage: 77400
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2337000
+      evaluation_max: 2640000
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132852671-995a8a5e/
+      title: Hyundai Santa Fe III
+      year: 2014
+      price: 1999000
+      mileage: 87865
+      evaluation_status: fair
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131466572-c56ba147/
+      title: Hyundai Santa Fe III
+      year: 2012
+      price: 2400000
+      mileage: 30900
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 1739000
+      evaluation_max: 1960000
+    - url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132818472-891295c1/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: 1950000
+      mileage: 81168
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 1695000
+      evaluation_max: 1922000
+    all_cards:
+    - num: 1
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132919874-60d09ea5/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2016
+      price: 2400000
+      mileage: 93800
+      evaluation_status: below
+      evaluation_delta_percent: -1.9
+      evaluation_min: 2209000
+      evaluation_max: 2501000
+      evaluation_raw: 2 209 000–2 501 000 ₽
+    - num: 2
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132464844-65dbf24d/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2018
+      price: 2870000
+      mileage: 77400
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2337000
+      evaluation_max: 2640000
+      evaluation_raw: 2 337 000–2 640 000 ₽
+    - num: 3
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132852671-995a8a5e/
+      title: Hyundai Santa Fe III
+      year: 2014
+      price: 1999000
+      mileage: 87865
+      evaluation_status: fair
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: Справедливая цена
+    - num: 4
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131466572-c56ba147/
+      title: Hyundai Santa Fe III
+      year: 2012
+      price: 2400000
+      mileage: 30900
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 1739000
+      evaluation_max: 1960000
+      evaluation_raw: 1 739 000–1 960 000 ₽
+    - num: 5
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132818472-891295c1/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: 1950000
+      mileage: 81168
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 1695000
+      evaluation_max: 1922000
+      evaluation_raw: 1 695 000–1 922 000 ₽
+    - num: 6
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132812057-236390e6/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2017
+      price: 2400000
+      mileage: 109500
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 1984000
+      evaluation_max: 2229000
+      evaluation_raw: 1 984 000–2 229 000 ₽
+    - num: 7
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132796676-94bf2bf7/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 3049000
+      mileage: 101034
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 2517000
+      evaluation_max: 2846000
+      evaluation_raw: 2 517 000–2 846 000 ₽
+    - num: 8
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132786626-4d9e912a/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 2755000
+      mileage: 137049
+      evaluation_status: below
+      evaluation_delta_percent: -2.9
+      evaluation_min: 2494000
+      evaluation_max: 2856000
+      evaluation_raw: 2 494 000–2 856 000 ₽
+    - num: 9
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132772154-d7073358/
+      title: Hyundai Santa Fe III
+      year: 2012
+      price: 1550000
+      mileage: 129000
+      evaluation_status: above
+      evaluation_delta_percent: 5
+      evaluation_min: 1301000
+      evaluation_max: 1484000
+      evaluation_raw: 1 301 000–1 484 000 ₽
+    - num: 10
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132729228-dca26c0c/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: null
+      mileage: 138800
+      evaluation_status: above
+      evaluation_delta_percent: 5
+      evaluation_min: 1649000
+      evaluation_max: 1871000
+      evaluation_raw: 1 649 000–1 871 000 ₽
+    - num: 11
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132702940-4648a2eb/
+      title: Hyundai Santa Fe III
+      year: 2012
+      price: 1590000
+      mileage: 147000
+      evaluation_status: above
+      evaluation_delta_percent: 1.5
+      evaluation_min: 1513000
+      evaluation_max: 1714000
+      evaluation_raw: 1 513 000–1 714 000 ₽
+    - num: 12
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132664389-5c531ec9/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: 2140000
+      mileage: 80000
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 1800000
+      evaluation_max: 2016000
+      evaluation_raw: 1 800 000–2 016 000 ₽
+    - num: 13
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132663306-f4261093/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: 2450000
+      mileage: 139000
+      evaluation_status: above
+      evaluation_delta_percent: 46
+      evaluation_min: 1480000
+      evaluation_max: 1689000
+      evaluation_raw: 1 480 000–1 689 000 ₽
+    - num: 14
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132520639-d945d865/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2016
+      price: 2250000
+      mileage: 110000
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1850000
+      evaluation_max: 2074000
+      evaluation_raw: 1 850 000–2 074 000 ₽
+    - num: 15
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132515818-ae423a0c/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 2407000
+      mileage: 126126
+      evaluation_status: fair
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: Справедливая цена
+    - num: 16
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132488650-a623cafa/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2017
+      price: 2290000
+      mileage: 122900
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 1878000
+      evaluation_max: 2145000
+      evaluation_raw: 1 878 000–2 145 000 ₽
+    - num: 17
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132408295-40b69944/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 2890000
+      mileage: 88828
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: Выше оценки на 7%
+    - num: 18
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132369006-58c12051/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 2350000
+      mileage: 120000
+      evaluation_status: below
+      evaluation_delta_percent: -1
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: Ниже оценки на 1%
+    - num: 19
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132233301-b1a1c274/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 3499000
+      mileage: 82000
+      evaluation_status: above
+      evaluation_delta_percent: 25
+      evaluation_min: 2524000
+      evaluation_max: 2814000
+      evaluation_raw: 2 524 000–2 814 000 ₽
+    - num: 20
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132102319-6a8b353e/
+      title: Hyundai Santa Fe III
+      year: 2012
+      price: 1800000
+      mileage: 85000
+      evaluation_status: below
+      evaluation_delta_percent: -1.5
+      evaluation_min: 1672000
+      evaluation_max: 1875000
+      evaluation_raw: 1 672 000–1 875 000 ₽
+    - num: 21
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1132019007-27a67e2e/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2016
+      price: 2140000
+      mileage: 102800
+      evaluation_status: below
+      evaluation_delta_percent: -1.3
+      evaluation_min: 2002000
+      evaluation_max: 2222000
+      evaluation_raw: 2 002 000–2 222 000 ₽
+    - num: 22
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131959485-0cdbe391/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 2545000
+      mileage: 149531
+      evaluation_status: fair
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: Справедливая цена
+    - num: 23
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131803175-bcd5207b/
+      title: Hyundai Santa Fe III
+      year: 2014
+      price: 2000000
+      mileage: 97000
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 1706000
+      evaluation_max: 1937000
+      evaluation_raw: 1 706 000–1 937 000 ₽
+    - num: 24
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131778345-a46c58bb/
+      title: Hyundai Santa Fe III
+      year: 2014
+      price: 2330000
+      mileage: 108500
+      evaluation_status: above
+      evaluation_delta_percent: 22
+      evaluation_min: 1690000
+      evaluation_max: 1922000
+      evaluation_raw: 1 690 000–1 922 000 ₽
+    - num: 25
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1128190389-3a935bbf/
+      title: Hyundai Santa Fe Grand III
+      year: 2014
+      price: 2030000
+      mileage: 123109
+      evaluation_status: below
+      evaluation_delta_percent: -2.7
+      evaluation_min: 1857000
+      evaluation_max: 2095000
+      evaluation_raw: 1 857 000–2 095 000 ₽
+    - num: 26
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1131606958-8e879924/
+      title: Hyundai Santa Fe III
+      year: 2013
+      price: 2000000
+      mileage: 123000
+      evaluation_status: above
+      evaluation_delta_percent: 19
+      evaluation_min: 1482000
+      evaluation_max: 1682000
+      evaluation_raw: 1 482 000–1 682 000 ₽
+    - num: 27
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1130343974-a8ea420c/
+      title: Hyundai Santa Fe IV
+      year: 2018
+      price: 3050000
+      mileage: 122000
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2515000
+      evaluation_max: 2802000
+      evaluation_raw: 2 515 000–2 802 000 ₽
+    - num: 28
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1130058953-4306b4cb/
+      title: Hyundai Santa Fe III
+      year: 2014
+      price: 1645000
+      mileage: 136842
+      evaluation_status: above
+      evaluation_delta_percent: 0.8
+      evaluation_min: 1546000
+      evaluation_max: 1771000
+      evaluation_raw: 1 546 000–1 771 000 ₽
+    - num: 29
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1129698426-ca30f87a/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2018
+      price: 2500000
+      mileage: 93000
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2040000
+      evaluation_max: 2307000
+      evaluation_raw: 2 040 000–2 307 000 ₽
+    - num: 30
+      url: https://auto.ru/cars/used/sale/hyundai/santa_fe/1129544957-006ca32e/
+      title: Hyundai Santa Fe III Рестайлинг
+      year: 2017
+      price: 1900000
+      mileage: 82000
+      evaluation_status: below
+      evaluation_delta_percent: -15
+      evaluation_min: 2245000
+      evaluation_max: 2546000
+      evaluation_raw: 2 245 000–2 546 000 ₽

@@ -1,0 +1,360 @@
+generated_at: '2026-06-08T10:37:55.487515'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  volvo_xc90:
+    id: volvo_xc90
+    brand: Volvo
+    model: XC90
+    year_from: 2011
+    year_to: 2014
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2011&year_to=2014&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DVOLVO%2Cmodel%3DXC90&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: low_evaluation_sample
+    ads_found: 7
+    cards_checked: 7
+    evaluated_cards: 6
+    no_evaluation_cards: 1
+    price_median: 2250000
+    mileage_median: 168000
+    evaluation_min_median: 1451500.0
+    evaluation_max_median: 1718500.0
+    avg_delta_percent: 20.3
+    median_delta_percent: 17.5
+    fair_price_low: 1407955
+    fair_price_high: 1718500.0
+    good_buy_price: 1407955
+    suspicious_low_price: 1233775
+    overpriced_price: 1804425
+    need_manual_review: true
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132681055-6e8bd4cc/
+      title: Volvo XC90 I Рестайлинг
+      year: 2013
+      price: 2500000
+      mileage: 90800
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1882000
+      evaluation_max: 2199000
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132216906-487e6d0c/
+      title: Volvo XC90 I Рестайлинг
+      year: 2011
+      price: 1850000
+      mileage: 170000
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1388000
+      evaluation_max: 1631000
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132063333-6fedf093/
+      title: Volvo XC90 I Рестайлинг
+      year: 2014
+      price: 2190000
+      mileage: 145000
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 1851000
+      evaluation_max: 2148000
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1131082881-6e31a386/
+      title: Volvo XC90 I Рестайлинг
+      year: 2013
+      price: 2050000
+      mileage: 172946
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 1417000
+      evaluation_max: 1696000
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1130783791-4a300f84/
+      title: Volvo XC90 I Рестайлинг
+      year: 2012
+      price: 2250000
+      mileage: 168000
+      evaluation_status: above
+      evaluation_delta_percent: 30
+      evaluation_min: 1486000
+      evaluation_max: 1741000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132681055-6e8bd4cc/
+      title: Volvo XC90 I Рестайлинг
+      price: 2500000
+      year: 2013
+      mileage: 90800
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Серый
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        90 800 км
+
+        2 500 000 ₽
+
+        Елена
+
+        Невзорово'
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1882000
+      evaluation_max: 2199000
+      evaluation_raw: 1 882 000–2 199 000 ₽
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132216906-487e6d0c/
+      title: Volvo XC90 I Рестайлинг
+      price: 1850000
+      year: 2011
+      mileage: 170000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Чёрный
+
+        2.4 л, 185 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        170 000 км
+
+        От собственника
+
+        1 850 000 ₽
+
+        Павел
+
+        Москва, улица Бубнова'
+      drive: awd
+      transmission: automatic
+      engine: 185L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1388000
+      evaluation_max: 1631000
+      evaluation_raw: 1 388 000–1 631 000 ₽
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1132063333-6fedf093/
+      title: Volvo XC90 I Рестайлинг
+      price: 2190000
+      year: 2014
+      mileage: 145000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Коричневый
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        145 000 км
+
+        2 190 000 ₽
+
+        Леонид
+
+        Москва, 1-й Митинский переулок, '
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 1851000
+      evaluation_max: 2148000
+      evaluation_raw: 1 851 000–2 148 000 ₽
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1131082881-6e31a386/
+      title: Volvo XC90 I Рестайлинг
+      price: 2050000
+      year: 2013
+      mileage: 172946
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Чёрный
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        172 946 км
+
+        2 050 000 ₽
+
+        Вадим
+
+        Москва, район Марьина Роща'
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 1417000
+      evaluation_max: 1696000
+      evaluation_raw: 1 417 000–1 696 000 ₽
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1130783791-4a300f84/
+      title: Volvo XC90 I Рестайлинг
+      price: 2250000
+      year: 2012
+      mileage: 168000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Синий
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        168 000 км
+
+        2 250 000 ₽
+
+        Юлия
+
+        Москва, Гагаринский р'
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: above
+      evaluation_delta_percent: 30
+      evaluation_min: 1486000
+      evaluation_max: 1741000
+      evaluation_raw: 1 486 000–1 741 000 ₽
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1129169026-4fd522b6/
+      title: Volvo XC90 I Рестайлинг
+      price: 3499000
+      year: 2012
+      mileage: 65000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Чёрный
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        65 000 км
+
+        3 499 000 ₽
+
+        tim88moscow
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: no_data
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: ''
+    - url: https://auto.ru/cars/used/sale/volvo/xc90/1123263286-55b7d2ce/
+      title: Volvo XC90 I Рестайлинг
+      price: 2300000
+      year: 2012
+      mileage: 172000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Volvo XC90 I Рестайлинг
+
+        Синий
+
+        2.5 л, 210 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        172 000 км
+
+        2 300 000 ₽
+
+        Продавец
+
+        Москва, Воронцовс'
+      drive: awd
+      transmission: automatic
+      engine: 210L
+      evaluation_status: above
+      evaluation_delta_percent: 41
+      evaluation_min: 1369000
+      evaluation_max: 1640000
+      evaluation_raw: 1 369 000–1 640 000 ₽

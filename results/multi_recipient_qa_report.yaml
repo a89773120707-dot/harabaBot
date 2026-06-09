@@ -1,0 +1,49 @@
+block: multi_recipient
+timestamp: 2026-06-09T15:27
+
+recipients:
+  owner:
+    exists: true
+    enabled: true
+    chat_id: "8992376203"
+  manager:
+    exists: false
+    enabled: false
+    chat_id: ""
+
+dedup:
+  key_includes_chat_id: true
+  owner_skip_manager_send_test: "pending — need manager registration"
+  manager_skip_second_time_test: "pending — need manager registration"
+
+feedback:
+  owner_reaction_saved: true
+  manager_reaction_saved: "pending — need manager registration"
+  reviewer_role_saved: true
+  new_fields_added:
+    - telegram_chat_id
+    - telegram_user_id
+    - telegram_username
+    - reviewer_role
+
+telegram:
+  sent_to_owner: true
+  sent_to_manager: "pending — need manager registration"
+
+commands_added:
+  - /register_owner
+  - /register_manager
+  - /recipients
+  - /disable_me
+
+tables_updated:
+  telegram_recipients: "created"
+  sent_ads: "chat_id column added"
+  feedback: "telegram_chat_id, telegram_user_id, telegram_username, reviewer_role added"
+
+PASS:
+  owner_exists: true
+  dedup_with_chat_id: true
+  sent_to_owner: true
+  commands_registered: true
+  feedback_with_role: true

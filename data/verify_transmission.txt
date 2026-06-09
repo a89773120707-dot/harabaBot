@@ -1,0 +1,4 @@
+mileage_max: 200000
+transmission: automatic
+e mileage_max: 200000
+e transmission: automatic

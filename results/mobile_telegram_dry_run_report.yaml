@@ -1,0 +1,17 @@
+generated_at: '2026-06-08T21:03:37.107595'
+source: results/mobile_first_page_sample.json
+total_cards: 30
+sent_candidates: 16
+skipped_reject: 7
+skipped_weak: 7
+skipped_manual: 0
+skipped_duplicate: 0
+skipped_wrong_region: 0
+skipped_unknown_model: 0
+cards_with_engine: 16
+cards_with_transmission: 16
+cards_with_drive: 16
+cards_with_region: 10
+decisions:
+  good_candidate: 6
+  watch: 10

@@ -1,0 +1,1154 @@
+generated_at: '2026-06-08T10:56:58.563348'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  kia_sportage:
+    id: kia_sportage
+    brand: Kia
+    model: Sportage
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2012&year_to=2018&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DKIA%2Cmodel%3DSPORTAGE&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: ok
+    ads_found: 24
+    cards_checked: 24
+    evaluated_cards: 24
+    no_evaluation_cards: 0
+    price_median: 1665000.0
+    mileage_median: 146500.0
+    evaluation_min_median: 1252000.0
+    evaluation_max_median: 1405000.0
+    avg_delta_percent: 9.8
+    median_delta_percent: 9.0
+    fair_price_low: 1214440
+    fair_price_high: 1405000.0
+    good_buy_price: 1214440
+    suspicious_low_price: 1064200
+    overpriced_price: 1475250
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132901345-8f78c449/
+      title: Kia Sportage III
+      year: 2012
+      price: 1590000
+      mileage: 134000
+      evaluation_status: above
+      evaluation_delta_percent: 27
+      evaluation_min: 1091000
+      evaluation_max: 1260000
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132885690-abbc69ab/
+      title: Kia Sportage IV Рестайлинг
+      year: 2018
+      price: 1750000
+      mileage: 138500
+      evaluation_status: below
+      evaluation_delta_percent: -4.0
+      evaluation_min: 1579000
+      evaluation_max: 1780000
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132852757-dd46e177/
+      title: Kia Sportage III Рестайлинг
+      year: 2014
+      price: 1570000
+      mileage: 153350
+      evaluation_status: above
+      evaluation_delta_percent: 13
+      evaluation_min: 1235000
+      evaluation_max: 1394000
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132834105-c0203ee7/
+      title: Kia Sportage IV
+      year: 2017
+      price: 1765000
+      mileage: 165000
+      evaluation_status: above
+      evaluation_delta_percent: 1
+      evaluation_min: 1586000
+      evaluation_max: 1757000
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132327787-9c497b04/
+      title: Kia Sportage IV
+      year: 2017
+      price: 2780000
+      mileage: 58097
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 2132000
+      evaluation_max: 2373000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132901345-8f78c449/
+      title: Kia Sportage III
+      price: 1590000
+      year: 2012
+      mileage: 134000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        134 000 км
+
+        1 590 000 ₽
+
+        Александр ---------------
+
+        Бе'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 27
+      evaluation_min: 1091000
+      evaluation_max: 1260000
+      evaluation_raw: 1 091 000–1 260 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132885690-abbc69ab/
+      title: Kia Sportage IV Рестайлинг
+      price: 1750000
+      year: 2018
+      mileage: 138500
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV Рестайлинг
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Механика
+
+        2018
+
+        138 500 км
+
+        1 750 000 ₽
+
+        Справедливая цена
+
+        89'
+      drive: awd
+      engine: 150L
+      evaluation_status: below
+      evaluation_delta_percent: -4.0
+      evaluation_min: 1579000
+      evaluation_max: 1780000
+      evaluation_raw: 1 579 000–1 780 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132852757-dd46e177/
+      title: Kia Sportage III Рестайлинг
+      price: 1570000
+      year: 2014
+      mileage: 153350
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage III Рестайлинг
+
+        Комплектация
+
+        Prestige
+
+        •
+
+        Серебристый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        153 350 км
+
+        1 570 000 ₽
+
+        Алексей
+
+        Ст'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 13
+      evaluation_min: 1235000
+      evaluation_max: 1394000
+      evaluation_raw: 1 235 000–1 394 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132834105-c0203ee7/
+      title: Kia Sportage IV
+      price: 1765000
+      year: 2017
+      mileage: 165000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Коричневый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        165 000 км
+
+        1 765 000 ₽
+
+        Алексе'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 1
+      evaluation_min: 1586000
+      evaluation_max: 1757000
+      evaluation_raw: 1 586 000–1 757 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132327787-9c497b04/
+      title: Kia Sportage IV
+      price: 2780000
+      year: 2017
+      mileage: 58097
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        GT-Line
+
+        •
+
+        Серебристый
+
+        2.0 л, 185 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        58 097 км
+
+        От собственника
+
+        2 780 000 ₽
+
+        Ольга П.'
+      drive: awd
+      transmission: automatic
+      engine: 185L
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 2132000
+      evaluation_max: 2373000
+      evaluation_raw: 2 132 000–2 373 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132807388-5632d383/
+      title: Kia Sportage IV
+      price: 1670000
+      year: 2017
+      mileage: 169364
+      search_eval_status: fair
+      search_text_preview: 'Ещё 2 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Коричневый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        169 364 км
+
+        От собственника
+
+        1 670 000 ₽
+
+        Справедл'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: below
+      evaluation_delta_percent: -2.2
+      evaluation_min: 1548000
+      evaluation_max: 1719000
+      evaluation_raw: 1 548 000–1 719 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132781682-7897c9f5/
+      title: Kia Sportage III
+      price: 1390000
+      year: 2012
+      mileage: 143000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        143 000 км
+
+        1 390 000 ₽
+
+        Евгений
+
+        Москва, район Покровско'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 1160000
+      evaluation_max: 1309000
+      evaluation_raw: 1 160 000–1 309 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132673060-1d7593ef/
+      title: Kia Sportage III
+      price: 1370000
+      year: 2013
+      mileage: 191000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серый
+
+        2.0 л, 136 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        191 000 км
+
+        1 370 000 ₽
+
+        Кирилл
+
+        Москва, 4-й микрорайон'
+      drive: awd
+      transmission: automatic
+      engine: 136L
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1096000
+      evaluation_max: 1260000
+      evaluation_raw: 1 096 000–1 260 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132647751-df2c3008/
+      title: Kia Sportage IV
+      price: 1900000
+      year: 2017
+      mileage: 190000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Белый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        190 000 км
+
+        1 900 000 ₽
+
+        Игорь
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 12
+      evaluation_min: 1548000
+      evaluation_max: 1708000
+      evaluation_raw: 1 548 000–1 708 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132406684-66a7673c/
+      title: Kia Sportage III
+      price: 1400000
+      year: 2013
+      mileage: 172960
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серебристый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        172 960 км
+
+        1 400 000 ₽
+
+        Аъзам В'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 13
+      evaluation_min: 1093000
+      evaluation_max: 1241000
+      evaluation_raw: 1 093 000–1 241 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132338305-4e311117/
+      title: Kia Sportage III
+      price: 1690000
+      year: 2013
+      mileage: 178000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Premium
+
+        •
+
+        Белый
+
+        2.0 л, 184 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        178 000 км
+
+        1 690 000 ₽
+
+        Евгений
+
+        Москва, Осташковская'
+      drive: awd
+      transmission: automatic
+      engine: 184L
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 1211000
+      evaluation_max: 1379000
+      evaluation_raw: 1 211 000–1 379 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1132035707-fe87b65c/
+      title: Kia Sportage IV
+      price: 1800000
+      year: 2017
+      mileage: 150000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Чёрный
+
+        2.4 л, 184 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        150 000 км
+
+        1 800 000 ₽
+
+        Справедливая цена
+
+        ParkingKia
+
+        Москва, Рублёвское шос'
+      drive: awd
+      transmission: automatic
+      engine: 184L
+      evaluation_status: above
+      evaluation_delta_percent: 1.8
+      evaluation_min: 1726000
+      evaluation_max: 1937000
+      evaluation_raw: 1 726 000–1 937 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1130798396-ae01a06a/
+      title: Kia Sportage IV
+      price: 1750000
+      year: 2016
+      mileage: 174705
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        GT-Line
+
+        •
+
+        Красный
+
+        1.6 л, 177 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Робот
+
+        2016
+
+        174 705 км
+
+        1 750 000 ₽
+
+        Марина
+
+        Москва, городской окру'
+      drive: awd
+      transmission: automatic
+      engine: 177L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 1483000
+      evaluation_max: 1647000
+      evaluation_raw: 1 483 000–1 647 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131859174-02e29ca4/
+      title: Kia Sportage III
+      price: 1580000
+      year: 2013
+      mileage: 140000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серебристый
+
+        2.0 л, 136 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        140 000 км
+
+        1 580 000 ₽
+
+        Тимур
+
+        Зеленоград'
+      drive: awd
+      transmission: automatic
+      engine: 136L
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 1172000
+      evaluation_max: 1344000
+      evaluation_raw: 1 172 000–1 344 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131737995-46574a1f/
+      title: Kia Sportage III
+      price: 1660000
+      year: 2012
+      mileage: 140000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Коричневый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        140 000 км
+
+        От собственника
+
+        1 660 000 ₽
+
+        Никита
+
+        Ост'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 28
+      evaluation_min: 1157000
+      evaluation_max: 1306000
+      evaluation_raw: 1 157 000–1 306 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131510817-3407cbaf/
+      title: Kia Sportage IV
+      price: 2300000
+      year: 2018
+      mileage: 80726
+      search_eval_status: fair
+      search_text_preview: 'Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        GT Line
+
+        •
+
+        Серый
+
+        2.0 л, 185 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        80 726 км
+
+        От собственника
+
+        2 300 000 ₽
+
+        Справед'
+      drive: awd
+      transmission: automatic
+      engine: 185L
+      evaluation_status: below
+      evaluation_delta_percent: -5.3
+      evaluation_min: 2039000
+      evaluation_max: 2315000
+      evaluation_raw: 2 039 000–2 315 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131478152-2030d3b5/
+      title: Kia Sportage IV
+      price: 2200000
+      year: 2018
+      mileage: 73370
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Чёрный
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        73 370 км
+
+        2 200 000 ₽
+
+        Евгений
+
+        Мос'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 2
+      evaluation_min: 1966000
+      evaluation_max: 2175000
+      evaluation_raw: 1 966 000–2 175 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131429543-2a6a3dee/
+      title: Kia Sportage III
+      price: 1570000
+      year: 2012
+      mileage: 187717
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 3 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        187 717 км
+
+        1 570 000 ₽
+
+        Частное лицо
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 33
+      evaluation_min: 1045000
+      evaluation_max: 1187000
+      evaluation_raw: 1 045 000–1 187 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1131226133-d1bb1ce1/
+      title: Kia Sportage III
+      price: 1300000
+      year: 2013
+      mileage: 170000
+      search_eval_status: no_data
+      search_text_preview: 'Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Белый
+
+        2.0 л, 136 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        170 000 км
+
+        1 300 000 ₽
+
+        Светлана
+
+        Москва, Цент'
+      drive: awd
+      transmission: automatic
+      engine: 136L
+      evaluation_status: above
+      evaluation_delta_percent: 3
+      evaluation_min: 1115000
+      evaluation_max: 1269000
+      evaluation_raw: 1 115 000–1 269 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1130799386-ca6c2155/
+      title: Kia Sportage III
+      price: 1518000
+      year: 2012
+      mileage: 115000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Синий
+
+        2.0 л, 136 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        115 000 км
+
+        От собственника
+
+        1 518 000 ₽
+
+        Максим
+
+        Пушки'
+      drive: awd
+      transmission: automatic
+      engine: 136L
+      evaluation_status: above
+      evaluation_delta_percent: 13
+      evaluation_min: 1200000
+      evaluation_max: 1353000
+      evaluation_raw: 1 200 000–1 353 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1127803385-57beb395/
+      title: Kia Sportage IV
+      price: 1850000
+      year: 2016
+      mileage: 50000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Серебристый
+
+        2.4 л, 184 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        50 000 км
+
+        От собственника
+
+        1 850 000 ₽
+
+        Евгений
+
+        Люберцы, улица С.П. Поп'
+      drive: awd
+      transmission: automatic
+      engine: 184L
+      evaluation_status: below
+      evaluation_delta_percent: -3
+      evaluation_min: 1911000
+      evaluation_max: 2183000
+      evaluation_raw: 1 911 000–2 183 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1127514150-88cadb06/
+      title: Kia Sportage III
+      price: 1450000
+      year: 2012
+      mileage: 95000
+      search_eval_status: no_data
+      search_text_preview: 'История авто бесплатно
+
+        Kia Sportage III
+
+        Комплектация
+
+        Luxe
+
+        •
+
+        Чёрный
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        95 000 км
+
+        1 450 000 ₽
+
+        Частное лицо
+
+        Москва, Котельники'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 3
+      evaluation_min: 1269000
+      evaluation_max: 1416000
+      evaluation_raw: 1 269 000–1 416 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1122808588-5dde2227/
+      title: Kia Sportage IV
+      price: 2500000
+      year: 2018
+      mileage: 38000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 3 фото
+
+        История авто бесплатно
+
+        Kia Sportage IV
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Серый
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        38 000 км
+
+        От собственника
+
+        2 500 000 ₽
+
+        Частное лицо
+
+        М'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 2093000
+      evaluation_max: 2313000
+      evaluation_raw: 2 093 000–2 313 000 ₽
+    - url: https://auto.ru/cars/used/sale/kia/sportage/1121357366-f4a9d303/
+      title: Kia Sportage III Рестайлинг
+      price: 1500000
+      year: 2015
+      mileage: 170735
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Kia Sportage III Рестайлинг
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Синий
+
+        2.0 л, 150 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2015
+
+        170 735 км
+
+        1 500 000 ₽'
+      drive: awd
+      transmission: automatic
+      engine: 150L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1218000
+      evaluation_max: 1369000
+      evaluation_raw: 1 218 000–1 369 000 ₽

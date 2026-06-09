@@ -1,0 +1,70 @@
+# CALIBRATION v2 REPORT — БЛОК 12.3
+
+generated_at: "2026-06-08"
+test_cards: 678
+
+## СРАВНЕНИЕ v1 → v2 → v3 → v4
+
+| Decision | Целевой % | v1 Факт | v2 Факт | v3 Факт | v4 Факт |
+|----------|-----------|---------|---------|---------|---------|
+| excellent | 5-12% | 33.9% | 0% | 0.7% | 0.7% |
+| good | 15-25% | 15.3% | 47.6% | 43.7% | 36.7% |
+| watch | 25-40% | 9.4% | 18.0% | 22.3% | 29.2% |
+| weak | 15-30% | 8.4% | 15.9% | 15.9% | 14.9% |
+| reject | 15-30% | 32.9% | 18.4% | 18.4% | 18.4% |
+
+## ИЗМЕНЕНИЯ ОТ v1 К v4
+
+### price_scorer v2
+- excellent: +40 → +35
+- good: +25 → +20
+- fair: +5 → +5 (вернули)
+- expensive: -10 → -15
+- reject_if_weak: -50 → -30 (не auto-reject!)
+- suspicious_low: -25 → -15
+
+### price_ranges v2
+- reject_if_weak: max_median * 1.07 → * 1.20 (ok) / * 1.25 (low_sample)
+- expensive_but_ok_if_top: max_median * 1.07 → * 1.12
+- suspicious_low: min_median * 0.85 → * 0.75
+
+### decision_engine v2
+- excellent_candidate: score>=85 → 80 + price excellent/good + mileage excellent/good + >=2 бонуса
+- good_candidate: score>=70 → 80
+- watch: score>=55 (без изменений)
+- weak: score>=40 (без изменений)
+- reject: score<40 или hard_reject
+
+## РЕЗУЛЬТАТ v4 БЛИЖЕ К ЦЕЛИ
+
+| Метрика | Целевой | v4 | delta |
+|---------|---------|----|-------|
+| watch | 25-40% | 29.2% | ✅ В ЦЕЛИ |
+| weak | 15-30% | 14.9% | ✅ ПОЧТИ |
+| reject | 15-30% | 18.4% | ✅ В ЦЕЛИ |
+| good | 15-25% | 36.7% | ⚠️ ВЫШЕ |
+| excellent | 5-12% | 0.7% | ❌ НИЖЕ |
+
+## ПРИЧИНА excellent=0.7%
+
+Синтетические карточки имеют uniform random price в широком диапазоне.
+Большинство попадают в fair (0 бонусов к цене) или expensive (-15).
+
+Для excellent нужно:
+- price в excellent/good (только ~15-20% синтетических)
+- mileage в excellent/good (~60%)
+- >=2 strong_bonus (~40%)
+- score >= 80
+
+На реальных данных цены сгруппированы вокруг медианы → больше excellent/good.
+
+## РЕКОМЕНДАЦИЯ
+
+Конфиг v4 готов к тестированию на реальных данных.
+
+Синтетические данные не отражают реальное распределение цен.
+Следующий шаг — протестировать на реальных карточках с haraba/auto.ru.
+
+## DISTRIBUTION BY MODEL (v4)
+
+Смотреть в results/config_scoring_test_500.yaml → model_distribution

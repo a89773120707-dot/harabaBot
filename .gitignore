@@ -1,0 +1,29 @@
+# Secrets
+.env
+data/state.json
+
+# Database
+*.db
+
+# Logs
+*.log
+logs/
+
+# Virtual Env
+venv/
+
+# Cache
+__pycache__/
+*.pyc
+
+# Trash/Archive
+_trash/
+_archive/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/

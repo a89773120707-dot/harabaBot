@@ -1,0 +1,755 @@
+config_name: awd_liquid_9
+description: 9 новых моделей из auto.ru evaluation — дополнение к ready_8
+version: 0.1
+architecture:
+  search_filters: То, что реально выставляем на Haraba
+  must_have: Жесткие условия допуска
+  scoring_rules: Оценка объявления после парсинга
+  risk_check: Что проверять вручную/по описанию/по диагностике
+  market_rules: Правила цены и рыночной привлекательности
+global_rules:
+  search_strategy:
+    rule: Поиск делаем шире, скоринг делаем жестче
+    avoid_too_narrow_search: true
+  global_reject:
+  - red_autoteka
+  - airbags_deployed
+  - structural_damage
+  - geometry_damage
+  - heavy_accident
+  - taxi
+  - commercial_abuse
+  - registration_ban
+  - pledge
+  - twisted_mileage_suspected
+  global_bonus:
+    green_autoteka: 25
+    one_owner: 15
+    two_owners: 10
+    awd: 15
+    top_trim: 15
+    seven_seats: 15
+    low_mileage: 15
+    dealer_service_history: 10
+    panorama: 8
+    camera_360: 8
+    leather: 6
+    ventilation: 6
+    good_color: 5
+  global_penalty:
+    three_owners: -5
+    four_plus_owners: -20
+    high_mileage: -15
+    weak_trim: -15
+    many_cosmetic_repairs: -15
+    poor_interior: -10
+    no_service_history: -10
+    suspiciously_cheap: -25
+    above_market_without_reason: -15
+models:
+
+# ───────────── 1. Audi Q5 ─────────────
+- id: audi_q5
+  name: Audi Q5
+  priority: very_high
+  segment: premium compact SUV
+  search_filters:
+    brand: Audi
+    model: Q5
+    year_from: 2012
+    year_to: 2018
+    price_from: 1726600
+    price_to: 2289840
+    transmission:
+    - automatic
+    - dsg
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: &id001
+    - Москва и МО
+    - Ярославская обл.
+    - Тверская обл.
+    - Владимирская обл.
+    - Калужская обл.
+    - Рязанская обл.
+    - Тульская обл.
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 230000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - quattro
+    - s_line
+    - black_headliner
+    - leather_or_alcantara
+    - led_or_xenon
+    - rear_camera
+    - parking_sensors
+    - panoramic_roof
+    - good_multimedia
+    - white_black_grey_color
+    medium_plus:
+    - business
+    - sport
+    - one_owner
+    - two_owners
+    penalty:
+    - 2_0_TFSI_oil_consumption_history
+    - unknown_timing_chain_history
+    - mileage_over_230000
+    - 4_plus_owners
+    - weak_trim
+    - many_cosmetic_repairs
+    reject:
+    - red_autoteka
+    - major_accident
+    - engine_oil_burning
+    - bad_engine
+    - gearbox_errors
+    - bad_gearbox
+    - cheap_body_repair
+    - twisted_mileage
+  risk_check:
+  - oil_consumption
+  - timing_chain
+  - water_pump
+  - s_tronic
+  - quattro_service
+  - suspension
+  - electronics
+  market_rules:
+    excellent_price: 1726600-1780000
+    good_price: 1780000-2044500
+    expensive_but_ok_if_top: 2044500-2289840
+    reject_if_weak: 2453400+
+
+# ───────────── 2. Hyundai Santa Fe ─────────────
+- id: hyundai_santa_fe
+  name: Hyundai Santa Fe
+  priority: high
+  segment: family crossover
+  search_filters:
+    brand: Hyundai
+    model: Santa Fe
+    year_from: 2012
+    year_to: 2018
+    price_from: 1794500
+    price_to: 2322880
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 230000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 2_2_CRDi_diesel
+    - top_trim
+    - executive
+    - 7_seats
+    - leather
+    - panorama
+    - ventilation
+    - rear_camera
+    - keyless
+    - white_color
+    medium_plus:
+    - family
+    - travel
+    - 2_4_petrol_if_price_good
+    - one_owner
+    - two_owners
+    penalty:
+    - bad_dpf_history
+    - engine_warning_history
+    - hard_shifts
+    - overheat_history
+    - mileage_over_230000
+    - 4_plus_owners
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - active_engine_errors
+    - bad_engine
+    - bad_dpf
+    - bad_gearbox
+    - twisted_mileage
+  risk_check:
+  - dpf
+  - egr
+  - engine_management_errors
+  - automatic_transmission
+  - awd_coupling
+  - suspension
+  - steering
+  market_rules:
+    excellent_price: 1794500-1850000
+    good_price: 1850000-2074000
+    expensive_but_ok_if_top: 2074000-2322880
+    reject_if_weak: 2488800+
+
+# ───────────── 3. Kia Sorento ─────────────
+- id: kia_sorento
+  name: Kia Sorento
+  priority: high
+  segment: family crossover
+  search_filters:
+    brand: Kia
+    model: Sorento
+    year_from: 2012
+    year_to: 2018
+    price_from: 1646090
+    price_to: 2320800
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 240000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 2_2_CRDi_diesel
+    - gt_line
+    - luxury
+    - top_trim
+    - 7_seats
+    - leather
+    - panorama
+    - rear_camera
+    - keyless
+    - green_autoteka
+    medium_plus:
+    - comfort
+    - prestige
+    - 2_4_petrol_if_clean_and_price_good
+    - one_owner
+    - two_owners
+    penalty:
+    - bad_egr_history
+    - unknown_engine_history
+    - harsh_shifts
+    - awd_coupling_wear
+    - mileage_over_240000
+    - 4_plus_owners
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - bad_gearbox
+    - bad_diesel
+    - heavy_towing_use
+    - twisted_mileage
+    - bad_engine
+  risk_check:
+  - automatic_transmission
+  - egr
+  - diesel_fuel_system
+  - awd_coupling
+  - towing_or_offroad_use
+  - suspension
+  - electronics
+  market_rules:
+    excellent_price: 1646090-1697000
+    good_price: 1697000-1934000
+    expensive_but_ok_if_top: 1934000-2320800
+    reject_if_weak: 2320800+
+
+# ───────────── 4. Kia Sportage ─────────────
+- id: kia_sportage
+  name: Kia Sportage
+  priority: medium_high
+  segment: compact crossover
+  search_filters:
+    brand: Kia
+    model: Sportage
+    year_from: 2012
+    year_to: 2018
+    price_from: 1214440
+    price_to: 1686000
+    transmission:
+    - automatic
+    fuel:
+    - petrol
+    - diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 220000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 2_0_petrol
+    - top_trim
+    - gt_line
+    - luxury
+    - leather
+    - panorama
+    - rear_camera
+    - keyless
+    - maximum_trim
+    - white_black_color
+    medium_plus:
+    - comfort
+    - prestige
+    - 2_0_diesel_if_clean
+    - one_owner
+    - two_owners
+    penalty:
+    - engine_with_knocking_or_oil_pressure_history
+    - jerks_or_slips
+    - active_gearbox_errors
+    - mileage_over_220000
+    - 4_plus_owners
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - bad_engine
+    - bad_gearbox
+    - awd_not_working
+    - twisted_mileage
+  risk_check:
+  - engine_bearings
+  - oil_leaks
+  - awd_coupling
+  - automatic_transmission
+  - leather_wear
+  - stop_start_system
+  - fuel_filter_diesel
+  - rear_plate_lights_water
+  market_rules:
+    excellent_price: 1214440-1252000
+    good_price: 1252000-1405000
+    expensive_but_ok_if_top: 1405000-1686000
+    reject_if_weak: 1686000+
+
+# ───────────── 5. Mazda CX-5 ─────────────
+- id: mazda_cx5
+  name: Mazda CX-5
+  priority: high
+  segment: compact crossover
+  search_filters:
+    brand: Mazda
+    model: CX-5
+    year_from: 2012
+    year_to: 2020
+    price_from: 1916720
+    price_to: 2651400
+    transmission:
+    - automatic
+    fuel:
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 220000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 2_5_petrol
+    - supreme
+    - top_trim
+    - active_plus
+    - leather
+    - bose_audio
+    - rear_camera
+    - keyless
+    - led
+    - white_red_black_color
+    medium_plus:
+    - active
+    - comfort
+    - 2_0_petrol_if_price_good
+    - one_owner
+    - two_owners
+    penalty:
+    - diesel_without_full_history
+    - jerks_or_slips
+    - mileage_over_220000
+    - 4_plus_owners
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - bad_automatic
+    - twisted_mileage
+    - severe_body_repair
+    - bad_engine
+    - bad_gearbox
+  risk_check:
+  - rear_brake_wear
+  - boot_struts
+  - drl_flicker
+  - windshield_cracks
+  - paint_chips
+  - infotainment
+  - suspension
+  market_rules:
+    excellent_price: 1916720-1976000
+    good_price: 1976000-2209500
+    expensive_but_ok_if_top: 2209500-2651400
+    reject_if_weak: 2651400+
+
+# ───────────── 6. Mitsubishi Pajero IV ─────────────
+- id: mitsubishi_pajero_iv
+  name: Mitsubishi Pajero IV
+  priority: medium_high
+  segment: body-on-frame SUV
+  search_filters:
+    brand: Mitsubishi
+    model: Pajero
+    year_from: 2008
+    year_to: 2015
+    price_from: 1770250
+    price_to: 2565000
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 300000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - clean_frame
+  scoring_rules:
+    strong_plus:
+    - 3_2_DI-D_diesel_if_clean
+    - instyle
+    - top_trim
+    - ultimate
+    - leather
+    - rear_camera
+    - seven_seats
+    - good_tires
+    - clean_frame
+    - no_offroad_abuse
+    medium_plus:
+    - invite
+    - 3_8_petrol_if_clean_and_price_good
+    - 3_0_petrol_if_price_good
+    - one_owner
+    - two_owners
+    penalty:
+    - bad_diesel_pump
+    - black_smoke
+    - overheated_engine
+    - jerks_after_150000km
+    - gearbox_overheat_history
+    - mileage_over_300000
+    - 4_plus_owners
+    reject:
+    - rusty_frame
+    - bad_diesel_pump
+    - bad_automatic
+    - heavy_offroad_use
+    - red_autoteka
+    - major_accident
+    - bad_engine
+    - bad_gearbox
+    - twisted_mileage
+  risk_check:
+  - diesel_fuel_pump
+  - injectors
+  - common_rail
+  - black_smoke
+  - automatic_transmission
+  - transfer_case
+  - frame_corrosion
+  - offroad_damage
+  - dashboard_display_glitches
+  market_rules:
+    excellent_price: 1770250-1825000
+    good_price: 1825000-2137500
+    expensive_but_ok_if_top: 2137500-2565000
+    reject_if_weak: 2565000+
+
+# ───────────── 7. Hyundai Grand Santa Fe ─────────────
+- id: hyundai_grand_santa_fe
+  name: Hyundai Grand Santa Fe
+  priority: very_high
+  segment: premium 7-seat family crossover
+  search_filters:
+    brand: Hyundai
+    model: Grand Santa Fe
+    year_from: 2014
+    year_to: 2019
+    price_from: 1801290
+    price_to: 2618750
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 220000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  scoring_rules:
+    strong_plus:
+    - 2_2_CRDi_diesel
+    - top_trim
+    - executive
+    - 7_seats
+    - high_tech_trim
+    - leather
+    - panorama
+    - ventilation
+    - memory_seats
+    - rear_camera
+    - white_color
+    medium_plus:
+    - family
+    - travel
+    - 3_0_petrol_if_clean_and_price_good
+    - one_owner
+    - two_owners
+    penalty:
+    - unknown_engine_history
+    - hard_shifts
+    - overheat_history
+    - mileage_over_220000
+    - 4_plus_owners_with_high_mileage
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - bad_transmission
+    - active_engine_errors
+    - 4_plus_owners_with_high_mileage
+    - twisted_mileage
+    - bad_engine
+    - bad_gearbox
+  risk_check:
+  - turbo_actuator
+  - automatic_transmission_shifts
+  - fuel_system
+  - front_hub_bearings
+  - alternator
+  - dpf_egr
+  - engine_warning_lights
+  market_rules:
+    excellent_price: 1801290-1857000
+    good_price: 1857000-2095000
+    expensive_but_ok_if_top: 2095000-2618750
+    reject_if_weak: 2618750+
+    price_confidence: low
+    need_manual_review: true
+
+# ───────────── 8. Nissan Pathfinder R51 ─────────────
+- id: nissan_pathfinder
+  name: Nissan Pathfinder R51
+  priority: very_high
+  segment: body-on-frame 7-seat SUV
+  search_filters:
+    brand: Nissan
+    model: Pathfinder
+    year_from: 2011
+    year_to: 2014
+    price_from: 1487980
+    price_to: 2231250
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 280000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - clean_frame
+  scoring_rules:
+    strong_plus:
+    - 2_5_diesel_if_clean
+    - 3_0_diesel_if_full_diagnostics
+    - tekna
+    - top_trim
+    - 7_seats
+    - diesel
+    - leather
+    - roof_rails
+    - clean_frame
+    - no_offroad_abuse
+    medium_plus:
+    - se
+    - one_owner
+    - two_owners
+    penalty:
+    - overheated_diesel
+    - unknown_chain_history
+    - overheat_history
+    - jerks_or_slips
+    - mileage_over_280000
+    - 4_plus_owners
+    reject:
+    - rusty_frame
+    - bad_engine
+    - bad_gearbox
+    - heavy_offroad_use
+    - red_autoteka
+    - major_accident
+    - twisted_mileage
+  risk_check:
+  - timing_chain
+  - cracked_head_2_5
+  - cooling_system
+  - automatic_transmission
+  - frame_rust
+  - egr
+  - injectors
+  - offroad_damage
+  market_rules:
+    excellent_price: 1487980-1534000
+    good_price: 1534000-1785000
+    expensive_but_ok_if_top: 1785000-2231250
+    reject_if_weak: 2231250+
+    price_confidence: low
+    need_manual_review: true
+
+# ───────────── 9. Volvo XC90 ─────────────
+- id: volvo_xc90
+  name: Volvo XC90
+  priority: medium_high
+  segment: premium 7-seat family SUV
+  search_filters:
+    brand: Volvo
+    model: XC90
+    year_from: 2011
+    year_to: 2014
+    price_from: 1407955
+    price_to: 2148125
+    transmission:
+    - automatic
+    fuel:
+    - diesel
+    - petrol
+    drivetrain: awd
+    regions: *id001
+    legal_restrictions: none
+    seller_type: private
+    owners_range: 1-3
+    condition: not_damaged
+    mileage_max: 280000
+  must_have:
+  - green_autoteka
+  - awd
+  - no_major_accident
+  - good_body
+  - good_interior
+  scoring_rules:
+    strong_plus:
+    - D5_diesel
+    - r_design
+    - top_trim
+    - sumum
+    - 7_seats
+    - leather
+    - family_use
+    - clean_service_book
+    - good_interior
+    - black_grey_white_color
+    medium_plus:
+    - momentum
+    - 3_2_petrol_if_clean
+    - one_owner
+    - two_owners
+    penalty:
+    - T6_old_problematic
+    - diesel_hard_start
+    - bad_injectors
+    - gearbox_noise
+    - jerks_or_slips
+    - mileage_over_280000
+    - 4_plus_owners
+    - weak_trim
+    reject:
+    - red_autoteka
+    - major_accident
+    - bad_gearbox
+    - diesel_hard_start
+    - active_electrical_errors
+    - twisted_mileage
+    - bad_engine
+  risk_check:
+  - automatic_transmission
+  - diesel_injectors
+  - turbo
+  - overheating
+  - electrical_faults
+  - suspension
+  - steering_rack
+  - awd_system
+  market_rules:
+    excellent_price: 1407955-1451500
+    good_price: 1451500-1718500
+    expensive_but_ok_if_top: 1718500-2148125
+    reject_if_weak: 2148125+
+    price_confidence: low
+    need_manual_review: true

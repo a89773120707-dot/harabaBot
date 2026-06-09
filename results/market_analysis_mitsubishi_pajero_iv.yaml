@@ -1,0 +1,511 @@
+generated_at: '2026-06-08T10:36:52.276164'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  mitsubishi_pajero_iv:
+    id: mitsubishi_pajero_iv
+    brand: Mitsubishi
+    model: Pajero
+    year_from: 2008
+    year_to: 2015
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2008&year_to=2015&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DMITSUBISHI%2Cmodel%3DPAJERO&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: ok
+    ads_found: 10
+    cards_checked: 10
+    evaluated_cards: 10
+    no_evaluation_cards: 0
+    price_median: 2320000.0
+    mileage_median: 134500.0
+    evaluation_min_median: 1825000.0
+    evaluation_max_median: 2137500.0
+    avg_delta_percent: 9.1
+    median_delta_percent: 9.0
+    fair_price_low: 1770250
+    fair_price_high: 2137500.0
+    good_buy_price: 1770250
+    suspicious_low_price: 1551250
+    overpriced_price: 2244375
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132795143-4e331ffe/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      year: 2011
+      price: 2790000
+      mileage: 59200
+      evaluation_status: above
+      evaluation_delta_percent: 5
+      evaluation_min: 2285000
+      evaluation_max: 2666000
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132742514-ca494ea3/
+      title: Mitsubishi Pajero IV
+      year: 2011
+      price: 2250000
+      mileage: 131000
+      evaluation_status: above
+      evaluation_delta_percent: 11
+      evaluation_min: 1762000
+      evaluation_max: 2044000
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132544012-5fd2d1a7/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      year: 2012
+      price: 1900000
+      mileage: 197000
+      evaluation_status: below
+      evaluation_delta_percent: -3.4
+      evaluation_min: 1690000
+      evaluation_max: 1980000
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132257746-2d736806/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      year: 2014
+      price: 2600000
+      mileage: 133000
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2125000
+      evaluation_max: 2435000
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1130811240-226df2da/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      year: 2011
+      price: 1900000
+      mileage: 155000
+      evaluation_status: above
+      evaluation_delta_percent: 4.3
+      evaluation_min: 1824000
+      evaluation_max: 2140000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132795143-4e331ffe/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 2790000
+      year: 2011
+      mileage: 59200
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Ultimate
+
+        •
+
+        Коричневый
+
+        3.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        59 200 км
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 5
+      evaluation_min: 2285000
+      evaluation_max: 2666000
+      evaluation_raw: 2 285 000–2 666 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132742514-ca494ea3/
+      title: Mitsubishi Pajero IV
+      price: 2250000
+      year: 2011
+      mileage: 131000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Белый
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        131 000 км
+
+        2 250 000 ₽
+
+        М
+
+        Балашиха, 28 микрорайо'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: above
+      evaluation_delta_percent: 11
+      evaluation_min: 1762000
+      evaluation_max: 2044000
+      evaluation_raw: 1 762 000–2 044 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132544012-5fd2d1a7/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 1900000
+      year: 2012
+      mileage: 197000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Ultimate
+
+        •
+
+        Чёрный
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        197 000 км
+
+        1 9'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: below
+      evaluation_delta_percent: -3.4
+      evaluation_min: 1690000
+      evaluation_max: 1980000
+      evaluation_raw: 1 690 000–1 980 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1132257746-2d736806/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 2600000
+      year: 2014
+      mileage: 133000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Серебристый
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        133 000 км
+
+        2 600 000 ₽
+
+        Серге'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: above
+      evaluation_delta_percent: 7
+      evaluation_min: 2125000
+      evaluation_max: 2435000
+      evaluation_raw: 2 125 000–2 435 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1130811240-226df2da/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 1900000
+      year: 2011
+      mileage: 155000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Белый
+
+        3.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        155 000 км
+
+        1 900 000 ₽
+
+        Справедлива'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: above
+      evaluation_delta_percent: 4.3
+      evaluation_min: 1824000
+      evaluation_max: 2140000
+      evaluation_raw: 1 824 000–2 140 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1129434298-edf949da/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 2460000
+      year: 2011
+      mileage: 124000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Белый
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        124 000 км
+
+        2 460 000 ₽
+
+        Частное лиц'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1882000
+      evaluation_max: 2166000
+      evaluation_raw: 1 882 000–2 166 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1124191997-8fb261ae/
+      title: Mitsubishi Pajero IV
+      price: 2390000
+      year: 2011
+      mileage: 136000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV
+
+        Комплектация
+
+        Intense
+
+        •
+
+        Серебристый
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        136 000 км
+
+        2 390 000 ₽
+
+        Дмитрий
+
+        Загорянски'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 1656000
+      evaluation_max: 1944000
+      evaluation_raw: 1 656 000–1 944 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1124066847-21aa0c3d/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 2099000
+      year: 2011
+      mileage: 183000
+      search_eval_status: fair
+      search_text_preview: 'Ещё 5 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Серебристый
+
+        3.2 л, 200 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2011
+
+        183 000 км'
+      drive: awd
+      transmission: automatic
+      engine: 200L
+      evaluation_status: below
+      evaluation_delta_percent: -5.6
+      evaluation_min: 1826000
+      evaluation_max: 2135000
+      evaluation_raw: 1 826 000–2 135 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1122213888-0d627c29/
+      title: Mitsubishi Pajero IV Рестайлинг 2
+      price: 3200000
+      year: 2015
+      mileage: 124000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 2
+
+        Комплектация
+
+        Intense
+
+        •
+
+        Белый
+
+        3.0 л, 174 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2015
+
+        124 000 км
+
+        3 200'
+      drive: awd
+      transmission: automatic
+      engine: 174L
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 2342000
+      evaluation_max: 2657000
+      evaluation_raw: 2 342 000–2 657 000 ₽
+    - url: https://auto.ru/cars/used/sale/mitsubishi/pajero/1116629346-511c9bfe/
+      title: Mitsubishi Pajero IV Рестайлинг 1
+      price: 2250000
+      year: 2012
+      mileage: 196000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Mitsubishi Pajero IV Рестайлинг 1
+
+        Комплектация
+
+        Instyle
+
+        •
+
+        Чёрный
+
+        3.0 л, 178 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        196 000 км
+
+        2 250 000 ₽
+
+        Артём
+
+        Дубн'
+      drive: awd
+      transmission: automatic
+      engine: 178L
+      evaluation_status: above
+      evaluation_delta_percent: 15
+      evaluation_min: 1688000
+      evaluation_max: 1973000
+      evaluation_raw: 1 688 000–1 973 000 ₽

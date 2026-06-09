@@ -1,0 +1,1037 @@
+generated_at: '2026-06-08T10:17:28.972211'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  audi_q5:
+    id: audi_q5
+    brand: Audi
+    model: Q5
+    year_from: 2012
+    year_to: 2018
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2012&year_to=2018&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DAUDI%2Cmodel%3DQ5&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: ok
+    ads_found: 23
+    cards_checked: 23
+    evaluated_cards: 22
+    no_evaluation_cards: 1
+    price_median: 2250000
+    mileage_median: 158000
+    evaluation_min_median: 1780000.0
+    evaluation_max_median: 2044500.0
+    avg_delta_percent: 10.1
+    median_delta_percent: 9.5
+    fair_price_low: 1726600
+    fair_price_high: 2044500.0
+    good_buy_price: 1726600
+    suspicious_low_price: 1513000
+    overpriced_price: 2146725
+    need_manual_review: false
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132732001-8b6b8296/
+      title: Audi Q5 I (8R) Рестайлинг
+      year: 2014
+      price: 2600000
+      mileage: 73250
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 2121000
+      evaluation_max: 2412000
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132729803-b5b98cfb/
+      title: Audi Q5 I (8R) Рестайлинг
+      year: 2014
+      price: 2100000
+      mileage: 153000
+      evaluation_status: error
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132608839-6bedd19b/
+      title: Audi Q5 I (8R)
+      year: 2012
+      price: 1850000
+      mileage: 196000
+      evaluation_status: above
+      evaluation_delta_percent: 38
+      evaluation_min: 1123000
+      evaluation_max: 1342000
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132385212-603a2369/
+      title: Audi Q5 I (8R) Рестайлинг
+      year: 2015
+      price: 2350000
+      mileage: 116000
+      evaluation_status: above
+      evaluation_delta_percent: 3
+      evaluation_min: 2007000
+      evaluation_max: 2299000
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132343277-2529ff5a/
+      title: Audi Q5 I (8R) Рестайлинг
+      year: 2014
+      price: 2250000
+      mileage: 118000
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1785000
+      evaluation_max: 2063000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132732001-8b6b8296/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2600000
+      year: 2014
+      mileage: 73250
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        73 250 км
+
+        2 600 000 ₽
+
+        Алексей Х.
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 2121000
+      evaluation_max: 2412000
+      evaluation_raw: 2 121 000–2 412 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132729803-b5b98cfb/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2100000
+      year: 2014
+      mileage: 153000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 1 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Коричневый
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        153 000 км
+
+        2 100 000 ₽
+
+        Венера
+
+        Москва'
+      evaluation_status: error
+      evaluation_delta_percent: null
+      evaluation_min: null
+      evaluation_max: null
+      evaluation_raw: "Page.goto: Timeout 15000ms exceeded.\nCall log:\n  - navigating\
+        \ to \"https://auto.ru/cars/used/sale/audi/q5/1132729803-b5b98cfb/\", waiting\
+        \ until \"domcontentloaded\"\n"
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132608839-6bedd19b/
+      title: Audi Q5 I (8R)
+      price: 1850000
+      year: 2012
+      mileage: 196000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R)
+
+        Белый
+
+        2.0 л, 211 л.с., гибрид
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        196 000 км
+
+        1 850 000 ₽
+
+        Татьяна
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 211L
+      evaluation_status: above
+      evaluation_delta_percent: 38
+      evaluation_min: 1123000
+      evaluation_max: 1342000
+      evaluation_raw: 1 123 000–1 342 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132385212-603a2369/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2350000
+      year: 2015
+      mileage: 116000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2015
+
+        116 000 км
+
+        2 350 000 ₽
+
+        Роман
+
+        Москва, Новочеркасский бульвар'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 3
+      evaluation_min: 2007000
+      evaluation_max: 2299000
+      evaluation_raw: 2 007 000–2 299 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132343277-2529ff5a/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2250000
+      year: 2014
+      mileage: 118000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        118 000 км
+
+        2 250 000 ₽
+
+        Андрей
+
+        Электрогорск, Советская улица'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1785000
+      evaluation_max: 2063000
+      evaluation_raw: 1 785 000–2 063 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132330046-bbbf42eb/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2550000
+      year: 2014
+      mileage: 49150
+      search_eval_status: fair
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Синий
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        49 150 км
+
+        2 550 000 ₽
+
+        Справедливая цена
+
+        Игорь В.
+
+        Москва, Усачёва '
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: below
+      evaluation_delta_percent: -4.5
+      evaluation_min: 2281000
+      evaluation_max: 2588000
+      evaluation_raw: 2 281 000–2 588 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1132229878-55bd0714/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2300000
+      year: 2017
+      mileage: 196000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Чёрный
+
+        2.0 л, 230 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2017
+
+        196 000 км
+
+        2 300 000 ₽
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 230L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 1985000
+      evaluation_max: 2231000
+      evaluation_raw: 1 985 000–2 231 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131819473-10904f08/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2200000
+      year: 2014
+      mileage: 129566
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        129 566 км
+
+        От собственника
+
+        2 200 000 ₽
+
+        Владислав
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 14
+      evaluation_min: 1708000
+      evaluation_max: 1944000
+      evaluation_raw: 1 708 000–1 944 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131990634-aad92962/
+      title: Audi Q5 I (8R)
+      price: 1600000
+      year: 2012
+      mileage: 199000
+      search_eval_status: no_data
+      search_text_preview: 'Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R)
+
+        Комплектация
+
+        Базовая
+
+        •
+
+        Коричневый
+
+        2.0 л, 170 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Робот
+
+        2012
+
+        199 000 км
+
+        1 600 000 ₽
+
+        Андрей
+
+        Москва'
+      drive: awd
+      transmission: automatic
+      engine: 170L
+      evaluation_status: above
+      evaluation_delta_percent: 4
+      evaluation_min: 1345000
+      evaluation_max: 1542000
+      evaluation_raw: 1 345 000–1 542 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131911932-b9506deb/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2000000
+      year: 2013
+      mileage: 152454
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        152 454 км
+
+        2 000 000 ₽
+
+        Александр
+
+        Клин, улица Ч'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1604000
+      evaluation_max: 1826000
+      evaluation_raw: 1 604 000–1 826 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131911358-3c5f2b66/
+      title: Audi Q5 8tiptronic I (8R)
+      price: 1900000
+      year: 2012
+      mileage: 37747
+      search_eval_status: fair
+      search_text_preview: 'Ещё 5 фото
+
+        История авто бесплатно
+
+        Audi Q5 8tiptronic I (8R)
+
+        Комплектация
+
+        Базовая
+
+        •
+
+        Белый
+
+        2.0 л, 211 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        37 747 км
+
+        1 900 000 ₽
+
+        Справедливая цена
+
+        Ел'
+      drive: awd
+      transmission: automatic
+      engine: 211L
+      evaluation_status: below
+      evaluation_delta_percent: -1.9
+      evaluation_min: 1719000
+      evaluation_max: 2008000
+      evaluation_raw: 1 719 000–2 008 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131769399-8578c149/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 1800000
+      year: 2013
+      mileage: 165000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Коричневый
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        165 000 км
+
+        От собственника
+
+        1 800 000 ₽
+
+        Мар'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 1
+      evaluation_min: 1569000
+      evaluation_max: 1795000
+      evaluation_raw: 1 569 000–1 795 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1129699299-281073c8/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2360000
+      year: 2016
+      mileage: 198600
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Серый
+
+        2.0 л, 230 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        198 600 км
+
+        2 360 000 ₽
+
+        О'
+      drive: awd
+      transmission: automatic
+      engine: 230L
+      evaluation_status: above
+      evaluation_delta_percent: 13
+      evaluation_min: 1830000
+      evaluation_max: 2096000
+      evaluation_raw: 1 830 000–2 096 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1131096810-9f7dca40/
+      title: Audi Q5 II (FY)
+      price: 2900000
+      year: 2018
+      mileage: 97700
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 II (FY)
+
+        Пурпурный
+
+        2.0 л, 190 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Робот
+
+        2018
+
+        97 700 км
+
+        2 900 000 ₽
+
+        Владимир
+
+        Москва, проспект Маршала Жукова, 78к3'
+      drive: awd
+      transmission: automatic
+      engine: 190L
+      evaluation_status: below
+      evaluation_delta_percent: -9
+      evaluation_min: 3199000
+      evaluation_max: 3565000
+      evaluation_raw: 3 199 000–3 565 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1130841736-ecb4c340/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 1950000
+      year: 2013
+      mileage: 179000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Белый
+
+        2.0 л, 177 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Робот
+
+        2013
+
+        179 000 км
+
+        От собственника
+
+        1 950 000 ₽
+
+        Xazarin1982
+
+        Рублёво, Осенний'
+      drive: awd
+      transmission: automatic
+      engine: 177L
+      evaluation_status: above
+      evaluation_delta_percent: 10
+      evaluation_min: 1576000
+      evaluation_max: 1780000
+      evaluation_raw: 1 576 000–1 780 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1130769139-00a3a2e0/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2400000
+      year: 2016
+      mileage: 109900
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 5 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Синий
+
+        2.0 л, 180 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        109 900 км
+
+        От собственника
+
+        2 400 000 ₽
+
+        Мих'
+      drive: awd
+      transmission: automatic
+      engine: 180L
+      evaluation_status: above
+      evaluation_delta_percent: 1
+      evaluation_min: 2131000
+      evaluation_max: 2395000
+      evaluation_raw: 2 131 000–2 395 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1128168855-6cbff6de/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2000000
+      year: 2014
+      mileage: 200000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 4 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Коричневый
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2014
+
+        200 000 км
+
+        От собственника
+
+        2 000 000 ₽
+
+        Руд'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 9
+      evaluation_min: 1616000
+      evaluation_max: 1835000
+      evaluation_raw: 1 616 000–1 835 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1129872051-2a3c4f69/
+      title: Audi Q5 II (FY)
+      price: 4150000
+      year: 2018
+      mileage: 96400
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 II (FY)
+
+        Комплектация
+
+        45 TFSI quattro S tronic
+
+        •
+
+        Серый
+
+        2.0 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Робот
+
+        2018
+
+        96 400 км
+
+        4 150 000'
+      drive: awd
+      transmission: automatic
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 23
+      evaluation_min: 3020000
+      evaluation_max: 3384000
+      evaluation_raw: 3 020 000–3 384 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1129598698-aa2f3e09/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2500000
+      year: 2016
+      mileage: 199000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Базовая
+
+        •
+
+        Серый
+
+        2.0 л, 230 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        199 000 км
+
+        От собственника
+
+        2 500 000 ₽
+
+        Дар'
+      drive: awd
+      transmission: automatic
+      engine: 230L
+      evaluation_status: above
+      evaluation_delta_percent: 24
+      evaluation_min: 1775000
+      evaluation_max: 2026000
+      evaluation_raw: 1 775 000–2 026 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1128337029-5a1d9eb6/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2200000
+      year: 2016
+      mileage: 182000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Comfort
+
+        •
+
+        Чёрный
+
+        2.0 л, 180 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        182 000 км
+
+        2 200 000 ₽
+
+        '
+      drive: awd
+      transmission: automatic
+      engine: 180L
+      evaluation_status: above
+      evaluation_delta_percent: 11
+      evaluation_min: 1720000
+      evaluation_max: 1994000
+      evaluation_raw: 1 720 000–1 994 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1127834496-31a3c11d/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 2800000
+      year: 2016
+      mileage: 158000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Комплектация
+
+        Sport
+
+        •
+
+        Белый
+
+        2.0 л, 230 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2016
+
+        158 000 км
+
+        2 800 000 ₽
+
+        Сергей
+
+        Москва, район '
+      drive: awd
+      transmission: automatic
+      engine: 230L
+      evaluation_status: above
+      evaluation_delta_percent: 21
+      evaluation_min: 2054000
+      evaluation_max: 2326000
+      evaluation_raw: 2 054 000–2 326 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1127798535-7e431dfe/
+      title: Audi Q5 II (FY)
+      price: 4500000
+      year: 2018
+      mileage: 182000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 II (FY)
+
+        Синий
+
+        3.0 л, 286 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2018
+
+        182 000 км
+
+        4 500 000 ₽
+
+        Евгений
+
+        Москва, Нахимовский проспект'
+      drive: awd
+      transmission: automatic
+      engine: 286L
+      evaluation_status: above
+      evaluation_delta_percent: 25
+      evaluation_min: 3118000
+      evaluation_max: 3600000
+      evaluation_raw: 3 118 000–3 600 000 ₽
+    - url: https://auto.ru/cars/used/sale/audi/q5/1127468523-83d20824/
+      title: Audi Q5 I (8R) Рестайлинг
+      price: 1900000
+      year: 2013
+      mileage: 190000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Audi Q5 I (8R) Рестайлинг
+
+        Чёрный
+
+        2.0 л, 225 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2013
+
+        190 000 км
+
+        1 900 000 ₽
+
+        Елена
+
+        Химки, улица Чернышевского, 3'
+      drive: awd
+      transmission: automatic
+      engine: 225L
+      evaluation_status: above
+      evaluation_delta_percent: 8
+      evaluation_min: 1566000
+      evaluation_max: 1773000
+      evaluation_raw: 1 566 000–1 773 000 ₽

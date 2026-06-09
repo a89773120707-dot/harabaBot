@@ -1,0 +1,148 @@
+price_ranges_9:
+  audi_q5:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 23
+    evaluated_cards: 22
+    evaluation_min_median: 1780000
+    evaluation_max_median: 2044500
+    good_buy_price: 1726600
+    target:
+      suspicious_low: <1513000
+      excellent: <1726600
+      good: 1726600-1780000
+      fair: 1780000-2044500
+      expensive_but_ok_if_top: 2044500-2187615
+      reject_if_weak: 2187615+
+  hyundai_grand_santa_fe:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 3
+    evaluated_cards: 3
+    evaluation_min_median: 1857000
+    evaluation_max_median: 2095000
+    good_buy_price: 1801290
+    target:
+      suspicious_low: <1578450
+      excellent: <1801290
+      good: 1801290-1857000
+      fair: 1857000-2095000
+      expensive_but_ok_if_top: 2095000-2241650
+      reject_if_weak: 2241650+
+    need_manual_review: true
+  hyundai_santa_fe:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 30
+    evaluated_cards: 30
+    evaluation_min_median: 1850000
+    evaluation_max_median: 2074000
+    good_buy_price: 1794500
+    target:
+      suspicious_low: <1572500
+      excellent: <1794500
+      good: 1794500-1850000
+      fair: 1850000-2074000
+      expensive_but_ok_if_top: 2074000-2219180
+      reject_if_weak: 2219180+
+  kia_sorento:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 30
+    evaluated_cards: 29
+    evaluation_min_median: 1697000
+    evaluation_max_median: 1934000
+    good_buy_price: 1646090
+    target:
+      suspicious_low: <1442450
+      excellent: <1646090
+      good: 1646090-1697000
+      fair: 1697000-1934000
+      expensive_but_ok_if_top: 1934000-2069380
+      reject_if_weak: 2069380+
+  kia_sportage:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 24
+    evaluated_cards: 24
+    evaluation_min_median: 1252000
+    evaluation_max_median: 1405000
+    good_buy_price: 1214440
+    target:
+      suspicious_low: <1064200
+      excellent: <1214440
+      good: 1214440-1252000
+      fair: 1252000-1405000
+      expensive_but_ok_if_top: 1405000-1503350
+      reject_if_weak: 1503350+
+  mazda_cx5:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 28
+    evaluated_cards: 28
+    evaluation_min_median: 1976000
+    evaluation_max_median: 2209500
+    good_buy_price: 1916720
+    target:
+      suspicious_low: <1679600
+      excellent: <1916720
+      good: 1916720-1976000
+      fair: 1976000-2209500
+      expensive_but_ok_if_top: 2209500-2364165
+      reject_if_weak: 2364165+
+  mitsubishi_pajero_iv:
+    status: ok
+    confidence: medium
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 10
+    evaluated_cards: 10
+    evaluation_min_median: 1825000
+    evaluation_max_median: 2137500
+    good_buy_price: 1770250
+    target:
+      suspicious_low: <1551250
+      excellent: <1770250
+      good: 1770250-1825000
+      fair: 1825000-2137500
+      expensive_but_ok_if_top: 2137500-2287125
+      reject_if_weak: 2287125+
+  nissan_pathfinder:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 3
+    evaluated_cards: 3
+    evaluation_min_median: 1534000
+    evaluation_max_median: 1785000
+    good_buy_price: 1487980
+    target:
+      suspicious_low: <1303900
+      excellent: <1487980
+      good: 1487980-1534000
+      fair: 1534000-1785000
+      expensive_but_ok_if_top: 1785000-1909950
+      reject_if_weak: 1909950+
+    need_manual_review: true
+  volvo_xc90:
+    status: low_evaluation_sample
+    confidence: low
+    source: auto_ru_evaluation_aggregator
+    cards_checked: 7
+    evaluated_cards: 6
+    evaluation_min_median: 1451500
+    evaluation_max_median: 1718500
+    good_buy_price: 1407955
+    target:
+      suspicious_low: <1233775
+      excellent: <1407955
+      good: 1407955-1451500
+      fair: 1451500-1718500
+      expensive_but_ok_if_top: 1718500-1838795
+      reject_if_weak: 1838795+
+    need_manual_review: true

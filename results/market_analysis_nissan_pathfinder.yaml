@@ -1,0 +1,194 @@
+generated_at: '2026-06-08T10:34:26.234673'
+source: auto_ru_evaluation
+parser: auto_ru_evaluation_parser.py
+total_models: 1
+models:
+  nissan_pathfinder:
+    id: nissan_pathfinder
+    brand: Nissan
+    model: Pathfinder
+    year_from: 2011
+    year_to: 2014
+    drive: awd
+    search_url: https://auto.ru/moskovskaya_oblast/cars/used/?year_from=2011&year_to=2014&km_age_to=200000&pts_status=1&with_discount=false&catalog_filter=mark%3DNISSAN%2Cmodel%3DPATHFINDER&resolution_filter=is_pts_ok&resolution_filter=is_owners_ok&resolution_filter=is_legal_ok&resolution_filter=is_accidents_ok&seller_group=PRIVATE&gear_type=ALL_WHEEL_DRIVE&sort=cr_date-desc
+    status: low_evaluation_sample
+    ads_found: 3
+    cards_checked: 3
+    evaluated_cards: 3
+    no_evaluation_cards: 0
+    price_median: 2350000
+    mileage_median: 78000
+    evaluation_min_median: 1534000
+    evaluation_max_median: 1785000
+    avg_delta_percent: 28
+    median_delta_percent: 18
+    fair_price_low: 1487980
+    fair_price_high: 1785000
+    good_buy_price: 1487980
+    suspicious_low_price: 1303900
+    overpriced_price: 1874250
+    need_manual_review: true
+    sample_cards:
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1132833874-bba19a7c/
+      title: Nissan Pathfinder III Рестайлинг
+      year: 2012
+      price: 2700000
+      mileage: 78000
+      evaluation_status: above
+      evaluation_delta_percent: 54
+      evaluation_min: 1501000
+      evaluation_max: 1757000
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1130053987-b1a6bf27/
+      title: Nissan Pathfinder IV
+      year: 2014
+      price: 2099999
+      mileage: 155000
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 1534000
+      evaluation_max: 1785000
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1130869561-37f3e2c2/
+      title: Nissan Pathfinder IV
+      year: 2014
+      price: 2350000
+      mileage: 52000
+      evaluation_status: above
+      evaluation_delta_percent: 12
+      evaluation_min: 1816000
+      evaluation_max: 2102000
+    all_cards:
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1132833874-bba19a7c/
+      title: Nissan Pathfinder III Рестайлинг
+      price: 2700000
+      year: 2012
+      mileage: 78000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Nissan Pathfinder III Рестайлинг
+
+        Комплектация
+
+        LE +camera
+
+        •
+
+        Белый
+
+        2.5 л, 190 л.с., дизель
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Автомат
+
+        2012
+
+        78 000 км
+
+        2 700 000 ₽
+
+        Виталий
+
+        Мо'
+      drive: awd
+      transmission: automatic
+      engine: 190L
+      evaluation_status: above
+      evaluation_delta_percent: 54
+      evaluation_min: 1501000
+      evaluation_max: 1757000
+      evaluation_raw: 1 501 000–1 757 000 ₽
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1130053987-b1a6bf27/
+      title: Nissan Pathfinder IV
+      price: 2099999
+      year: 2014
+      mileage: 155000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        История авто бесплатно
+
+        Nissan Pathfinder IV
+
+        Комплектация
+
+        Top
+
+        •
+
+        Чёрный
+
+        3.5 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Вариатор
+
+        2014
+
+        155 000 км
+
+        2 099 999 ₽
+
+        ALL
+
+        Москва, Сельскохозяйст'
+      drive: awd
+      transmission: cvt
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 18
+      evaluation_min: 1534000
+      evaluation_max: 1785000
+      evaluation_raw: 1 534 000–1 785 000 ₽
+    - url: https://auto.ru/cars/used/sale/nissan/pathfinder/1130869561-37f3e2c2/
+      title: Nissan Pathfinder IV
+      price: 2350000
+      year: 2014
+      mileage: 52000
+      search_eval_status: no_data
+      search_text_preview: 'Ещё 6 фото
+
+        Только на Авто.ру
+
+        История авто бесплатно
+
+        Nissan Pathfinder IV
+
+        Комплектация
+
+        Mid
+
+        •
+
+        Коричневый
+
+        3.5 л, 249 л.с., бензин
+
+        Внедорожник 5 дв.
+
+        Полный привод
+
+        Вариатор
+
+        2014
+
+        52 000 км
+
+        2 350 000 ₽
+
+        Частн'
+      drive: awd
+      transmission: cvt
+      engine: 249L
+      evaluation_status: above
+      evaluation_delta_percent: 12
+      evaluation_min: 1816000
+      evaluation_max: 2102000
+      evaluation_raw: 1 816 000–2 102 000 ₽

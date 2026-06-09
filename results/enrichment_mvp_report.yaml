@@ -1,0 +1,11 @@
+total_cards: 160
+drive_from_search_filter: 160
+region_found: 0
+region_unknown: 160
+engine_status: unknown_mvp
+transmission_status: unknown_mvp
+quality_check:
+  drive_found_rate: 100.0
+  region_found_rate: 0.0
+note: 'MVP v1: engine/transmission будут добавлены через detail scraper в следующей
+  версии'
