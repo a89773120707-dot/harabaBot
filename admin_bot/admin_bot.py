@@ -16,6 +16,7 @@ from admin_bot.services.db_service import ensure_tables, ensure_owner_exists
 
 from admin_bot.handlers.start import start_handler, unknown_handler
 from admin_bot.handlers.menu import menu_callback_handler, user_callback_handler
+from admin_bot.handlers.learning import learning_callback_handler
 
 # Логирование
 logging.basicConfig(
@@ -45,9 +46,10 @@ def main():
     application.add_handler(CommandHandler("start", start_handler))
     application.add_handler(CommandHandler("menu", start_handler))  # /menu = /start
 
-    # Callback-кнопки (меню + действия с пользователями)
+    # Callback-кнопки (меню + действия с пользователями + обучение)
     application.add_handler(CallbackQueryHandler(menu_callback_handler, pattern="^(menu_|back_to_menu)"))
     application.add_handler(CallbackQueryHandler(user_callback_handler, pattern="^user_"))
+    application.add_handler(CallbackQueryHandler(learning_callback_handler, pattern="^(learning_|config_)"))
 
     # Неизвестные команды
     application.add_handler(MessageHandler(filters.COMMAND, unknown_handler))

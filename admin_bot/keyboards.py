@@ -20,6 +20,7 @@ def main_menu_keyboard() -> InlineKeyboardMarkup:
         ],
         [
             InlineKeyboardButton("🧾 Логи", callback_data="menu_logs"),
+            InlineKeyboardButton("🧠 Обучение", callback_data="menu_learning"),
         ],
     ]
     return InlineKeyboardMarkup(keyboard)
