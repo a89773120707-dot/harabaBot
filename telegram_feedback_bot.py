@@ -22,6 +22,10 @@ from base import RESULTS_DIR, log
 from feedback_store import save_feedback, register_recipient, get_all_recipients, disable_recipient
 from card_data_loader import load_card_data
 
+# RIS — Reaction Intelligence System
+from ris_reason_keyboard import reason_keyboard, reason_selected_keyboard
+from ris_reason_store import save_reaction_detail, get_last_feedback_id
+
 try:
     from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
     from telegram.ext import Application, CommandHandler, CallbackQueryHandler, MessageHandler, filters, ContextTypes
@@ -72,6 +76,10 @@ def load_telegram_config():
 # ──────────────────────────────────────────────────────────────
 
 pending_feedback = {}  # chat_id -> {"card_id": ..., "action": ..., "card_data": ...}
+
+# RIS — pending для выбора причины реакции
+# chat_id -> {"feedback_id": int, "action": str}
+pending_reason = {}
 
 # Загрузить данные карточек
 card_data = load_card_data()
@@ -168,6 +176,44 @@ if HAS_TELEGRAM:
         await update.message.reply_text("❌ Вы отключены от рассылки.")
 
 
+    async def reason_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
+        """Обработка выбора причины реакции (RIS)."""
+        query = update.callback_query
+        await query.answer()
+
+        chat_id = query.message.chat_id
+        callback_data = query.data  # e.g. "reason:good_price"
+
+        if callback_data == "reason:none":
+            # Менеджер выбрал "без причины"
+            pending_reason.pop(chat_id, None)
+            # Сразу просим комментарий
+            if chat_id in pending_feedback:
+                pf = pending_feedback[chat_id]
+                action_label = {"buy": "🟢 Купить", "watch": "🟡 Посмотреть", "skip": "🔴 Скипнуть"}.get(pf["action"], pf["action"])
+                await query.edit_message_text(
+                    f"✍️ {action_label}\n\nНапиши комментарий (или «-» если без комментария):",
+                    reply_to_message_id=query.message.message_id,
+                )
+            return
+
+        if callback_data == "reason_done":
+            await query.edit_message_text("✅ Причина записана.")
+            return
+
+        # reason:CODE — сохранить причину, потом попросить комментарий
+        reason_code = callback_data.split(":", 1)[1]
+        pending_reason[chat_id] = reason_code
+        log.info(f"RIS: pending reason={reason_code} for chat={chat_id}")
+
+        if chat_id in pending_feedback:
+            pf = pending_feedback[chat_id]
+            action_label = {"buy": "🟢 Купить", "watch": "🟡 Посмотреть", "skip": "🔴 Скипнуть"}.get(pf["action"], pf["action"])
+            await query.edit_message_text(
+                f"✅ Причина записана.\n\n✍️ {action_label}\nНапиши комментарий (или «-» если без комментария):",
+                reply_to_message_id=query.message.message_id,
+            )
+
     async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Обработка нажатия inline кнопки."""
         query = update.callback_query
@@ -175,7 +221,9 @@ if HAS_TELEGRAM:
 
         callback_data = query.data  # e.g. "buy:173295809"
 
-        # Кнопка помощи из /start
+        # Пропускаем reason: — они обработаны в reason_handler
+        if callback_data.startswith("reason:"):
+            return
         if callback_data == "help_cmd":
             await help_command(update, context)
             return
@@ -304,10 +352,10 @@ if HAS_TELEGRAM:
         # Убрать кнопки
         await query.edit_message_reply_markup(reply_markup=None)
 
-        # Попросить комментарий — ОТВЕТОМ на сообщение с карточкой
+        # RIS — показать кнопки выбора причины
         await query.message.reply_text(
-            f"✍️ {action_label}\n\n"
-            f"Напиши комментарий (или «-» если без комментария):",
+            f"📋 {action_label}\n\nВыбери причину:",
+            reply_markup=reason_keyboard(action),
             reply_to_message_id=query.message.message_id,
         )
 
@@ -374,6 +422,14 @@ if HAS_TELEGRAM:
 
         save_feedback(feedback_card, action_map.get(action, action), comment)
 
+        # RIS — сохранить reason_code
+        reason_code = pending_reason.pop(chat_id, None)
+        if reason_code:
+            last_id = get_last_feedback_id()
+            if last_id > 0:
+                save_reaction_detail(last_id, reason_code)
+                log.info(f"RIS: reason_code={reason_code} saved for feedback_id={last_id}")
+
         title = card.get("title", "Unknown")
         await update.message.reply_text(
             f"✅ Записано!\n\n"
@@ -408,6 +464,7 @@ if HAS_TELEGRAM:
         app.add_handler(CommandHandler("register_manager", register_manager))
         app.add_handler(CommandHandler("recipients", show_recipients))
         app.add_handler(CommandHandler("disable_me", disable_me))
+        app.add_handler(CallbackQueryHandler(reason_handler, pattern="^reason:"))
         app.add_handler(CallbackQueryHandler(button_handler))
         app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, text_handler))
 
