@@ -176,43 +176,184 @@ if HAS_TELEGRAM:
         await update.message.reply_text("❌ Вы отключены от рассылки.")
 
 
+    # ──────────────────────────────────────────────────────────────
+    # RIS helpers
+    # ──────────────────────────────────────────────────────────────
+
+    def _get_reason_title(reason_code: str) -> str:
+        """Получить читаемое название причины."""
+        titles = {
+            "good_price": "Хорошая цена",
+            "good_condition": "Хорошее состояние",
+            "low_mileage": "Небольшой пробег",
+            "few_owners": "Мало владельцев",
+            "good_history": "Хорошая история",
+            "good_equipment": "Хорошая комплектация",
+            "liquid_model": "Ликвидная модель",
+            "good_region": "Хороший регион",
+            "review_other": "Другое",
+            "high_price": "Высокая цена",
+            "high_mileage": "Большой пробег",
+            "many_owners": "Много владельцев",
+            "bad_color": "Не нравится цвет",
+            "poor_equipment": "Слабая комплектация",
+            "history_questions": "Есть вопросы по истории",
+            "bad_modification": "Неудачная модификация",
+            "bad_region": "Неудобный регион",
+            "need_more_info": "Нужно изучить подробнее",
+            "think_other": "Другое",
+            "not_my_model": "Не моя модель",
+            "not_my_segment": "Не мой сегмент",
+            "too_expensive": "Слишком дорого",
+            "too_mileage": "Слишком большой пробег",
+            "bad_condition": "Плохое состояние",
+            "legal_risk": "Юридические риски",
+            "illiquid": "Неликвид",
+            "skip_other": "Другое",
+        }
+        return titles.get(reason_code, reason_code)
+
+
+    def _save_feedback_for_chat(chat_id: int, pf: dict, user) -> None:
+        """Сохранить feedback из pending_feedback."""
+        from feedback_store import save_feedback
+        action_map = {"review": "review", "think": "think", "skip": "skip"}
+        card = pf["card_data"]
+
+        recipients = get_all_recipients()
+        my_role = "viewer"
+        for r in recipients:
+            if r["chat_id"] == str(chat_id):
+                my_role = r["role"]
+                break
+
+        feedback_card = {
+            "card_id": card.get("card_id", pf["card_id"]),
+            "url": card.get("url", ""),
+            "model_id": card.get("model_id", ""),
+            "title": card.get("title", ""),
+            "price": card.get("price", 0),
+            "mileage": card.get("mileage", 0),
+            "engine": card.get("engine", "unknown"),
+            "transmission": card.get("transmission", "unknown"),
+            "drive": card.get("drive", "unknown"),
+            "region": card.get("region", "unknown"),
+            "owners": card.get("owners", "unknown"),
+            "legal_restrictions": card.get("legal_restrictions", "unknown"),
+            "autoteka_status": card.get("autoteka_status", "unknown"),
+            "score": card.get("score", 0),
+            "telegram_status": card.get("decision", ""),
+            "price_status": card.get("price_status", ""),
+            "price_score": card.get("price_score", 0),
+            "mileage_score": card.get("mileage_score", 0),
+            "engine_score": card.get("engine_score", 0),
+            "transmission_score": card.get("transmission_score", 0),
+            "equipment_score": card.get("equipment_score", 0),
+            "photo_url": card.get("photo_url", ""),
+            "photo_count": card.get("photo_count", 0),
+            "full_location": card.get("full_location", ""),
+            "telegram_chat_id": str(chat_id),
+            "telegram_user_id": str(user.id),
+            "telegram_username": user.username or "",
+            "reviewer_role": my_role,
+        }
+        save_feedback(feedback_card, action_map.get(pf["action"], pf["action"]), "-")
+        log.info(f"RIS: feedback saved for card_id={pf['card_id']}, action={pf['action']}")
+
+
     async def reason_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Обработка выбора причины реакции (RIS)."""
+        from ris_reason_store import needs_comment, save_reaction_detail, get_last_feedback_id
+        from ris_reason_keyboard import reason_keyboard, REACTION_PROMPTS
+
         query = update.callback_query
         await query.answer()
 
-        chat_id = query.message.chat_id
-        callback_data = query.data  # e.g. "reason:good_price"
+        try:
+            chat_id = query.message.chat_id
+            callback_data = query.data
 
-        if callback_data == "reason:none":
-            # Менеджер выбрал "без причины"
-            pending_reason.pop(chat_id, None)
-            # Сразу просим комментарий
-            if chat_id in pending_feedback:
-                pf = pending_feedback[chat_id]
-                action_label = {"review": "👀 Посмотреть", "think": "🤔 Подумать", "skip": "⏭ Скип"}.get(pf["action"], pf["action"])
-                await query.edit_message_text(
-                    f"✍️ {action_label}\n\nНапиши комментарий (или «-» если без комментария):",
-                    reply_to_message_id=query.message.message_id,
-                )
-            return
+            log.info(f"RIS: callback={callback_data}, chat={chat_id}")
 
-        if callback_data == "reason_done":
-            await query.edit_message_text("✅ Причина записана.")
-            return
+            # Toggle: показать основные причины
+            if callback_data.startswith("reasons_main:"):
+                action = callback_data.split(":", 1)[1]
+                prompt = REACTION_PROMPTS.get(action, "Выбери причину:")
+                await query.edit_message_text(prompt, reply_markup=reason_keyboard(action, show_extra=False))
+                return
 
-        # reason:CODE — сохранить причину, потом попросить комментарий
-        reason_code = callback_data.split(":", 1)[1]
-        pending_reason[chat_id] = reason_code
-        log.info(f"RIS: pending reason={reason_code} for chat={chat_id}")
+            # Toggle: показать дополнительные причины
+            if callback_data.startswith("reasons_extra:"):
+                action = callback_data.split(":", 1)[1]
+                await query.edit_message_text("➕ Дополнительные причины:", reply_markup=reason_keyboard(action, show_extra=True))
+                return
 
-        if chat_id in pending_feedback:
+            # 💬 Написать комментарий — сразу просим комментарий
+            if callback_data == "reason:comment":
+                if chat_id in pending_feedback:
+                    pf = pending_feedback[chat_id]
+                    action_label = {"review": "👀 Посмотреть", "think": "🤔 Подумать", "skip": "⏭ Скип"}.get(pf["action"], pf["action"])
+                    # Сохраняем pending_reason как "comment" чтобы пометить что это пользовательский комментарий
+                    pending_reason[chat_id] = "comment"
+                    await query.edit_message_text("✍️ Напиши комментарий:")
+                    await query.message.reply_text(
+                        f"✍️ {action_label}\nНапиши комментарий (или «-» если передумал):",
+                        reply_to_message_id=query.message.message_id,
+                    )
+                return
+
+            if callback_data == "reason:none":
+                if chat_id in pending_feedback:
+                    pending_feedback.pop(chat_id)
+                pending_reason.pop(chat_id, None)
+                await query.edit_message_text("✅ Реакция сохранена.")
+                return
+
+            if callback_data == "reason_done":
+                await query.edit_message_text("✅ Причина записана.")
+                return
+
+            reason_code = callback_data.split(":", 1)[1]
+
+            if chat_id not in pending_feedback:
+                await query.edit_message_text("❌ Ошибка: реакция не найдена.")
+                return
+
             pf = pending_feedback[chat_id]
             action_label = {"review": "👀 Посмотреть", "think": "🤔 Подумать", "skip": "⏭ Скип"}.get(pf["action"], pf["action"])
+
+            if needs_comment(reason_code):
+                pending_reason[chat_id] = reason_code
+                log.info(f"RIS: pending reason={reason_code} (need comment)")
+                await query.edit_message_text("✍️ Напиши комментарий:")
+                await query.message.reply_text(
+                    f"✍️ {action_label}\nНапиши комментарий (или «-» если без комментария):",
+                    reply_to_message_id=query.message.message_id,
+                )
+                return
+
+            # Стандартная причина — сразу сохраняем
+            pending_reason[chat_id] = reason_code
+            _save_feedback_for_chat(chat_id, pf, update.effective_user)
+
+            last_id = get_last_feedback_id()
+            if last_id > 0:
+                save_reaction_detail(last_id, reason_code)
+                log.info(f"RIS: reason_code={reason_code} saved for feedback_id={last_id}")
+
+            pending_feedback.pop(chat_id, None)
+            pending_reason.pop(chat_id, None)
+
+            reason_title = _get_reason_title(reason_code)
             await query.edit_message_text(
-                f"✅ Причина записана.\n\n✍️ {action_label}\nНапиши комментарий (или «-» если без комментария):",
-                reply_to_message_id=query.message.message_id,
+                f"✅ Реакция сохранена\n\n"
+                f"Тип: {action_label}\n"
+                f"Причина: {reason_title}"
             )
+
+        except Exception as e:
+            log.error(f"RIS reason_handler ERROR: {e}", exc_info=True)
+            await query.edit_message_text(f"❌ Ошибка: {e}")
 
     async def button_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Обработка нажатия inline кнопки."""
@@ -352,9 +493,11 @@ if HAS_TELEGRAM:
         # Убрать кнопки
         await query.edit_message_reply_markup(reply_markup=None)
 
-        # RIS — показать кнопки выбора причины
+        # RIS — показать кнопки выбора причины с улучшенным промптом
+        from ris_reason_keyboard import REACTION_PROMPTS
+        prompt = REACTION_PROMPTS.get(action, f"📋 {action_label}\n\nВыбери причину:")
         await query.message.reply_text(
-            f"📋 {action_label}\n\nВыбери причину:",
+            prompt,
             reply_markup=reason_keyboard(action),
             reply_to_message_id=query.message.message_id,
         )
