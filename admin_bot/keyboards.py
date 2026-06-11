@@ -30,7 +30,10 @@ def users_list_keyboard(users: list[dict]) -> InlineKeyboardMarkup:
     keyboard = []
     for u in users:
         status_icon = {"active": "✅", "paused": "⏸", "disabled": "❌", "pending": "⏳"}.get(u["status"], "?")
-        label = f"{status_icon} {u.get('username', u['telegram_id'])} ({u['status']})"
+        display_name = u.get("username") or u.get("first_name") or str(u["telegram_id"])
+        if u.get("username"):
+            display_name = f"@{display_name}"
+        label = f"{status_icon} {display_name} ({u['status']})"
         keyboard.append([InlineKeyboardButton(label, callback_data=f"user_detail:{u['telegram_id']}")])
     keyboard.append([InlineKeyboardButton("⬅️ Назад", callback_data="back_to_menu")])
     return InlineKeyboardMarkup(keyboard)

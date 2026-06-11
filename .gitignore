@@ -5,6 +5,10 @@ data/state.json
 # Database
 *.db
 
+# Exports and backups
+exports/
+backups/
+
 # Logs
 *.log
 logs/
