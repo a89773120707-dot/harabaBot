@@ -1,48 +1,75 @@
-"""Inline-кнопки для выбора причины реакции."""
+"""Inline-кнопки для выбора причины реакции — Feedback V2.
+
+Реакции: 👀 review, 🤔 think, ⏭ skip
+"""
 
 from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 
 
 REASONS_BY_TYPE = {
-    "buy": [
+    "review": [
         [
             InlineKeyboardButton("💰 Хорошая цена", callback_data="reason:good_price"),
-            InlineKeyboardButton("📏 Низкий пробег", callback_data="reason:good_mileage"),
+            InlineKeyboardButton("🚗 Хорошее состояние", callback_data="reason:good_condition"),
         ],
         [
-            InlineKeyboardButton("⚙️ Комплектация", callback_data="reason:good_equipment"),
-            InlineKeyboardButton("📍 Регион", callback_data="reason:good_region"),
+            InlineKeyboardButton("📉 Небольшой пробег", callback_data="reason:low_mileage"),
+            InlineKeyboardButton("👤 Мало владельцев", callback_data="reason:few_owners"),
         ],
         [
-            InlineKeyboardButton("🚗 Модель", callback_data="reason:good_model"),
-            InlineKeyboardButton("📞 Звонить сейчас", callback_data="reason:call_now"),
+            InlineKeyboardButton("📋 Хорошая история", callback_data="reason:good_history"),
+            InlineKeyboardButton("⚙ Хорошая комплектация", callback_data="reason:good_equipment"),
+        ],
+        [
+            InlineKeyboardButton("🔥 Ликвидная модель", callback_data="reason:liquid_model"),
+            InlineKeyboardButton("📍 Хороший регион", callback_data="reason:good_region"),
+        ],
+        [
+            InlineKeyboardButton("⭐ Другое", callback_data="reason:review_other"),
+        ],
+    ],
+    "think": [
+        [
+            InlineKeyboardButton("💸 Высокая цена", callback_data="reason:high_price"),
+            InlineKeyboardButton("📈 Большой пробег", callback_data="reason:high_mileage"),
+        ],
+        [
+            InlineKeyboardButton("👥 Много владельцев", callback_data="reason:many_owners"),
+            InlineKeyboardButton("🎨 Не нравится цвет", callback_data="reason:bad_color"),
+        ],
+        [
+            InlineKeyboardButton("⚙ Слабая комплектация", callback_data="reason:poor_equipment"),
+            InlineKeyboardButton("📋 Вопросы по истории", callback_data="reason:history_questions"),
+        ],
+        [
+            InlineKeyboardButton("🚗 Неудачная модификация", callback_data="reason:bad_modification"),
+            InlineKeyboardButton("📍 Неудобный регион", callback_data="reason:bad_region"),
+        ],
+        [
+            InlineKeyboardButton("❓ Нужно изучить подробнее", callback_data="reason:need_more_info"),
+        ],
+        [
+            InlineKeyboardButton("⭐ Другое", callback_data="reason:think_other"),
         ],
     ],
     "skip": [
         [
-            InlineKeyboardButton("💸 Дорого", callback_data="reason:expensive"),
-            InlineKeyboardButton("📏 Большой пробег", callback_data="reason:high_mileage"),
+            InlineKeyboardButton("❌ Не моя модель", callback_data="reason:not_my_model"),
+            InlineKeyboardButton("❌ Не мой сегмент", callback_data="reason:not_my_segment"),
         ],
         [
-            InlineKeyboardButton("⚙️ Плохая комплектация", callback_data="reason:bad_equipment"),
-            InlineKeyboardButton("📍 Неудобный регион", callback_data="reason:bad_region"),
+            InlineKeyboardButton("❌ Слишком дорого", callback_data="reason:too_expensive"),
+            InlineKeyboardButton("❌ Слишком большой пробег", callback_data="reason:too_mileage"),
         ],
         [
-            InlineKeyboardButton("🚗 Плохая модель", callback_data="reason:bad_model"),
-            InlineKeyboardButton("⚖️ Юр. риски", callback_data="reason:legal_risk"),
+            InlineKeyboardButton("❌ Плохое состояние", callback_data="reason:bad_condition"),
+            InlineKeyboardButton("❌ Юр. риски", callback_data="reason:legal_risk"),
         ],
         [
-            InlineKeyboardButton("📉 Низкая ликвидность", callback_data="reason:low_liquidity"),
-        ],
-    ],
-    "watch": [
-        [
-            InlineKeyboardButton("💎 Редкое предложение", callback_data="reason:rare_offer"),
-            InlineKeyboardButton("📉 Ниже рынка", callback_data="reason:below_market"),
+            InlineKeyboardButton("❌ Неликвид", callback_data="reason:illiquid"),
         ],
         [
-            InlineKeyboardButton("💰 Высокая маржа", callback_data="reason:high_margin"),
-            InlineKeyboardButton("📞 Срочно звонить", callback_data="reason:urgent_call"),
+            InlineKeyboardButton("⭐ Другое", callback_data="reason:skip_other"),
         ],
     ],
 }
@@ -51,7 +78,7 @@ REASONS_BY_TYPE = {
 def reason_keyboard(action: str) -> InlineKeyboardMarkup:
     """Клавиатура с причинами для типа реакции."""
     buttons = REASONS_BY_TYPE.get(action, [])
-    # Кнопка пропуска
+    # Кнопка пропуска выбора причины
     buttons.append([InlineKeyboardButton("⏭ Без причины", callback_data="reason:none")])
     return InlineKeyboardMarkup(buttons)
 

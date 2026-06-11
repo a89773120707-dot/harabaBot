@@ -179,13 +179,13 @@ def load_audited_candidates(path: str) -> list:
 # ──────────────────────────────────────────────────────────────
 
 def build_inline_keyboard(card_id: str, photo_count: int = 0, has_description: bool = True):
-    """Создать inline клавиатуру: 🟢🟡 сверху, 🔴📖📷 снизу."""
+    """Создать inline клавиатуру: 👀🤔 сверху, ⏭📖📷 снизу."""
     row1 = [
-        InlineKeyboardButton("🟢 Купить", callback_data=f"buy:{card_id}"),
-        InlineKeyboardButton("🟡 Посмотреть", callback_data=f"watch:{card_id}"),
+        InlineKeyboardButton("👀 Посмотреть", callback_data=f"review:{card_id}"),
+        InlineKeyboardButton("🤔 Подумать", callback_data=f"think:{card_id}"),
     ]
     row2 = [
-        InlineKeyboardButton("🔴 Скипнуть", callback_data=f"skip:{card_id}"),
+        InlineKeyboardButton("⏭ Скип", callback_data=f"skip:{card_id}"),
     ]
     if has_description:
         row2.append(InlineKeyboardButton("📖 Описание", callback_data=f"desc:{card_id}"))

@@ -190,7 +190,7 @@ if HAS_TELEGRAM:
             # Сразу просим комментарий
             if chat_id in pending_feedback:
                 pf = pending_feedback[chat_id]
-                action_label = {"buy": "🟢 Купить", "watch": "🟡 Посмотреть", "skip": "🔴 Скипнуть"}.get(pf["action"], pf["action"])
+                action_label = {"review": "👀 Посмотреть", "think": "🤔 Подумать", "skip": "⏭ Скип"}.get(pf["action"], pf["action"])
                 await query.edit_message_text(
                     f"✍️ {action_label}\n\nНапиши комментарий (или «-» если без комментария):",
                     reply_to_message_id=query.message.message_id,
@@ -208,7 +208,7 @@ if HAS_TELEGRAM:
 
         if chat_id in pending_feedback:
             pf = pending_feedback[chat_id]
-            action_label = {"buy": "🟢 Купить", "watch": "🟡 Посмотреть", "skip": "🔴 Скипнуть"}.get(pf["action"], pf["action"])
+            action_label = {"review": "👀 Посмотреть", "think": "🤔 Подумать", "skip": "⏭ Скип"}.get(pf["action"], pf["action"])
             await query.edit_message_text(
                 f"✅ Причина записана.\n\n✍️ {action_label}\nНапиши комментарий (или «-» если без комментария):",
                 reply_to_message_id=query.message.message_id,
@@ -305,9 +305,9 @@ if HAS_TELEGRAM:
             return
 
         action_labels = {
-            "buy": "🟢 Купить",
-            "watch": "🟡 Посмотреть",
-            "skip": "🔴 Скипнуть",
+            "review": "👀 Посмотреть",
+            "think": "🤔 Подумать",
+            "skip": "⏭ Скип",
         }
         action_label = action_labels.get(action, action)
 
@@ -384,8 +384,8 @@ if HAS_TELEGRAM:
                 break
 
         action_map = {
-            "buy": "buy",
-            "watch": "watch",
+            "review": "review",
+            "think": "think",
             "skip": "skip",
         }
 
