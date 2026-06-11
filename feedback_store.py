@@ -527,11 +527,26 @@ def register_recipient(chat_id, user_id="", username="", first_name="", role="ma
 
 
 def get_enabled_recipients():
-    """Получить всех активных получателей."""
+    """Получить всех активных получателей.
+
+    Учитывает telegram_users.status:
+    - status='active' → получает карточки
+    - status='paused'/'disabled'/'pending' → НЕ получает
+
+    Backward compatibility: если telegram_users.status=NULL или
+    telegram_recipients.enabled=0, то НЕ отправляем.
+    """
     init_db()
     conn = get_conn()
     c = conn.cursor()
-    c.execute("SELECT chat_id, user_id, username, first_name, role FROM telegram_recipients WHERE enabled=1 ORDER BY role")
+    c.execute("""
+        SELECT r.chat_id, r.user_id, r.username, r.first_name, r.role
+        FROM telegram_recipients r
+        LEFT JOIN telegram_users u ON CAST(r.chat_id AS INTEGER) = u.telegram_id
+        WHERE r.enabled = 1
+          AND (u.status IS NULL OR u.status = 'active')
+        ORDER BY r.role
+    """)
     rows = [dict(row) for row in c.fetchall()]
     conn.close()
     return rows
