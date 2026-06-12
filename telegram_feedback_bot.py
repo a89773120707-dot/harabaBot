@@ -250,15 +250,15 @@ if HAS_TELEGRAM:
             await update.message.reply_text(status_messages.get(result, "✅ Вы подключены."))
 
     async def show_recipients(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Показать список получателей."""
-        recipients = get_all_recipients()
+        """Показать список активных получателей."""
+        from feedback_store import get_enabled_recipients
+        recipients = get_enabled_recipients()
         if not recipients:
             await update.message.reply_text("Получателей пока нет.")
             return
-        lines = ["📋 Получатели:"]
+        lines = ["📋 Активные получатели:"]
         for r in recipients:
-            status = "✅" if r["enabled"] else "❌"
-            lines.append(f"{status} {r['role']}: {r.get('username','?')} (chat: {r['chat_id']})")
+            lines.append(f"✅ {r['role']}: {r.get('username','?')} (chat: {r['chat_id']})")
         await update.message.reply_text("\n".join(lines))
 
     async def disable_me(update: Update, context: ContextTypes.DEFAULT_TYPE):
