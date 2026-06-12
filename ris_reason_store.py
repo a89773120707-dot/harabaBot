@@ -10,6 +10,19 @@ from datetime import datetime
 
 DB_PATH = "results/feedback.db"
 
+# Причины, требующие комментарий (всё остальное — без комментария)
+REASONS_NEED_COMMENT = {
+    "review_other",
+    "think_other",
+    "skip_other",
+    "need_more_info",
+}
+
+
+def needs_comment(reason_code: str) -> bool:
+    """Нужен ли комментарий для этой причины."""
+    return reason_code in REASONS_NEED_COMMENT
+
 
 def save_reaction_detail(feedback_id: int, reason_code: str | None) -> None:
     """Сохранить reason_code для реакции.
@@ -36,7 +49,7 @@ def get_last_feedback_id() -> int:
     conn = sqlite3.connect(DB_PATH)
     row = conn.execute("SELECT MAX(id) as max_id FROM feedback").fetchone()
     conn.close()
-    return row["max_id"] if row and row["max_id"] else 0
+    return row[0] if row and row[0] else 0
 
 
 def get_reasons_for_action(action: str) -> list[dict]:
