@@ -14,12 +14,13 @@ telegram_feedback_bot.py — Блок 16.7: обработка нажатий к
 import json
 import os
 import sys
+import sqlite3
 import logging
 from pathlib import Path
 from datetime import datetime
 
 from base import RESULTS_DIR, log
-from feedback_store import save_feedback, register_recipient, get_all_recipients, disable_recipient
+from feedback_store import save_feedback, register_recipient, upsert_telegram_user, get_all_recipients, disable_recipient
 from card_data_loader import load_card_data
 
 # RIS — Reaction Intelligence System
@@ -81,6 +82,40 @@ pending_feedback = {}  # chat_id -> {"card_id": ..., "action": ..., "card_data":
 # chat_id -> {"feedback_id": int, "action": str}
 pending_reason = {}
 
+async def upsert_and_notify(user, role="manager", status="pending"):
+    """Upsert user into telegram_users and notify owner if new pending."""
+    import sqlite3
+    from pathlib import Path
+    from feedback_store import get_conn
+    from base import log
+
+    telegram_id = user.id
+    username = user.username or ""
+    first_name = user.first_name or ""
+    now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    conn = get_conn()
+    c = conn.cursor()
+
+    existing = c.execute(
+        "SELECT status FROM telegram_users WHERE telegram_id = ?",
+        (telegram_id,)
+    ).fetchone()
+
+    if not existing:
+        # NEW user → insert as pending
+        c.execute("""
+            INSERT INTO telegram_users (telegram_id, username, first_name, role, status, created_at, updated_at)
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (telegram_id, username, first_name, role, status, now, now))
+        conn.commit()
+        conn.close()
+        return "new"
+    else:
+        conn.close()
+        return existing["status"]
+
+
 # Загрузить данные карточек
 card_data = load_card_data()
 
@@ -91,21 +126,46 @@ card_data = load_card_data()
 
 if HAS_TELEGRAM:
     async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Команда /start."""
-        keyboard = [
-            [InlineKeyboardButton("📋 Команды", callback_data="help_cmd")],
-        ]
-        reply_markup = InlineKeyboardMarkup(keyboard)
-        await update.message.reply_text(
-            "🚗 Haraba Bot v1\n\n"
-            "Я отправляю карточки авто из Haraba.\n"
-            "Нажимай кнопки под каждой карточкой:\n"
-            "🟢 Купить — интересная\n"
-            "🟡 Посмотреть — может быть\n"
-            "🔴 Скипнуть — не интересно\n\n"
-            "После нажатия я попрошу комментарий.",
-            reply_markup=reply_markup
-        )
+        """Команда /start — авто-регистрация менеджеров."""
+        user = update.effective_user
+        telegram_id = user.id
+
+        result = await upsert_and_notify(user, role="manager")
+
+        if result == "new":
+            await update.message.reply_text(
+                f"✅ Заявка на подключение отправлена.\n\n"
+                f"👤 {user.first_name or 'Пользователь'}"
+                f"{' @' + user.username if user.username else ''}\n"
+                f"🆔 ID: {telegram_id}\n\n"
+                f"Ожидайте подтверждения администратора."
+            )
+            # Уведомить owner
+            OWNER_ID = 8992376203
+            try:
+                await context.bot.send_message(
+                    chat_id=OWNER_ID,
+                    text=(
+                        f"🆕 Новый пользователь ожидает подтверждения:\n\n"
+                        f"👤 {user.first_name or 'Пользователь'}"
+                        f"{' @' + user.username if user.username else ''}\n"
+                        f"🆔 ID: {telegram_id}\n\n"
+                        f"Откройте админ-бот → 👥 Менеджеры → Approve"
+                    )
+                )
+            except Exception as e:
+                log.warning(f"Не удалось уведомить owner: {e}")
+            return
+
+        status_messages = {
+            "pending": "⏳ Ваша заявка уже ожидает подтверждения.",
+            "active": "✅ Вы уже подключены к рассылке.",
+            "paused": "⏸ Вы временно отключены от рассылки. Обратитесь к администратору.",
+            "disabled": "⛔ Доступ отключён. Обратитесь к администратору.",
+        }
+
+        msg = status_messages.get(result, "✅ Вы подключены.")
+        await update.message.reply_text(msg)
 
     async def help_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Команда /help и callback кнопки."""
@@ -132,30 +192,62 @@ if HAS_TELEGRAM:
             await update.message.reply_text(help_text)
 
     async def register_owner(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Зарегистрировать как владельца."""
-        chat_id = update.message.chat_id
-        user = update.message.from_user
-        register_recipient(
-            chat_id=str(chat_id),
-            user_id=str(user.id),
-            username=user.username or "",
-            first_name=user.first_name or "",
-            role="owner"
-        )
+        """Зарегистрировать как владельца (только для owner_id из .env)."""
+        user = update.effective_user
+        telegram_id = user.id
+
+        # Только owner_id может зарегистрироваться как owner
+        OWNER_ID = 8992376203
+        if telegram_id != OWNER_ID:
+            await update.message.reply_text("⛔ Эта команда только для владельца.")
+            return
+
+        # Upsert as owner, always active
+        from feedback_store import get_conn
+        conn = get_conn()
+        c = conn.cursor()
+        now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        existing = c.execute(
+            "SELECT id FROM telegram_users WHERE telegram_id = ?",
+            (telegram_id,)
+        ).fetchone()
+
+        if not existing:
+            c.execute("""
+                INSERT INTO telegram_users (telegram_id, username, first_name, role, status, created_at, updated_at)
+                VALUES (?, ?, ?, ?, 'active', ?, ?)
+            """, (telegram_id, user.username or "", user.first_name or "", "owner", now, now))
+        else:
+            c.execute("""
+                UPDATE telegram_users SET role='owner', status='active',
+                    username = COALESCE(NULLIF(?,''), username),
+                    first_name = COALESCE(NULLIF(?,''), first_name),
+                    updated_at = ?
+                WHERE telegram_id = ?
+            """, (user.username or "", user.first_name or "", now, telegram_id))
+
+        conn.commit()
+        conn.close()
         await update.message.reply_text("✅ Владелец подключён!")
 
     async def register_manager(update: Update, context: ContextTypes.DEFAULT_TYPE):
-        """Зарегистрировать как менеджера."""
-        chat_id = update.message.chat_id
-        user = update.message.from_user
-        register_recipient(
-            chat_id=str(chat_id),
-            user_id=str(user.id),
-            username=user.username or "",
-            first_name=user.first_name or "",
-            role="manager"
-        )
-        await update.message.reply_text("✅ Менеджер подключён!")
+        """Зарегистрировать как менеджера → status=pending."""
+        user = update.effective_user
+        result = await upsert_and_notify(user, role="manager", status="pending")
+
+        if result == "new":
+            await update.message.reply_text(
+                f"✅ Заявка на подключение отправлена.\n"
+                f"Ожидайте подтверждения администратора."
+            )
+        else:
+            status_messages = {
+                "pending": "⏳ Ваша заявка уже ожидает подтверждения.",
+                "active": "✅ Вы уже подключены к рассылке.",
+                "paused": "⏸ Вы временно отключены.",
+                "disabled": "⛔ Доступ отключён.",
+            }
+            await update.message.reply_text(status_messages.get(result, "✅ Вы подключены."))
 
     async def show_recipients(update: Update, context: ContextTypes.DEFAULT_TYPE):
         """Показать список получателей."""
@@ -589,15 +681,15 @@ if HAS_TELEGRAM:
         log.info("Запускаю Feedback Bot...")
         log.info(f"Chat ID: {chat_id}")
 
-        # Авто-регистрация owner из .env
-        register_recipient(
-            chat_id=str(chat_id),
-            user_id="",
+        # Авто-регистрация owner из .env (upsert, не перезаписывает status)
+        upsert_telegram_user(
+            telegram_id=int(chat_id),
             username="",
             first_name="",
-            role="owner"
+            role="owner",
+            status="active",
         )
-        log.info(f"Owner зарегистрирован: chat_id={chat_id}")
+        log.info(f"Owner обеспечен: chat_id={chat_id}")
 
         app = Application.builder().token(bot_token).build()
 

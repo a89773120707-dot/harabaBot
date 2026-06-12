@@ -507,45 +507,92 @@ def reset_sent_ads():
 
 
 # ──────────────────────────────────────────────────────────────
-# Telegram Recipients — Multi-recipient support
+# Telegram Users — single source of truth (telegram_users table)
 # ──────────────────────────────────────────────────────────────
 
-def register_recipient(chat_id, user_id="", username="", first_name="", role="manager"):
-    """Зарегистрировать получателя."""
+OWNER_ID = 8992376203
+
+
+def upsert_telegram_user(telegram_id, username="", first_name="", role="manager", status="active"):
+    """Upsert into telegram_users. If exists, only update username/first_name (never status)."""
     init_db()
     conn = get_conn()
     c = conn.cursor()
     now = datetime.now().isoformat()
 
-    c.execute("""
-        INSERT OR REPLACE INTO telegram_recipients (chat_id, user_id, username, first_name, role, enabled, created_at)
-        VALUES (?, ?, ?, ?, ?, 1, COALESCE((SELECT created_at FROM telegram_recipients WHERE chat_id=?), ?))
-    """, (chat_id, user_id, username, first_name, role, chat_id, now))
+    c.execute("SELECT telegram_id FROM telegram_users WHERE telegram_id = ?", (int(telegram_id),))
+    existing = c.fetchone()
+
+    if not existing:
+        c.execute(
+            """INSERT INTO telegram_users (telegram_id, username, first_name, role, status, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?)""",
+            (int(telegram_id), username, first_name, role, status, now, now),
+        )
+    else:
+        c.execute(
+            """UPDATE telegram_users
+               SET username = COALESCE(NULLIF(?, ''), username),
+                   first_name = COALESCE(NULLIF(?, ''), first_name),
+                   updated_at = ?
+               WHERE telegram_id = ?""",
+            (username, first_name, now, int(telegram_id)),
+        )
+
+    conn.commit()
+    conn.close()
+
+
+def register_recipient(chat_id, user_id="", username="", first_name="", role="manager"):
+    """Зарегистрировать получателя в telegram_users.
+
+    Если пользователя нет — INSERT с status='active' (backward compat для owner из .env).
+    Если уже есть — UPDATE только username/first_name (статус НЕ менять).
+    telegram_recipients — legacy, не используется.
+    """
+    init_db()
+    conn = get_conn()
+    c = conn.cursor()
+    now = datetime.now().isoformat()
+    telegram_id = int(chat_id)
+
+    existing = c.execute(
+        "SELECT id FROM telegram_users WHERE telegram_id = ?",
+        (telegram_id,)
+    ).fetchone()
+
+    if not existing:
+        c.execute("""
+            INSERT INTO telegram_users (telegram_id, username, first_name, role, status, created_at, updated_at)
+            VALUES (?, ?, ?, ?, 'active', ?, ?)
+        """, (telegram_id, username, first_name, role, now, now))
+    else:
+        c.execute("""
+            UPDATE telegram_users
+            SET username = COALESCE(NULLIF(?,''), username),
+                first_name = COALESCE(NULLIF(?,''), first_name),
+                updated_at = ?
+            WHERE telegram_id = ?
+        """, (username, first_name, now, telegram_id))
 
     conn.commit()
     conn.close()
 
 
 def get_enabled_recipients():
-    """Получить всех активных получателей.
+    """Получить всех активных получателей из telegram_users.
 
-    Учитывает telegram_users.status:
-    - status='active' → получает карточки
-    - status='paused'/'disabled'/'pending' → НЕ получает
-
-    Backward compatibility: если telegram_users.status=NULL или
-    telegram_recipients.enabled=0, то НЕ отправляем.
+    telegram_users — единственный источник правды.
+    telegram_recipients — legacy, не используется.
     """
     init_db()
     conn = get_conn()
     c = conn.cursor()
     c.execute("""
-        SELECT r.chat_id, r.user_id, r.username, r.first_name, r.role
-        FROM telegram_recipients r
-        LEFT JOIN telegram_users u ON CAST(r.chat_id AS INTEGER) = u.telegram_id
-        WHERE r.enabled = 1
-          AND (u.status IS NULL OR u.status = 'active')
-        ORDER BY r.role
+        SELECT telegram_id as chat_id, username, first_name, role
+        FROM telegram_users
+        WHERE status = 'active'
+        ORDER BY role
     """)
     rows = [dict(row) for row in c.fetchall()]
     conn.close()
@@ -553,21 +600,31 @@ def get_enabled_recipients():
 
 
 def disable_recipient(chat_id):
-    """Отключить получателя."""
+    """Отключить получателя — set status='disabled' in telegram_users."""
     init_db()
     conn = get_conn()
     c = conn.cursor()
-    c.execute("UPDATE telegram_recipients SET enabled=0 WHERE chat_id=?", (chat_id,))
+    telegram_id = int(chat_id)
+    now = datetime.now().isoformat()
+    c.execute(
+        "UPDATE telegram_users SET status='disabled', updated_at=? WHERE telegram_id=?",
+        (now, telegram_id)
+    )
     conn.commit()
     conn.close()
 
 
 def get_all_recipients():
-    """Получить всех получателей."""
+    """Получить всех получателей из telegram_users."""
     init_db()
     conn = get_conn()
     c = conn.cursor()
-    c.execute("SELECT chat_id, user_id, username, first_name, role, enabled, created_at FROM telegram_recipients")
+    c.execute("""
+        SELECT telegram_id as chat_id, username, first_name, role, status,
+               CASE WHEN status != 'disabled' THEN 1 ELSE 0 END as enabled
+        FROM telegram_users
+        ORDER BY role, telegram_id
+    """)
     rows = [dict(row) for row in c.fetchall()]
     conn.close()
     return rows
