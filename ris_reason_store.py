@@ -35,10 +35,15 @@ def save_reaction_detail(feedback_id: int, reason_code: str | None) -> None:
         return
 
     conn = sqlite3.connect(DB_PATH)
+
+    # FIX 7A: взять config_name из feedback по feedback_id
+    row = conn.execute("SELECT config_name FROM feedback WHERE id = ?", (feedback_id,)).fetchone()
+    config_name = row[0] if row and row[0] else "unknown"
+
     now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     conn.execute(
-        "INSERT INTO reaction_details (feedback_id, reason_code, created_at) VALUES (?, ?, ?)",
-        (feedback_id, reason_code, now)
+        "INSERT INTO reaction_details (feedback_id, reason_code, config_name, created_at) VALUES (?, ?, ?, ?)",
+        (feedback_id, reason_code, config_name, now)
     )
     conn.commit()
     conn.close()

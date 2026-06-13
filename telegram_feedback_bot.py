@@ -348,6 +348,7 @@ if HAS_TELEGRAM:
             "telegram_user_id": str(user.id),
             "telegram_username": user.username or "",
             "reviewer_role": my_role,
+            "config_name": card.get("config_name", ""),
         }
         save_feedback(feedback_card, action_map.get(pf["action"], pf["action"]), "-")
         log.info(f"RIS: feedback saved for card_id={pf['card_id']}, action={pf['action']}")
@@ -653,6 +654,7 @@ if HAS_TELEGRAM:
             "telegram_user_id": str(user.id),
             "telegram_username": user.username or "",
             "reviewer_role": my_role,
+            "config_name": card.get("config_name", ""),
         }
 
         save_feedback(feedback_card, action_map.get(action, action), comment)

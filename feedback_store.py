@@ -225,6 +225,20 @@ def init_db():
         log.info("Migrating sent_ads: adding config_name column")
         c.execute("ALTER TABLE sent_ads ADD COLUMN config_name TEXT")
 
+    # FIX 7A: Миграция — добавить config_name в feedback
+    c.execute("PRAGMA table_info(feedback)")
+    fb_cols = {row[1] for row in c.fetchall()}
+    if "config_name" not in fb_cols:
+        log.info("Migrating feedback: adding config_name column")
+        c.execute("ALTER TABLE feedback ADD COLUMN config_name TEXT")
+
+    # FIX 7A: Миграция — добавить config_name в reaction_details
+    c.execute("PRAGMA table_info(reaction_details)")
+    rd_cols = {row[1] for row in c.fetchall()}
+    if "config_name" not in rd_cols:
+        log.info("Migrating reaction_details: adding config_name column")
+        c.execute("ALTER TABLE reaction_details ADD COLUMN config_name TEXT")
+
     # feedback
     c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='feedback'")
     fb_exists = c.fetchone()
@@ -404,6 +418,16 @@ def save_feedback(card, action, comment=""):
     c = conn.cursor()
     now = datetime.now().isoformat()
 
+    # FIX 7A: определить config_name
+    config_name = card.get("config_name", "") or ""
+    if not config_name or config_name.lower() == "unknown":
+        # Lookup из sent_ads по card_id + chat_id
+        row = c.execute(
+            "SELECT config_name FROM sent_ads WHERE card_id = ? AND chat_id = ? ORDER BY first_sent_at DESC LIMIT 1",
+            (card.get("card_id", ""), card.get("telegram_chat_id", ""))
+        ).fetchone()
+        config_name = row[0] if row and row[0] else "unknown"
+
     c.execute("""
         INSERT INTO feedback (
             card_id, url, model_id, title, price, mileage,
@@ -414,8 +438,8 @@ def save_feedback(card, action, comment=""):
             transmission_score, equipment_score,
             photo_url, photo_count, full_location,
             telegram_chat_id, telegram_user_id, telegram_username, reviewer_role,
-            created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            config_name, created_at
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     """, (
         card.get("card_id", ""),
         card.get("url", ""),
@@ -447,6 +471,7 @@ def save_feedback(card, action, comment=""):
         card.get("telegram_user_id", ""),
         card.get("telegram_username", ""),
         card.get("reviewer_role", ""),
+        config_name,
         now,
     ))
     conn.commit()
