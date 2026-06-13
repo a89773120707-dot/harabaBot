@@ -18,7 +18,7 @@ import re
 from pathlib import Path
 from datetime import datetime
 
-from base import RESULTS_DIR
+from base import RESULTS_DIR, log
 
 DB_PATH = RESULTS_DIR / "feedback.db"
 
@@ -166,7 +166,7 @@ def init_db():
                 title, model_id, year, price, mileage, region,
                 first_sent_at, last_seen_at, last_sent_at, send_count
             )
-            SELECT 
+            SELECT
                 stable_car_key, COALESCE(chat_id, 'legacy'), card_id, url, mobile_url, haraba_id,
                 title, model_id, year, price, mileage, region,
                 first_sent_at, last_seen_at, last_sent_at, send_count
@@ -174,6 +174,10 @@ def init_db():
         """)
         c.execute("DROP TABLE IF EXISTS sent_ads_v3_old")
         conn.commit()
+
+        # Re-read columns after migration
+        c.execute("PRAGMA table_info(sent_ads)")
+        cols = {row[1] for row in c.fetchall()}
 
         if "stable_car_key" not in cols:
             # Миграция v1 -> v2
@@ -213,6 +217,13 @@ def init_db():
                     FROM sent_ads_v1_old
                 """)
             c.execute("DROP TABLE IF EXISTS sent_ads_v1_old")
+
+    # Блок 2: Миграция — добавить config_name в sent_ads
+    c.execute("PRAGMA table_info(sent_ads)")
+    sent_ads_cols = {row[1] for row in c.fetchall()}
+    if "config_name" not in sent_ads_cols:
+        log.info("Migrating sent_ads: adding config_name column")
+        c.execute("ALTER TABLE sent_ads ADD COLUMN config_name TEXT")
 
     # feedback
     c.execute("SELECT name FROM sqlite_master WHERE type='table' AND name='feedback'")
@@ -674,19 +685,20 @@ def mark_sent_with_chat_id(card, chat_id, status="new"):
     mobile_url = card.get("mobile_url", "")
     haraba_id = _extract_haraba_id(url) or _extract_haraba_id(mobile_url)
     card_id = card.get("card_id", "") or haraba_id
+    config_name = card.get("config_name", "unknown")
 
     if status == "new":
         c.execute("""
             INSERT OR IGNORE INTO sent_ads (
                 stable_car_key, card_id, url, mobile_url, haraba_id,
-                title, model_id, year, price, mileage, region, chat_id,
+                title, model_id, year, price, mileage, region, chat_id, config_name,
                 first_sent_at, last_seen_at, last_sent_at, send_count
-            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
+            ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 1)
         """, (
             stable_key, card_id, url, mobile_url, haraba_id,
             card.get("title", ""), card.get("model_id", ""),
             card.get("year", 0), card.get("price", 0),
-            card.get("mileage", 0), card.get("region", ""), str(chat_id),
+            card.get("mileage", 0), card.get("region", ""), str(chat_id), config_name,
             now, now, now,
         ))
     elif status == "price_drop":

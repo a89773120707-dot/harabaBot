@@ -138,6 +138,17 @@ def load_audited_candidates(path: str) -> list:
             model_id = match_card_to_model(norm, config)
             c["model_id"] = model_id
 
+            # Блок 2: сохранить config_name из audit (или вывести из model_rules)
+            if not c.get("config_name"):
+                if model_id:
+                    model_rules = get_model_by_id(config, model_id)
+                    if model_rules:
+                        c["config_name"] = f"{model_rules['brand']} {model_rules['model']}"
+                    else:
+                        c["config_name"] = "unknown"
+                else:
+                    c["config_name"] = "unknown"
+
             # Скоринг для price_context
             if model_id:
                 model_rules = get_model_by_id(config, model_id)

@@ -215,6 +215,14 @@ def step_audit():
         c["model_id"] = model_id
         model_rules = get_model_by_id(config, model_id) if model_id else None
 
+        # Блок 2: config_name — привязка карточки к конфигу
+        if model_rules:
+            c["config_name"] = f"{model_rules['brand']} {model_rules['model']}"
+        else:
+            c["config_name"] = "unknown"
+            if model_id:
+                log.warning(f"config_name=unknown: model_id={model_id} не найден в конфиге для карточки {cid}")
+
         if model_rules:
             price_r = score_price(c.get("price"), model_rules.get("price", {}))
             mileage_r = score_mileage(c.get("mileage"), model_rules.get("mileage", {}))

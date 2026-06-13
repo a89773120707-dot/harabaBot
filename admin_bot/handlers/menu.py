@@ -115,6 +115,12 @@ async def menu_callback_handler(update: Update, context: ContextTypes.DEFAULT_TY
         await safe_edit(query, text, reply_markup=back_keyboard())
         return
 
+    if data == "menu_learning":
+        # Перенаправить на learning handler
+        from admin_bot.handlers.learning import learning_callback_handler
+        await learning_callback_handler(update, context)
+        return
+
 
 async def user_callback_handler(update: Update, context: ContextTypes.DEFAULT_TYPE):
     """Обработка действий с пользователями."""
