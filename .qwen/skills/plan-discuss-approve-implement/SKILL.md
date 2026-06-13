@@ -16,6 +16,9 @@ updated_at: '2026-06-07T11:43:00.000Z'
 ## Rules
 
 - **NEVER write implementation code before explicit user approval**
+- **NEVER `git push` without explicit approval** — show commit message and files first, ask "пушим?"
+- **NEVER deploy to VPS without explicit approval** — show full deploy plan first, ask "деплоим?"
+- Push and deploy have blast radius — always get agreement before proceeding
 - Each implementation block should have its own detailed sub-plan (e.g. `BLOCK1_PLAN.md`)
 - Use agent mode (subagent calls) for all code implementation
 - Maintain a `QUESTIONS.md` file for open questions that need resolution across sessions

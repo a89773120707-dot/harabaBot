@@ -1,120 +1,116 @@
 ---
 name: haraba-server-deployment
-description: Procedure for deploying Haraba Mini pipeline and feedback bot to a Linux server (VPS)
+description: Procedure for deploying Haraba Mini pipeline and feedback bot to a Linux server (VPS) — includes git-based deploy, headless Playwright fix, systemd, cron, and multi-recipient feedback
 source: auto-skill
 extracted_at: '2026-06-09T16:50:00.000Z'
 ---
 
 # Haraba Mini — Server Deployment Procedure
 
+## Critical: Headless Mode for VPS
+
+**Problem:** On headless Linux servers (no GUI), Playwright fails with:
+```
+Missing X server or $DISPLAY
+Looks like you launched a headed browser without having a XServer running.
+```
+
+**Fix:** `session_manager.py` now defaults to `headless=True` on VPS:
+```python
+HEADLESS_DEFAULT = os.getenv("HEADLESS", "true").lower() == "true"
+
+def get_authenticated_page(headless: bool = None):
+    is_headless = headless if headless is not None else HEADLESS_DEFAULT
+    browser = p.chromium.launch(headless=is_headless)
+```
+
+**Result:**
+- **VPS:** runs headless automatically (no `$DISPLAY` needed)
+- **Local:** can override with `HEADLESS=false python script.py`
+- **`refresh_session_manual()`:** still forces `headless=False` (needs GUI for login)
+
+---
+
 ## Prerequisites
 
-- Linux server (Ubuntu 20.04+ recommended)
+- Linux server (Ubuntu 24.04+ recommended)
 - Python 3.10+ installed
 - SSH access
-- Haraba Mini project files ready for transfer
+- GitHub repo with project code
 
-## Step 1: Prepare Files (Local Machine)
-
-Create archive with these files:
-
-**Required:**
-```
-*.py                    # All Python scripts
-config/*.yaml           # Search configurations
-data/state.json         # Desktop Haraba session (CRITICAL)
-data/state_mobile.json  # Mobile session (if exists)
-.env                    # Telegram bot tokens (SECRET)
-results/feedback.db     # Feedback database (DO NOT LOSE)
-requirements.txt        # Python dependencies
-```
-
-**Verification script:**
-```bash
-python clear_and_check.py
-# Should show:
-# Feedback count: 0
-# Sent ads count: 0
-# Recipients: owner + manager (enabled=1)
-```
-
-## Step 2: Server Setup (Remote)
+## Step 1: Clone from GitHub (Remote)
 
 ```bash
-# SSH to server
 ssh user@server_ip
 
-# Create project directory
-mkdir -p /opt/haraba-mini
-mkdir -p /opt/haraba-mini/logs
-
-# Upload files (from local machine)
-scp -r haraba_deploy/* user@server_ip:/opt/haraba-mini/
-
-# Or use rsync for incremental
-rsync -avz --exclude='__pycache__' ./ user@server_ip:/opt/haraba-mini/
-```
-
-## Step 3: Install Dependencies
-
-```bash
-cd /opt/haraba-mini
+# Clone the repo
+cd ~
+git clone https://github.com/a89773120707-dot/harabaBot.git
+cd harabaBot
 
 # Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
 
-# Install Python packages
+# Install dependencies
 pip install -r requirements.txt
-
-# Install Playwright browsers (headless)
 playwright install chromium
-playwright install-deps  # System dependencies for Linux
+sudo playwright install-deps
 ```
 
-## Step 4: Verify Session
+## Step 2: Transfer Secret Files (Local → Remote)
 
-Create `check_server_session.py`:
+**These files are NOT in GitHub** — must be transferred manually via `scp`:
 
-```python
-from playwright.sync_api import sync_playwright
-from pathlib import Path
-
-STATE = Path("data/state.json")
-
-def check():
-    pw = sync_playwright().start()
-    browser = pw.chromium.launch(headless=True)
-    context = browser.new_context(storage_state=str(STATE))
-    page = context.new_page()
-    
-    try:
-        page.goto("https://haraba.ru/search", wait_until="domcontentloaded", timeout=15000)
-        body = page.inner_text("body", timeout=5000)
-        
-        if "войти" in body.lower() or "логин" in body.lower():
-            print("FAIL: Session expired, need re-auth")
-            return False
-        else:
-            print("OK: Session valid")
-            return True
-    except Exception as e:
-        print(f"ERROR: {e}")
-        return False
-    finally:
-        browser.close()
-        pw.stop()
-
-if __name__ == "__main__":
-    check()
-```
-
-Run:
 ```bash
-python check_server_session.py
+# From your local machine (PowerShell/CMD):
+scp .env user@server_ip:~/harabaBot/
+scp results/feedback.db user@server_ip:~/harabaBot/results/
+scp data/state.json user@server_ip:~/harabaBot/data/
 ```
 
-Expected output: `OK: Session valid`
+**Secret files audit (confirmed):**
+
+| FILE | PATH | SIZE | NOTES |
+|------|------|------|-------|
+| `.env` | `.env` | ~94 bytes | Telegram bot tokens |
+| `feedback.db` | `results/feedback.db` | ~45 KB | User reactions database |
+| `state.json` | `data/state.json` | ~707 KB | Playwright desktop session (CRITICAL) |
+
+**Do NOT transfer:** `data/state_backup.json` (old backup, 4 KB)
+
+## Step 3: Verify on Server
+
+```bash
+cd ~/harabaBot
+source .venv/bin/activate
+
+# Check secret files exist
+ls -lah .env results/feedback.db data/state.json
+
+# Check deploy readiness
+python deploy_check.py
+
+# Check Haraba session
+python check_server_session.py
+# Expected: "Session status: VALID"
+```
+
+## Step 4: Test Pipeline
+
+```bash
+# Dry-run (no sends)
+python run_daily_pipeline.py --dry-run --skip-collect
+
+# Single card test (sends to all recipients)
+python run_daily_pipeline.py --send --limit 1
+```
+
+**Expected for single send:**
+- Card sent to Owner (Telegram)
+- Card sent to Manager (Telegram)
+- Both see photo, buttons (🟢🟡🔴📖📷)
+- `results/feedback.db` gets new entries with `reviewer_role`
 
 ## Step 5: Setup Bot as Systemd Service
 
@@ -122,18 +118,18 @@ Create `/etc/systemd/system/haraba-bot.service`:
 
 ```ini
 [Unit]
-Description=Haraba Telegram Feedback Bot
+Description=Haraba Mini Telegram Feedback Bot
 After=network.target
 
 [Service]
 Type=simple
-User=ubuntu
-WorkingDirectory=/opt/haraba-mini
-ExecStart=/opt/haraba-mini/venv/bin/python telegram_feedback_bot.py
+User=haraba
+WorkingDirectory=/home/haraba/harabaBot
+ExecStart=/home/haraba/harabaBot/.venv/bin/python telegram_feedback_bot.py
 Restart=always
 RestartSec=10
-StandardOutput=append:/opt/haraba-mini/logs/bot.log
-StandardError=append:/opt/haraba-mini/logs/bot-error.log
+StandardOutput=append:/home/haraba/harabaBot/logs/bot.log
+StandardError=append:/home/haraba/harabaBot/logs/bot_error.log
 
 [Install]
 WantedBy=multi-user.target
@@ -147,96 +143,86 @@ sudo systemctl start haraba-bot
 sudo systemctl status haraba-bot
 ```
 
-Verify bot works:
-```bash
-# Send /help to bot from Telegram
-# Should receive command list
-```
-
 ## Step 6: Setup Pipeline Cron Job
 
-Create `/opt/haraba-mini/run_pipeline.sh`:
+Create `/home/haraba/harabaBot/run_pipeline.sh`:
 
 ```bash
 #!/bin/bash
-cd /opt/haraba-mini
-source venv/bin/activate
-python run_daily_pipeline.py --send --skip-collect >> logs/pipeline.log 2>&1
+cd /home/haraba/harabaBot
+source .venv/bin/activate
+python run_daily_pipeline.py --send >> logs/pipeline.log 2>&1
 ```
 
 Make executable:
 ```bash
-chmod +x /opt/haraba-mini/run_pipeline.sh
+chmod +x run_pipeline.sh
 ```
 
-Add to crontab (every 4 hours):
+Add to crontab (every 15 minutes):
 ```bash
 crontab -e
 ```
 
 Add line:
 ```cron
-0 */4 * * * /opt/haraba-mini/run_pipeline.sh
+*/15 * * * * cd /home/haraba/harabaBot && .venv/bin/python run_daily_pipeline.py --send >> logs/pipeline.log 2>&1
 ```
 
-## Step 7: Final QA
+**To change interval:**
+- Every hour: `0 * * * *`
+- Every 4 hours: `0 */4 * * *`
 
-Run these tests in order:
+## Step 7: Update Code on Server
 
-### Test 1: Dry-run
+When local changes are pushed to GitHub:
+
 ```bash
-python run_daily_pipeline.py --dry-run --skip-collect
-```
-Expected: Report created, no sends.
+cd ~/harabaBot
+source .venv/bin/activate
+git pull origin main
 
-### Test 2: Single send
-```bash
-python run_daily_pipeline.py --send --limit 1 --skip-collect
-```
-Expected:
-- Card sent to Owner
-- Card sent to Manager
-- Log shows `Sent: 2`
+# If dependencies changed:
+pip install -r requirements.txt
 
-### Test 3: Dedup
-```bash
-python run_daily_pipeline.py --send --limit 1 --skip-collect
-```
-Expected:
-- Log shows `skipped_duplicate` for both recipients
-- `Sent: 0`
+# If Playwright changed:
+playwright install chromium
 
-### Test 4: Service survival
-```bash
-sudo reboot
-# After reboot
-sudo systemctl status haraba-bot
+# Restart bot if code changed
+sudo systemctl restart haraba-bot
 ```
-Expected: `Active: active (running)`
+
+**⚠️ Common pitfall:** Multiple project folders on server (e.g., `harabaBot` and `harabaBot_code`). Always verify you're in the correct directory:
+```bash
+pwd
+grep "subprocess" run_daily_pipeline.py  # Should find subprocess, NOT run_pipeline import
+```
 
 ## Troubleshooting
+
+**"Missing X server" error:**
+- Ensure `session_manager.py` has `HEADLESS_DEFAULT = os.getenv("HEADLESS", "true")`
+- Verify no `headless=False` hardcoded in `get_authenticated_page()`
+
+**Session expired on server:**
+1. Re-auth locally: `python refresh_session.py` (opens GUI browser)
+2. Upload new session: `scp data/state.json user@server:~/harabaBot/data/`
+3. Restart: `sudo systemctl restart haraba-bot`
+
+**Pipeline stuck on Collect cards:**
+- `mobile_first_page_sampler.py` calls `get_authenticated_page()` — should use headless=True on VPS
+- Check `grep "headless" session_manager.py` shows HEADLESS_DEFAULT usage
+- The collector now runs via `subprocess` in `run_daily_pipeline.py` (not direct import)
 
 **Bot not responding:**
 ```bash
 sudo systemctl status haraba-bot
 sudo journalctl -u haraba-bot -n 50
-```
-
-**Session expired:**
-1. Re-auth on local machine with `login_wait.py`
-2. Upload new `data/state.json` to server
-3. Restart bot: `sudo systemctl restart haraba-bot`
-
-**Playwright fails on Linux:**
-```bash
-playwright install-deps
-# Or manually:
-sudo apt install libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 libgbm1 libpango-1.0-0 libcairo2 libasound2 libxshmfence1
+tail -f logs/bot_error.log
 ```
 
 **Database locked:**
 ```bash
-# Check no other process holds lock
 lsof results/feedback.db
 ```
 
@@ -244,11 +230,16 @@ lsof results/feedback.db
 
 Check logs:
 ```bash
-tail -f /opt/haraba-mini/logs/bot.log
-tail -f /opt/haraba-mini/logs/pipeline.log
+tail -f logs/bot.log
+tail -f logs/pipeline.log
 ```
 
 Check feedback count:
 ```bash
 python -c "import sqlite3; c=sqlite3.connect('results/feedback.db').cursor(); c.execute('SELECT COUNT(*) FROM feedback'); print(f'Reactions: {c.fetchone()[0]}')"
+```
+
+Check pipeline health:
+```bash
+cat logs/pipeline.log | grep -E "STEP|FAILED|SUMMARY" | tail -20
 ```

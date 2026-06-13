@@ -1,6 +1,6 @@
 ---
 name: telegram-feedback-v2-schema
-description: Feedback database schema v2 with 30+ fields for multi-recipient reaction tracking with full card context
+description: Feedback database schema v2 with 30+ fields, RIS tables (reaction_reasons, reaction_details), and review/think/skip reaction model
 source: auto-skill
 extracted_at: '2026-06-09T16:50:00.000Z'
 ---
@@ -11,19 +11,18 @@ extracted_at: '2026-06-09T16:50:00.000Z'
 
 Extended feedback table to support multi-recipient system with full card context preservation. Each reaction stores complete snapshot of the card state at time of reaction.
 
+**Feedback V2 (2026-06-11):** Reaction model changed from like/dislike/fire to review/think/skip with reason codes stored in separate tables.
+
 ## Schema
+
+### feedback table
 
 ```sql
 CREATE TABLE feedback (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
-    
-    -- Card identity
     card_id TEXT,
-    url TEXT,
     model_id TEXT,
     title TEXT,
-    
-    -- Car specs
     price INTEGER,
     mileage INTEGER,
     engine TEXT,
@@ -33,8 +32,6 @@ CREATE TABLE feedback (
     owners TEXT,
     legal_restrictions TEXT,
     autoteka_status TEXT,
-    
-    -- Scoring
     score INTEGER,
     telegram_status TEXT,
     price_status TEXT,
@@ -43,140 +40,109 @@ CREATE TABLE feedback (
     engine_score INTEGER,
     transmission_score INTEGER,
     equipment_score INTEGER,
-    
-    -- Media
     photo_url TEXT,
     photo_count INTEGER,
     full_location TEXT,
-    
-    -- Reaction
-    action TEXT,
+    action TEXT,          -- review / think / skip (was: buy/watch/skip/like/dislike/fire)
     comment TEXT,
-    
-    -- Reviewer identity (NEW in v2)
     telegram_chat_id TEXT,
     telegram_user_id TEXT,
     telegram_username TEXT,
     reviewer_role TEXT,
-    
-    -- Timestamp
     created_at TEXT
 )
 ```
 
-## Migration
+### reaction_reasons table (RIS)
 
-When adding new columns to existing database:
+Reference table mapping reason codes to reaction types:
 
-```python
-new_cols = [
-    ("telegram_chat_id", "TEXT"),
-    ("telegram_user_id", "TEXT"),
-    ("telegram_username", "TEXT"),
-    ("reviewer_role", "TEXT"),
-]
-
-c.execute("PRAGMA table_info(feedback)")
-existing = {row[1] for row in c.fetchall()}
-
-for col_name, col_type in new_cols:
-    if col_name not in existing:
-        c.execute(f"ALTER TABLE feedback ADD COLUMN {col_name} {col_type}")
-```
-
-## Saving Feedback
-
-```python
-def save_feedback(card, action, comment=""):
-    c.execute("""
-        INSERT INTO feedback (
-            card_id, url, model_id, title, price, mileage,
-            engine, transmission, drive, region, owners,
-            legal_restrictions, autoteka_status,
-            score, telegram_status, action, comment,
-            price_status, price_score, mileage_score, engine_score,
-            transmission_score, equipment_score,
-            photo_url, photo_count, full_location,
-            telegram_chat_id, telegram_user_id, telegram_username, reviewer_role,
-            created_at
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    """, (
-        card.get("card_id", ""),
-        # ... 29 more values ...
-        datetime.now().isoformat(),
-    ))
-    conn.commit()
-```
-
-**Critical:** Must have exactly 31 `?` placeholders for 31 columns.
-
-## Bot Integration
-
-In `telegram_feedback_bot.py`, collect reviewer info from update:
-
-```python
-user = update.message.from_user
-
-feedback_card = {
-    # ... card fields ...
-    "telegram_chat_id": str(chat_id),
-    "telegram_user_id": str(user.id),
-    "telegram_username": user.username or "",
-    "reviewer_role": my_role,  # from telegram_recipients table
-}
-
-save_feedback(feedback_card, action, comment)
-```
-
-## Verification
-
-```bash
-# Check for NULL in critical fields
-python -c "
-import sqlite3
-conn = sqlite3.connect('results/feedback.db')
-c = conn.cursor()
-c.execute('''
-    SELECT COUNT(*) FROM feedback
-    WHERE reviewer_role IS NULL OR telegram_chat_id IS NULL
-''')
-incomplete = c.fetchone()[0]
-print(f'Incomplete records: {incomplete}')
-assert incomplete == 0, 'Some records missing role/chat_id'
-conn.close()
-"
-```
-
-## Analytics Queries
-
-**Reactions by role:**
 ```sql
-SELECT reviewer_role, action, COUNT(*)
-FROM feedback
-GROUP BY reviewer_role, action
+CREATE TABLE reaction_reasons (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    reaction_type TEXT NOT NULL,   -- review/think/skip
+    reason_code TEXT NOT NULL UNIQUE,
+    title TEXT NOT NULL
+);
 ```
 
-**Owner vs Manager agreement:**
+27 reasons total:
+- **review** (9): good_price, good_condition, low_mileage, few_owners, good_history, good_equipment, liquid_model, good_region, review_other
+- **think** (10): high_price, high_mileage, many_owners, bad_color, poor_equipment, history_questions, bad_modification, bad_region, need_more_info, think_other
+- **skip** (8): not_my_model, not_my_segment, too_expensive, too_mileage, bad_condition, legal_risk, illiquid, skip_other
+
+### reaction_details table (RIS)
+
+Links reasons to specific feedback entries:
+
 ```sql
-SELECT f1.card_id, f1.action as owner_action, f2.action as manager_action
-FROM feedback f1
-JOIN feedback f2 ON f1.card_id = f2.card_id
-WHERE f1.reviewer_role = 'owner' AND f2.reviewer_role = 'manager'
+CREATE TABLE reaction_details (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    feedback_id INTEGER NOT NULL,
+    reason_code TEXT,  -- NULL if user skipped
+    created_at TEXT,
+    FOREIGN KEY (feedback_id) REFERENCES feedback(id)
+);
 ```
 
-**Top comment keywords:**
+### learning_rules table (RIS)
+
 ```sql
-SELECT comment, COUNT(*)
-FROM feedback
-WHERE comment IS NOT NULL AND comment != ''
-GROUP BY LOWER(comment)
-ORDER BY COUNT(*) DESC
+CREATE TABLE learning_rules (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    rule_type TEXT NOT NULL,
+    target TEXT NOT NULL,
+    condition_json TEXT,
+    effect_value INTEGER,
+    status TEXT DEFAULT 'pending',  -- pending/active/rejected/disabled
+    source_reactions INTEGER,
+    created_at TEXT,
+    approved_at TEXT,
+    approved_by TEXT
+);
+```
+
+## Reaction model migration
+
+**Old → New mapping:**
+- like → review
+- fire → review
+- dislike → skip
+- watch → think
+- buy → review
+
+**Historical data preserved** — old actions are updated in-place, never deleted.
+
+## Analytics
+
+### Config Report (per model)
+
+```sql
+SELECT f.model_id,
+       COUNT(*) as reaction_count,
+       SUM(CASE WHEN f.action = 'review' THEN 1 ELSE 0 END) as review_count,
+       SUM(CASE WHEN f.action = 'think' THEN 1 ELSE 0 END) as think_count,
+       SUM(CASE WHEN f.action = 'skip' THEN 1 ELSE 0 END) as skip_count
+FROM feedback f
+WHERE f.model_id IS NOT NULL
+GROUP BY f.model_id
+```
+
+### Reasons per model
+
+```sql
+SELECT rr.reaction_type, rr.title, COUNT(*) as cnt
+FROM reaction_details rd
+JOIN reaction_reasons rr ON rd.reason_code = rr.reason_code
+JOIN feedback f ON rd.feedback_id = f.id
+WHERE f.model_id = ?
+GROUP BY rr.reason_code
 ```
 
 ## Key Rules
 
-1. **NEVER** insert without `reviewer_role` and `telegram_chat_id`
-2. **ALWAYS** collect full card context (price, mileage, engine, etc.)
-3. **Migration** must add columns safely (check if exists first)
-4. **Count** placeholders must match columns exactly (31 columns = 31 `?`)
-5. **NULL** values are acceptable for optional fields (photo_url, full_location) but NOT for identity fields
+1. **action** field uses review/think/skip (not like/dislike/fire)
+2. **reason_code** is optional (NULL if user skipped reason selection)
+3. **reviewer_role** and **telegram_chat_id** are required (never NULL)
+4. **learning_rules** start as `pending` — never auto-apply
+5. Migration must use `CREATE TABLE IF NOT EXISTS` — never break existing DB
