@@ -1,4 +1,4 @@
-"""Read-only manager + config analytics for the Block 2C CLI report."""
+"""Read-only manager + config analytics for the CLI report."""
 
 from __future__ import annotations
 
@@ -10,6 +10,37 @@ from typing import Any
 
 DB_PATH = Path("results/feedback.db")
 VALID_CONFIG_SQL = "config_name IS NOT NULL AND config_name != '' AND config_name != 'unknown'"
+
+REASON_TITLES = {
+    "good_price": "Хорошая цена",
+    "low_mileage": "Небольшой пробег",
+    "liquid_model": "Ликвидная модель",
+    "good_equipment": "Хорошая комплектация",
+    "comment": "Комментарий менеджера",
+    "good_condition": "Хорошее состояние",
+    "good_history": "Хорошая история",
+    "few_owners": "Немного владельцев",
+    "good_region": "Хороший регион",
+    "review_other": "Другое",
+    "high_price": "Высокая цена",
+    "high_mileage": "Большой пробег",
+    "many_owners": "Много владельцев",
+    "poor_equipment": "Слабая комплектация",
+    "history_questions": "Вопросы по истории",
+    "bad_color": "Неудачный цвет",
+    "bad_modification": "Неудачная модификация",
+    "bad_region": "Неудачный регион",
+    "need_more_info": "Нужно изучить подробнее",
+    "think_other": "Другое",
+    "too_expensive": "Слишком дорого",
+    "too_mileage": "Слишком большой пробег",
+    "bad_condition": "Плохое состояние",
+    "legal_risk": "Юридические риски",
+    "not_my_model": "Не моя модель",
+    "not_my_segment": "Не мой сегмент",
+    "illiquid": "Неликвидная модель",
+    "skip_other": "Другое",
+}
 
 
 def _open_read_only(db_path: str | Path) -> sqlite3.Connection:
@@ -31,17 +62,123 @@ def _display_name(username: str | None, first_name: str | None, manager_id: str)
     return f"manager_{manager_id}"
 
 
+def _reason_title(reason_code: str) -> str:
+    return REASON_TITLES.get(reason_code, "Неизвестная причина")
+
+
+def _normalize_comment(comment: str | None) -> str | None:
+    if comment is None:
+        return None
+    normalized = comment.strip()
+    if not normalized or normalized == "-":
+        return None
+    return normalized
+
+
+def _status_label(feedback_rate: float, feedback_count: int, interest_score: int) -> str:
+    if interest_score < 0:
+        return "RED"
+    if feedback_count < 5:
+        return "YELLOW"
+    if feedback_rate >= 0.4 and interest_score > 0:
+        return "GREEN"
+    return "YELLOW"
+
+
+def _confidence_label(feedback_count: int) -> str:
+    if feedback_count >= 20:
+        return "HIGH"
+    if feedback_count >= 5:
+        return "MEDIUM"
+    return "LOW"
+
+
+def _format_summary_entry(config: dict[str, Any]) -> str:
+    return (
+        f"{config['config_name']} "
+        f"(score {config['interest_score']:+d}, "
+        f"feedback {config['feedback_count']}, "
+        f"rate {_percent(config['feedback_rate'])})"
+    )
+
+
+def _build_manager_summary(configs: list[dict[str, Any]]) -> dict[str, list[str] | str]:
+    configs_with_feedback = [item for item in configs if int(item["feedback_count"]) > 0]
+    if not configs_with_feedback:
+        return {
+            "best_configs": "данных пока нет",
+            "problem_configs": "данных пока нет",
+        }
+
+    best_candidates = [item for item in configs_with_feedback if int(item["interest_score"]) > 0]
+    if best_candidates:
+        best_configs: list[str] | str = [
+            _format_summary_entry(item)
+            for item in sorted(
+                best_candidates,
+                key=lambda item: (
+                    -int(item["interest_score"]),
+                    -float(item["feedback_rate"]),
+                    -int(item["feedback_count"]),
+                    str(item["config_name"]),
+                ),
+            )[:3]
+        ]
+    else:
+        best_configs = "данных пока нет"
+
+    problem_candidates = [item for item in configs_with_feedback if int(item["interest_score"]) < 0]
+    if problem_candidates:
+        problem_configs: list[str] | str = [
+            _format_summary_entry(item)
+            for item in sorted(
+                problem_candidates,
+                key=lambda item: (
+                    int(item["interest_score"]),
+                    -int(item["feedback_count"]),
+                    float(item["feedback_rate"]),
+                    str(item["config_name"]),
+                ),
+            )[:3]
+        ]
+    else:
+        problem_configs = "данных пока нет"
+
+    return {
+        "best_configs": best_configs,
+        "problem_configs": problem_configs,
+    }
+
+
+def _sort_configs(configs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    return sorted(
+        configs,
+        key=lambda item: (
+            0 if int(item["feedback_count"]) > 0 else 1,
+            -int(item["feedback_count"]),
+            -int(item["interest_score"]),
+            -float(item["feedback_rate"]),
+            str(item["config_name"]),
+        ),
+    )
+
+
 def get_manager_config_report(
     db_path: str | Path = DB_PATH,
     *,
     connection: sqlite3.Connection | None = None,
 ) -> dict[str, Any]:
-    """Return the Block 2C report without modifying the database."""
+    """Return a read-only manager config report without modifying the database."""
     conn = connection or _open_read_only(db_path)
     owns_connection = connection is None
     conn.row_factory = sqlite3.Row
 
     try:
+        feedback_columns = {
+            row["name"] for row in conn.execute("PRAGMA table_info(feedback)").fetchall()
+        }
+        has_feedback_comment = "comment" in feedback_columns
+
         active_managers = conn.execute(
             """
             SELECT telegram_id, username, first_name
@@ -169,8 +306,55 @@ def get_manager_config_report(
         for row in reasons:
             key = (row["manager_id"], row["config_name"])
             reasons_by_key.setdefault(key, []).append(
-                {"reason_code": row["reason_code"], "count": row["reason_count"]}
+                {
+                    "reason_code": _reason_title(row["reason_code"]),
+                    "raw_reason_code": row["reason_code"],
+                    "count": int(row["reason_count"]),
+                }
             )
+
+        comments_by_key: dict[tuple[str, str], list[str]] = {}
+        if has_feedback_comment:
+            comments = conn.execute(
+                f"""
+                WITH active_managers AS (
+                    SELECT CAST(telegram_id AS TEXT) AS manager_id
+                    FROM telegram_users
+                    WHERE role = 'manager' AND status = 'active'
+                ),
+                latest_feedback_ids AS (
+                    SELECT
+                        CAST(f.telegram_chat_id AS TEXT) AS manager_id,
+                        f.card_id,
+                        f.config_name,
+                        MAX(f.id) AS feedback_id
+                    FROM feedback f
+                    JOIN active_managers m
+                      ON m.manager_id = CAST(f.telegram_chat_id AS TEXT)
+                    WHERE f.{VALID_CONFIG_SQL}
+                    GROUP BY CAST(f.telegram_chat_id AS TEXT), f.card_id, f.config_name
+                )
+                SELECT
+                    l.manager_id,
+                    l.config_name,
+                    f.comment,
+                    f.created_at,
+                    f.id AS feedback_id
+                FROM latest_feedback_ids l
+                JOIN feedback f ON f.id = l.feedback_id
+                WHERE f.comment IS NOT NULL
+                ORDER BY l.manager_id, l.config_name, f.created_at DESC, f.id DESC
+                """
+            ).fetchall()
+
+            for row in comments:
+                key = (row["manager_id"], row["config_name"])
+                normalized = _normalize_comment(row["comment"])
+                if normalized is None:
+                    continue
+                bucket = comments_by_key.setdefault(key, [])
+                if len(bucket) < 3:
+                    bucket.append(normalized)
 
         managers: dict[str, dict[str, Any]] = {}
         for manager in active_managers:
@@ -191,6 +375,12 @@ def get_manager_config_report(
             skip_count = int(row["skip_count"])
             manager_id = row["manager_id"]
             config_name = row["config_name"]
+            feedback_rate = _rate(feedback_count, sent_count)
+            review_rate = _rate(review_count, feedback_count)
+            think_rate = _rate(think_count, feedback_count)
+            skip_rate = _rate(skip_count, feedback_count)
+            interest_score = review_count * 2 + think_count - skip_count * 2
+
             managers[manager_id]["configs"].append(
                 {
                     "config_name": config_name,
@@ -199,15 +389,23 @@ def get_manager_config_report(
                     "review_count": review_count,
                     "think_count": think_count,
                     "skip_count": skip_count,
-                    "feedback_rate": _rate(feedback_count, sent_count),
-                    "review_rate": _rate(review_count, feedback_count),
-                    "think_rate": _rate(think_count, feedback_count),
-                    "skip_rate": _rate(skip_count, feedback_count),
-                    "interest_score": review_count * 2 + think_count - skip_count * 2,
+                    "feedback_rate": feedback_rate,
+                    "review_rate": review_rate,
+                    "think_rate": think_rate,
+                    "skip_rate": skip_rate,
+                    "interest_score": interest_score,
+                    "status": _status_label(feedback_rate, feedback_count, interest_score),
+                    "confidence": _confidence_label(feedback_count),
                     "top_reasons": reasons_by_key.get((manager_id, config_name), []),
+                    "manager_comments": comments_by_key.get((manager_id, config_name), []),
                     "last_feedback_at": row["last_feedback_at"],
                 }
             )
+
+        for manager in managers.values():
+            sorted_configs = _sort_configs(manager["configs"])
+            manager["configs"] = sorted_configs
+            manager["summary"] = _build_manager_summary(sorted_configs)
 
         historical = {}
         for table in ("sent_ads", "feedback", "reaction_details"):
@@ -244,36 +442,64 @@ def _percent(value: float) -> str:
     return f"{value * 100:.1f}%"
 
 
+def _format_last_feedback(value: str | None) -> str:
+    if not value:
+        return "-"
+    return value[:16].replace("T", " ")
+
+
 def format_manager_config_report(report: dict[str, Any]) -> str:
     """Format a report returned by get_manager_config_report()."""
     summary = report["summary"]
     lines = [
-        "MANAGER CONFIG REPORT V1",
+        "ОТЧЕТ ПО КОНФИГАМ МЕНЕДЖЕРОВ",
         "=" * 60,
-        f"Active managers: {summary['active_managers']}",
-        f"Configs with data: {summary['configs_with_data']}",
-        f"Unique cards with feedback: {summary['feedback_count']}",
+        f"Активных менеджеров: {summary['active_managers']}",
+        f"Конфигов с данными: {summary['configs_with_data']}",
+        f"Карточек с feedback: {summary['feedback_count']}",
     ]
 
     for manager in report["managers"]:
         lines.extend(["", manager["display_name"], "-" * 60])
-        if not manager["configs"]:
-            lines.append("No config data.")
+        configs = manager["configs"]
+        if not configs:
+            lines.append("Данных по конфигам пока нет.")
             continue
-        for config in manager["configs"]:
+
+        manager_summary = manager.get("summary", {})
+        lines.append("Лучшие конфиги:")
+        best_configs = manager_summary.get("best_configs", "данных пока нет")
+        if isinstance(best_configs, list):
+            for index, item in enumerate(best_configs, start=1):
+                lines.append(f"{index}. {item}")
+        else:
+            lines.append(best_configs)
+
+        lines.append("Проблемные конфиги:")
+        problem_configs = manager_summary.get("problem_configs", "данных пока нет")
+        if isinstance(problem_configs, list):
+            for index, item in enumerate(problem_configs, start=1):
+                lines.append(f"{index}. {item}")
+        else:
+            lines.append(problem_configs)
+
+        for config in configs:
             lines.extend(
                 [
+                    "",
                     config["config_name"],
-                    f"  Sent: {config['sent_count']}",
+                    f"  Статус: {config['status']}",
+                    f"  Уверенность: {config['confidence']}",
+                    f"  Отправлено: {config['sent_count']}",
                     f"  Feedback: {config['feedback_count']} ({_percent(config['feedback_rate'])})",
                     (
-                        "  Actions: "
+                        "  Действия: "
                         f"review={config['review_count']} ({_percent(config['review_rate'])}), "
                         f"think={config['think_count']} ({_percent(config['think_rate'])}), "
                         f"skip={config['skip_count']} ({_percent(config['skip_rate'])})"
                     ),
-                    f"  Manager Interest Score: {config['interest_score']}",
-                    f"  Last feedback: {config['last_feedback_at'] or '-'}",
+                    f"  Интерес менеджера: {config['interest_score']:+d}",
+                    f"  Последняя реакция: {_format_last_feedback(config['last_feedback_at'])}",
                 ]
             )
             if config["top_reasons"]:
@@ -281,15 +507,22 @@ def format_manager_config_report(report: dict[str, Any]) -> str:
                     f"{item['reason_code']} ({item['count']})"
                     for item in config["top_reasons"]
                 )
-                lines.append(f"  Top reasons: {reason_text}")
+                lines.append(f"  Причины: {reason_text}")
             else:
-                lines.append("  Top reasons: -")
+                lines.append("  Причины: -")
+
+            comments = config.get("manager_comments", [])
+            if comments:
+                lines.append("  Что сказал менеджер:")
+                lines.extend(f"  • {comment}" for comment in comments)
+            else:
+                lines.append("  Что сказал менеджер: —")
 
     unknown = report["historical_unknown"]
     lines.extend(
         [
             "",
-            "Historical data (excluded from ratings)",
+            "Исторические данные (не участвуют в рейтинге и score)",
             "-" * 60,
             f"sent_ads unknown: {unknown['sent_ads']}",
             f"feedback unknown: {unknown['feedback']}",
@@ -300,7 +533,7 @@ def format_manager_config_report(report: dict[str, Any]) -> str:
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Print Manager Config Report v1")
+    parser = argparse.ArgumentParser(description="Print Manager Config Report")
     parser.add_argument("--db", default=str(DB_PATH), help="Path to feedback.db")
     args = parser.parse_args()
     print(format_manager_config_report(get_manager_config_report(args.db)))
