@@ -299,6 +299,38 @@ def test_last_comment_contains_text_config_and_date():
     assert manager["last_comment_date"] == "2026-01-02T12:30:00"
 
 
+def test_recent_comments_are_built_from_config_comments_and_limited_to_two():
+    conn = make_db()
+    add_user(conn, 1, "alice")
+    for index, config_name in enumerate(("Tiguan", "Ford Kuga", "Volvo Xc90"), 1):
+        card_id = f"card-{index}"
+        add_sent(conn, 1, card_id, config_name)
+        add_feedback(
+            conn,
+            1,
+            card_id,
+            config_name,
+            "review",
+            f"2026-01-0{index}T10:00:00",
+            comment=f"Комментарий {index}",
+        )
+
+    recent = manager_for(get_manager_dashboard(connection=conn), 1)["recent_comments"]
+
+    assert recent == [
+        {
+            "config_name": "Volvo Xc90",
+            "comment": "Комментарий 3",
+            "created_at": "2026-01-03T10:00:00",
+        },
+        {
+            "config_name": "Ford Kuga",
+            "comment": "Комментарий 2",
+            "created_at": "2026-01-02T10:00:00",
+        },
+    ]
+
+
 def test_formatter_contains_compact_dashboard_sections():
     dashboard = {
         "summary": {
@@ -321,6 +353,18 @@ def test_formatter_contains_compact_dashboard_sections():
                 "last_comment": "Надо посмотреть детально",
                 "last_comment_config": "Ford Kuga",
                 "last_comment_date": "2026-06-14T07:38:52",
+                "recent_comments": [
+                    {
+                        "config_name": "Ford Kuga",
+                        "comment": "Надо посмотреть детально",
+                        "created_at": "2026-06-14T07:38:52",
+                    },
+                    {
+                        "config_name": "Hyundai Santa Fe",
+                        "comment": "Хороший вариант",
+                        "created_at": "2026-06-13T09:00:00",
+                    },
+                ],
             }
         ],
     }
@@ -328,14 +372,116 @@ def test_formatter_contains_compact_dashboard_sections():
     text = format_manager_dashboard(dashboard)
 
     assert "📊 Manager Dashboard" in text
-    assert "Feedback: 8 (8.70%)" in text
+    assert "📨 Отправок: 92" in text
+    assert "💬 Реакций: 8" in text
+    assert "🎯 Конверсия: 8.70%" in text
+    assert "👥 Менеджеров: 1" in text
+    assert "🏆 Самые интересные конфиги" in text
+    assert "⚠️ Самые проблемные конфиги" in text
     assert "🔥 Лучшие" in text
     assert "1. Hyundai Santa Fe" in text
     assert "⚠️ Проблемные" in text
     assert "🧠 Причины" in text
     assert "Высокая цена — 3" in text
-    assert "💬 Комментарии: 2" in text
+    assert "💬 Что сказал менеджер" in text
+    assert '"Надо посмотреть детально"' in text
+    assert '"Хороший вариант"' in text
     assert "14.06.2026" in text
+
+
+def test_formatter_aggregates_global_config_tops():
+    managers = [
+        {
+            "display_name": "@alice",
+            "feedback_count": 1,
+            "sent_count": 1,
+            "feedback_rate": 1.0,
+            "best_configs": [
+                {"config_name": "Tiguan", "interest_score": 2},
+                {"config_name": "Kuga", "interest_score": 4},
+            ],
+            "problem_configs": [{"config_name": "XC90", "interest_score": -2}],
+            "top_reasons": [],
+            "recent_comments": [],
+        },
+        {
+            "display_name": "@bob",
+            "feedback_count": 1,
+            "sent_count": 1,
+            "feedback_rate": 1.0,
+            "best_configs": [{"config_name": "Tiguan", "interest_score": 4}],
+            "problem_configs": [{"config_name": "XC90", "interest_score": -4}],
+            "top_reasons": [],
+            "recent_comments": [],
+        },
+    ]
+    dashboard = {
+        "summary": {
+            "active_managers": 2,
+            "sent_count": 2,
+            "feedback_count": 2,
+            "feedback_rate": 1.0,
+        },
+        "managers": managers,
+    }
+
+    text = format_manager_dashboard(dashboard)
+
+    global_best = text.split("🏆 Самые интересные конфиги", 1)[1].split(
+        "⚠️ Самые проблемные конфиги", 1
+    )[0]
+    assert global_best.index("1. Tiguan") < global_best.index("2. Kuga")
+    assert "1. XC90" in text.split("⚠️ Самые проблемные конфиги", 1)[1]
+
+
+def test_formatter_groups_managers_without_feedback():
+    dashboard = {
+        "summary": {
+            "active_managers": 2,
+            "sent_count": 5,
+            "feedback_count": 0,
+            "feedback_rate": 0,
+        },
+        "managers": [
+            {"display_name": "@idle", "feedback_count": 0},
+            {"display_name": "manager_2", "feedback_count": 0},
+        ],
+    }
+
+    text = format_manager_dashboard(dashboard)
+
+    assert "⚪ Без активности" in text
+    assert "@idle" in text
+    assert "manager_2" in text
+    assert "👤 @idle" not in text
+    assert "👤 manager_2" not in text
+
+
+def test_formatter_shows_dash_when_manager_has_no_comments():
+    dashboard = {
+        "summary": {
+            "active_managers": 1,
+            "sent_count": 1,
+            "feedback_count": 1,
+            "feedback_rate": 1.0,
+        },
+        "managers": [
+            {
+                "display_name": "@alice",
+                "sent_count": 1,
+                "feedback_count": 1,
+                "feedback_rate": 1.0,
+                "best_configs": [],
+                "problem_configs": [],
+                "top_reasons": [],
+                "recent_comments": [],
+            }
+        ],
+    }
+
+    text = format_manager_dashboard(dashboard)
+
+    assert "💬 Что сказал менеджер: —" in text
 
 
 def test_multiple_managers_are_independent_and_sorted_by_display_name():

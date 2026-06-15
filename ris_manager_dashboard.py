@@ -90,6 +90,27 @@ def _top_reasons(configs: list[dict[str, Any]]) -> list[dict[str, Any]]:
     ]
 
 
+def _recent_comments(configs: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    comments: list[dict[str, Any]] = []
+    for config in configs:
+        config_name = str(config.get("config_name") or "").strip()
+        created_at = config.get("last_feedback_at")
+        for raw_comment in config.get("manager_comments", []):
+            comment = str(raw_comment or "").strip()
+            if not comment or comment == "-":
+                continue
+            comments.append(
+                {
+                    "config_name": config_name,
+                    "comment": comment,
+                    "created_at": created_at,
+                }
+            )
+
+    comments.sort(key=lambda item: str(item.get("created_at") or ""), reverse=True)
+    return comments[:2]
+
+
 def _load_comment_summary(conn: sqlite3.Connection) -> dict[str, dict[str, Any]]:
     feedback_columns = {
         row[1] for row in conn.execute("PRAGMA table_info(feedback)").fetchall()
@@ -193,6 +214,7 @@ def get_manager_dashboard(
                     "best_configs": _best_configs(configs),
                     "problem_configs": _problem_configs(configs),
                     "top_reasons": _top_reasons(configs),
+                    "recent_comments": _recent_comments(configs),
                     **comment_summary,
                 }
             )
@@ -240,6 +262,65 @@ def _format_reasons(reasons: list[dict[str, Any]]) -> list[str]:
     return ["🧠 Причины", *[f"{item['reason']} — {item['count']}" for item in reasons]]
 
 
+def _aggregate_global_configs(
+    managers: list[dict[str, Any]],
+    field: str,
+    *,
+    positive: bool,
+) -> list[dict[str, Any]]:
+    scores: dict[str, int] = {}
+    for manager in managers:
+        for config in manager.get(field, []):
+            config_name = str(config.get("config_name") or "").strip()
+            if not config_name:
+                continue
+            scores[config_name] = scores.get(config_name, 0) + int(
+                config.get("interest_score", 0)
+            )
+
+    candidates = [
+        {"config_name": config_name, "interest_score": score}
+        for config_name, score in scores.items()
+        if (score > 0 if positive else score < 0)
+    ]
+    candidates.sort(
+        key=lambda item: (
+            -int(item["interest_score"]) if positive else int(item["interest_score"]),
+            str(item["config_name"]),
+        )
+    )
+    return candidates[:3]
+
+
+def _format_recent_comments(manager: dict[str, Any]) -> list[str]:
+    comments = manager.get("recent_comments", [])
+    if not comments and manager.get("last_comment"):
+        comments = [
+            {
+                "config_name": manager.get("last_comment_config"),
+                "comment": manager.get("last_comment"),
+                "created_at": manager.get("last_comment_date"),
+            }
+        ]
+    if not comments:
+        return ["💬 Что сказал менеджер: —"]
+
+    lines = ["💬 Что сказал менеджер", ""]
+    for index, item in enumerate(comments[:2], 1):
+        lines.extend(
+            [
+                (
+                    f"{index}. {item.get('config_name') or '—'} — "
+                    f"{_format_date(item.get('created_at'))}"
+                ),
+                f'"{item.get("comment") or "—"}"',
+            ]
+        )
+        if index < len(comments[:2]):
+            lines.append("")
+    return lines
+
+
 def format_manager_dashboard(dashboard: dict[str, Any]) -> str:
     """Format a compact plain-text dashboard for Telegram or CLI output."""
     summary = dashboard.get("summary", {})
@@ -247,19 +328,39 @@ def format_manager_dashboard(dashboard: dict[str, Any]) -> str:
     lines = [
         "📊 Manager Dashboard",
         "",
-        f"Менеджеров: {int(summary.get('active_managers', 0))}",
-        f"Отправлено: {int(summary.get('sent_count', 0))}",
-        (
-            f"Feedback: {int(summary.get('feedback_count', 0))} "
-            f"({_percent(float(summary.get('feedback_rate', 0)))})"
-        ),
+        f"📨 Отправок: {int(summary.get('sent_count', 0))}",
+        f"💬 Реакций: {int(summary.get('feedback_count', 0))}",
+        f"🎯 Конверсия: {_percent(float(summary.get('feedback_rate', 0)))}",
+        f"👥 Менеджеров: {int(summary.get('active_managers', 0))}",
     ]
 
     if not managers:
         lines.extend(["", "Активных менеджеров нет."])
         return "\n".join(lines)
 
-    for manager in managers:
+    best_global = _aggregate_global_configs(
+        managers, "best_configs", positive=True
+    )
+    problem_global = _aggregate_global_configs(
+        managers, "problem_configs", positive=False
+    )
+    lines.extend(
+        [
+            "",
+            *_format_configs("🏆 Самые интересные конфиги", best_global),
+            "",
+            *_format_configs("⚠️ Самые проблемные конфиги", problem_global),
+        ]
+    )
+
+    active_managers = [
+        manager for manager in managers if int(manager.get("feedback_count", 0)) > 0
+    ]
+    inactive_managers = [
+        manager for manager in managers if int(manager.get("feedback_count", 0)) == 0
+    ]
+
+    for manager in active_managers:
         lines.extend(
             [
                 "",
@@ -277,23 +378,18 @@ def format_manager_dashboard(dashboard: dict[str, Any]) -> str:
                 "",
                 *_format_reasons(manager.get("top_reasons", [])),
                 "",
-                f"💬 Комментарии: {int(manager.get('comments_count', 0))}",
+                *_format_recent_comments(manager),
             ]
         )
 
-        last_comment = manager.get("last_comment")
-        if last_comment:
-            lines.extend(
-                [
-                    "",
-                    "Последний:",
-                    str(last_comment),
-                    "",
-                    str(manager.get("last_comment_config") or "—"),
-                    _format_date(manager.get("last_comment_date")),
-                ]
-            )
-        else:
-            lines.extend(["", "Последний: —"])
+    if inactive_managers:
+        lines.extend(
+            [
+                "",
+                "⚪ Без активности",
+                "",
+                *[str(manager["display_name"]) for manager in inactive_managers],
+            ]
+        )
 
     return "\n".join(lines)
