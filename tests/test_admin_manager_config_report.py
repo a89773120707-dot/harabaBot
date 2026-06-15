@@ -16,12 +16,20 @@ def sample_report():
         "summary": {
             "active_managers": 1,
             "configs_with_data": 2,
-            "feedback_count": 2,
+            "feedback_count": 3,
         },
         "managers": [
             {
                 "manager_id": "101",
                 "display_name": "@alice",
+                "summary": {
+                    "best_configs": [
+                        "Hyundai Santa Fe (score +3, feedback 2, rate 66.7%)",
+                    ],
+                    "problem_configs": [
+                        "Volvo Xc90 (score -2, feedback 1, rate 100.0%)",
+                    ],
+                },
                 "configs": [
                     {
                         "config_name": "Hyundai Santa Fe",
@@ -35,26 +43,35 @@ def sample_report():
                         "think_rate": 0.5,
                         "skip_rate": 0,
                         "interest_score": 3,
+                        "status": "GREEN",
+                        "confidence": "MEDIUM",
                         "top_reasons": [
-                            {"reason_code": "high_price", "count": 2},
-                            {"reason_code": "good_price", "count": 1},
+                            {"reason_code": "Высокая цена", "count": 2},
+                            {"reason_code": "Хорошая цена", "count": 1},
+                        ],
+                        "manager_comments": [
+                            "Надо посмотреть детально",
+                            "Клиенту подходит такой мотор",
                         ],
                         "last_feedback_at": "2026-06-14T11:22:33.000000",
                     },
                     {
                         "config_name": "Volvo Xc90",
                         "sent_count": 1,
-                        "feedback_count": 0,
+                        "feedback_count": 1,
                         "review_count": 0,
                         "think_count": 0,
-                        "skip_count": 0,
-                        "feedback_rate": 0,
+                        "skip_count": 1,
+                        "feedback_rate": 1.0,
                         "review_rate": 0,
                         "think_rate": 0,
-                        "skip_rate": 0,
-                        "interest_score": 0,
-                        "top_reasons": [],
-                        "last_feedback_at": None,
+                        "skip_rate": 1.0,
+                        "interest_score": -2,
+                        "status": "RED",
+                        "confidence": "LOW",
+                        "top_reasons": [{"reason_code": "Плохое состояние", "count": 1}],
+                        "manager_comments": [],
+                        "last_feedback_at": "2026-06-14T09:00:00.000000",
                     },
                 ],
             }
@@ -91,15 +108,23 @@ def make_callback_update(user_id=1, data="learning_manager_config_report"):
     )
 
 
-def test_formatter_contains_compact_metrics_and_unknown():
+def test_formatter_contains_summary_status_confidence_comments_and_unknown():
     text = learning.format_manager_config_report_telegram(sample_report())
 
     assert "Manager: @alice" in text
+    assert "Лучшие конфиги" in text
+    assert "1. Hyundai Santa Fe (score +3, feedback 2, rate 66.7%)" in text
+    assert "Проблемные конфиги" in text
+    assert "1. Volvo Xc90 (score -2, feedback 1, rate 100.0%)" in text
     assert "Hyundai Santa Fe" in text
+    assert "Статус: GREEN" in text
+    assert "Уверенность: MEDIUM" in text
     assert "Sent: 3 | Feedback: 2 (66.7%)" in text
     assert "Score: +3" in text
-    assert "high_price 2" in text
+    assert "Высокая цена 2" in text
     assert "2026-06-14 11:22" in text
+    assert "Что сказал менеджер:\n• Надо посмотреть детально\n• Клиенту подходит такой мотор" in text
+    assert "Что сказал менеджер: —" in text
     assert "sent_ads unknown: 10" in text
 
 
@@ -114,6 +139,19 @@ def test_formatter_handles_no_data():
 
     assert "Данных с config_name пока нет." in text
     assert "feedback unknown: 3" in text
+
+
+def test_formatter_uses_no_data_summary_when_lists_are_empty():
+    report = sample_report()
+    report["managers"][0]["summary"] = {
+        "best_configs": "данных пока нет",
+        "problem_configs": "данных пока нет",
+    }
+
+    text = learning.format_manager_config_report_telegram(report)
+
+    assert "Лучшие конфиги: данных пока нет" in text
+    assert "Проблемные конфиги: данных пока нет" in text
 
 
 def test_split_messages_preserves_text_and_limit():
@@ -143,7 +181,10 @@ def test_owner_or_admin_can_run_command(monkeypatch):
     asyncio.run(learning.manager_config_report_command_handler(update, None))
 
     update.message.reply_text.assert_awaited()
-    assert "Manager Config Report" in update.message.reply_text.await_args.args[0]
+    text = update.message.reply_text.await_args.args[0]
+    assert "Manager Config Report" in text
+    assert "Лучшие конфиги" in text
+    assert "Статус: GREEN" in text
 
 
 def test_manager_is_denied_without_querying_report(monkeypatch):

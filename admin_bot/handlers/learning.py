@@ -165,6 +165,12 @@ def _format_last_feedback(value: str | None) -> str:
     return value[:16].replace("T", " ")
 
 
+def _format_summary_lines(title: str, items: list[str] | str) -> list[str]:
+    if isinstance(items, list) and items:
+        return [title, *[f"{index}. {item}" for index, item in enumerate(items, start=1)]]
+    return [f"{title}: данных пока нет"]
+
+
 def format_manager_config_report_telegram(report: dict[str, Any]) -> str:
     """Format Manager Config Report for plain-text Telegram messages."""
     summary = report.get("summary", {})
@@ -195,43 +201,48 @@ def format_manager_config_report_telegram(report: dict[str, Any]) -> str:
                 blocks.append(f"Manager: {display_name}\nДанных по конфигам пока нет.")
                 continue
 
-            total_sent = sum(int(item.get("sent_count", 0)) for item in configs)
-            total_feedback = sum(int(item.get("feedback_count", 0)) for item in configs)
-            if total_feedback == 0:
-                blocks.append(
-                    f"Manager: {display_name}\n"
-                    f"Отправлено: {total_sent}\n"
-                    "Feedback: 0\n"
-                    "Данных для оценки пока нет."
-                )
-                continue
-
-            sorted_configs = sorted(
-                configs,
-                key=lambda item: (
-                    -int(item.get("feedback_count", 0)),
-                    -int(item.get("sent_count", 0)),
-                    str(item.get("config_name", "")),
+            manager_summary = manager.get("summary", {})
+            manager_blocks = [
+                f"Manager: {display_name}",
+                *_format_summary_lines(
+                    "Лучшие конфиги",
+                    manager_summary.get("best_configs", "данных пока нет"),
                 ),
-            )
-            manager_blocks = [f"Manager: {display_name}"]
-            for item in sorted_configs:
+                *_format_summary_lines(
+                    "Проблемные конфиги",
+                    manager_summary.get("problem_configs", "данных пока нет"),
+                ),
+            ]
+
+            for item in configs:
                 reasons = item.get("top_reasons", [])[:3]
                 reason_text = ", ".join(
                     f"{reason['reason_code']} {reason['count']}" for reason in reasons
                 ) or "-"
                 score = int(item.get("interest_score", 0))
-                manager_blocks.append(
-                    f"{item['config_name']}\n"
+                comments = item.get("manager_comments", [])[:3]
+                config_lines = [
+                    item["config_name"],
+                    f"Статус: {item.get('status', '-')}",
+                    f"Уверенность: {item.get('confidence', '-')}",
                     f"Sent: {item['sent_count']} | Feedback: {item['feedback_count']} "
-                    f"({_percent(float(item.get('feedback_rate', 0)))})\n"
-                    f"👀 {item['review_count']} ({_percent(float(item.get('review_rate', 0)))}) | "
-                    f"🤔 {item['think_count']} ({_percent(float(item.get('think_rate', 0)))}) | "
-                    f"⏭ {item['skip_count']} ({_percent(float(item.get('skip_rate', 0)))})\n"
-                    f"Score: {score:+d}\n"
-                    f"Причины: {reason_text}\n"
-                    f"Последняя реакция: {_format_last_feedback(item.get('last_feedback_at'))}"
-                )
+                    f"({_percent(float(item.get('feedback_rate', 0)))})",
+                    (
+                        f"👀 {item['review_count']} ({_percent(float(item.get('review_rate', 0)))}) | "
+                        f"🤔 {item['think_count']} ({_percent(float(item.get('think_rate', 0)))}) | "
+                        f"⏭ {item['skip_count']} ({_percent(float(item.get('skip_rate', 0)))})"
+                    ),
+                    f"Score: {score:+d}",
+                    f"Причины: {reason_text}",
+                    f"Последняя реакция: {_format_last_feedback(item.get('last_feedback_at'))}",
+                ]
+                if comments:
+                    config_lines.append("Что сказал менеджер:")
+                    config_lines.extend(f"• {comment}" for comment in comments)
+                else:
+                    config_lines.append("Что сказал менеджер: —")
+                manager_blocks.append("\n".join(config_lines))
+
             blocks.append("\n\n".join(manager_blocks))
 
     blocks.append(
