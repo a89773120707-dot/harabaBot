@@ -18,7 +18,8 @@ def make_db() -> sqlite3.Connection:
             username TEXT,
             first_name TEXT,
             role TEXT,
-            status TEXT
+            status TEXT,
+            analytics_participant INTEGER NOT NULL DEFAULT 0
         );
         CREATE TABLE sent_ads (
             stable_car_key TEXT,
@@ -50,10 +51,18 @@ def make_db() -> sqlite3.Connection:
     return conn
 
 
-def add_user(conn, user_id, username="", first_name="", role="manager", status="active"):
+def add_user(
+    conn,
+    user_id,
+    username="",
+    first_name="",
+    role="manager",
+    status="active",
+    analytics_participant=1,
+):
     conn.execute(
-        "INSERT INTO telegram_users VALUES (?, ?, ?, ?, ?)",
-        (user_id, username, first_name, role, status),
+        "INSERT INTO telegram_users VALUES (?, ?, ?, ?, ?, ?)",
+        (user_id, username, first_name, role, status, analytics_participant),
     )
 
 
@@ -174,18 +183,46 @@ def test_sent_without_feedback_has_zero_rates_and_no_summary_data():
     assert summary["problem_configs"] == "данных пока нет"
 
 
-def test_only_active_managers_are_included_and_owner_is_excluded():
+def test_only_active_analytics_participants_are_included():
     conn = make_db()
     add_user(conn, 1, "active")
-    add_user(conn, 2, "paused", status="paused")
-    add_user(conn, 3, "owner", role="owner")
-    for user_id in (1, 2, 3):
+    add_user(conn, 2, "paused", status="paused", analytics_participant=1)
+    add_user(conn, 3, "owner", role="owner", analytics_participant=0)
+    add_user(conn, 4, "manager_off", analytics_participant=0)
+    add_user(conn, 5, "admin", role="admin", analytics_participant=0)
+    for user_id in (1, 2, 3, 4, 5):
         add_sent(conn, user_id, f"card-{user_id}", "Tiguan")
 
     report = get_manager_config_report(connection=conn)
 
     assert [m["manager_id"] for m in report["managers"]] == ["1"]
     assert report["summary"]["active_managers"] == 1
+
+
+def test_owner_with_analytics_participant_is_included_without_role_change():
+    conn = make_db()
+    add_user(conn, 1, "owner", "Owner", role="owner", analytics_participant=1)
+    add_sent(conn, 1, "card-1", "Tiguan")
+    add_feedback(conn, 1, "card-1", "Tiguan", "review", "2026-01-01T10:00:00")
+
+    report = get_manager_config_report(connection=conn)
+
+    assert [m["manager_id"] for m in report["managers"]] == ["1"]
+    assert config_for(report, 1, "Tiguan")["review_count"] == 1
+    assert conn.execute(
+        "SELECT role FROM telegram_users WHERE telegram_id = 1"
+    ).fetchone()["role"] == "owner"
+
+
+def test_active_manager_without_analytics_participant_is_excluded():
+    conn = make_db()
+    add_user(conn, 1, "alice", analytics_participant=0)
+    add_sent(conn, 1, "card-1", "Tiguan")
+
+    report = get_manager_config_report(connection=conn)
+
+    assert report["managers"] == []
+    assert report["summary"]["active_managers"] == 0
 
 
 def test_unknown_is_historical_and_unknown_comments_do_not_mix_into_main_report():

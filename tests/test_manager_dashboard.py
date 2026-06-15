@@ -18,7 +18,8 @@ def make_db() -> sqlite3.Connection:
             username TEXT,
             first_name TEXT,
             role TEXT,
-            status TEXT
+            status TEXT,
+            analytics_participant INTEGER NOT NULL DEFAULT 0
         );
         CREATE TABLE sent_ads (
             stable_car_key TEXT,
@@ -50,10 +51,18 @@ def make_db() -> sqlite3.Connection:
     return conn
 
 
-def add_user(conn, user_id, username="", first_name="", role="manager", status="active"):
+def add_user(
+    conn,
+    user_id,
+    username="",
+    first_name="",
+    role="manager",
+    status="active",
+    analytics_participant=1,
+):
     conn.execute(
-        "INSERT INTO telegram_users VALUES (?, ?, ?, ?, ?)",
-        (user_id, username, first_name, role, status),
+        "INSERT INTO telegram_users VALUES (?, ?, ?, ?, ?, ?)",
+        (user_id, username, first_name, role, status, analytics_participant),
     )
 
 
@@ -172,17 +181,43 @@ def test_problem_configs_are_negative_and_limited_to_three():
     assert all(item["interest_score"] < 0 for item in problems)
 
 
-def test_owner_and_inactive_manager_are_excluded():
+def test_dashboard_uses_analytics_participants_only():
     conn = make_db()
     add_user(conn, 1, "active")
-    add_user(conn, 2, "owner", role="owner")
-    add_user(conn, 3, "paused", status="paused")
-    for user_id in (1, 2, 3):
+    add_user(conn, 2, "owner", role="owner", analytics_participant=0)
+    add_user(conn, 3, "paused", status="paused", analytics_participant=1)
+    add_user(conn, 4, "manager_off", analytics_participant=0)
+    add_user(conn, 5, "admin", role="admin", analytics_participant=0)
+    for user_id in (1, 2, 3, 4, 5):
         add_sent(conn, user_id, f"card-{user_id}", "Tiguan")
 
     dashboard = get_manager_dashboard(connection=conn)
 
     assert [manager["manager_id"] for manager in dashboard["managers"]] == ["1"]
+
+
+def test_dashboard_summary_includes_owner_only_when_participant_flag_is_on():
+    conn = make_db()
+    add_user(conn, 1, "alice")
+    add_user(conn, 2, "owner", role="owner", analytics_participant=1)
+    add_user(conn, 3, "owner_off", role="owner", analytics_participant=0)
+    for user_id in (1, 2, 3):
+        add_sent(conn, user_id, f"card-{user_id}", "Tiguan", send_count=2)
+        add_feedback(
+            conn,
+            user_id,
+            f"card-{user_id}",
+            "Tiguan",
+            "review",
+            "2026-01-01T10:00:00",
+        )
+
+    dashboard = get_manager_dashboard(connection=conn)
+
+    assert [manager["manager_id"] for manager in dashboard["managers"]] == ["1", "2"]
+    assert dashboard["summary"]["active_managers"] == 2
+    assert dashboard["summary"]["sent_count"] == 4
+    assert dashboard["summary"]["feedback_count"] == 2
 
 
 def test_unknown_config_is_excluded_from_all_dashboard_metrics():

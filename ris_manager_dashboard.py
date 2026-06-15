@@ -120,10 +120,12 @@ def _load_comment_summary(conn: sqlite3.Connection) -> dict[str, dict[str, Any]]
 
     rows = conn.execute(
         f"""
-        WITH active_managers AS (
+        WITH analytics_participants AS (
+            -- manager_id is kept for report compatibility; it is the analytics participant id.
             SELECT CAST(telegram_id AS TEXT) AS manager_id
             FROM telegram_users
-            WHERE role = 'manager' AND status = 'active'
+            WHERE status = 'active'
+              AND analytics_participant = 1
         ),
         latest_feedback_ids AS (
             SELECT
@@ -132,7 +134,7 @@ def _load_comment_summary(conn: sqlite3.Connection) -> dict[str, dict[str, Any]]
                 f.config_name,
                 MAX(f.id) AS feedback_id
             FROM feedback f
-            JOIN active_managers m
+            JOIN analytics_participants m
               ON m.manager_id = CAST(f.telegram_chat_id AS TEXT)
             WHERE f.{VALID_CONFIG_SQL}
             GROUP BY CAST(f.telegram_chat_id AS TEXT), f.card_id, f.config_name

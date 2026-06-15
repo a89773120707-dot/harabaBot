@@ -179,24 +179,28 @@ def get_manager_config_report(
         }
         has_feedback_comment = "comment" in feedback_columns
 
-        active_managers = conn.execute(
+        analytics_participants = conn.execute(
             """
+            -- manager_id is kept for report compatibility; it is the analytics participant id.
             SELECT telegram_id, username, first_name
             FROM telegram_users
-            WHERE role = 'manager' AND status = 'active'
+            WHERE status = 'active'
+              AND analytics_participant = 1
             ORDER BY telegram_id
             """
         ).fetchall()
 
         rows = conn.execute(
             f"""
-            WITH active_managers AS (
+            WITH analytics_participants AS (
+                -- manager_id is kept for report compatibility; it is the analytics participant id.
                 SELECT
                     CAST(telegram_id AS TEXT) AS manager_id,
                     username,
                     first_name
                 FROM telegram_users
-                WHERE role = 'manager' AND status = 'active'
+                WHERE status = 'active'
+                  AND analytics_participant = 1
             ),
             sent AS (
                 SELECT
@@ -204,7 +208,7 @@ def get_manager_config_report(
                     s.config_name,
                     SUM(COALESCE(s.send_count, 1)) AS sent_count
                 FROM sent_ads s
-                JOIN active_managers m
+                JOIN analytics_participants m
                   ON m.manager_id = CAST(s.chat_id AS TEXT)
                 WHERE s.{VALID_CONFIG_SQL}
                 GROUP BY CAST(s.chat_id AS TEXT), s.config_name
@@ -216,7 +220,7 @@ def get_manager_config_report(
                     f.config_name,
                     MAX(f.id) AS feedback_id
                 FROM feedback f
-                JOIN active_managers m
+                JOIN analytics_participants m
                   ON m.manager_id = CAST(f.telegram_chat_id AS TEXT)
                 WHERE f.{VALID_CONFIG_SQL}
                 GROUP BY CAST(f.telegram_chat_id AS TEXT), f.card_id, f.config_name
@@ -261,7 +265,7 @@ def get_manager_config_report(
                 COALESCE(f.skip_count, 0) AS skip_count,
                 f.last_feedback_at
             FROM report_keys k
-            JOIN active_managers m ON m.manager_id = k.manager_id
+            JOIN analytics_participants m ON m.manager_id = k.manager_id
             LEFT JOIN sent s
               ON s.manager_id = k.manager_id AND s.config_name = k.config_name
             LEFT JOIN feedback_stats f
@@ -272,10 +276,12 @@ def get_manager_config_report(
 
         reasons = conn.execute(
             f"""
-            WITH active_managers AS (
+            WITH analytics_participants AS (
+                -- manager_id is kept for report compatibility; it is the analytics participant id.
                 SELECT CAST(telegram_id AS TEXT) AS manager_id
                 FROM telegram_users
-                WHERE role = 'manager' AND status = 'active'
+                WHERE status = 'active'
+                  AND analytics_participant = 1
             ),
             latest_feedback_ids AS (
                 SELECT
@@ -284,7 +290,7 @@ def get_manager_config_report(
                     f.config_name,
                     MAX(f.id) AS feedback_id
                 FROM feedback f
-                JOIN active_managers m
+                JOIN analytics_participants m
                   ON m.manager_id = CAST(f.telegram_chat_id AS TEXT)
                 WHERE f.{VALID_CONFIG_SQL}
                 GROUP BY CAST(f.telegram_chat_id AS TEXT), f.card_id, f.config_name
@@ -317,10 +323,12 @@ def get_manager_config_report(
         if has_feedback_comment:
             comments = conn.execute(
                 f"""
-                WITH active_managers AS (
+                WITH analytics_participants AS (
+                    -- manager_id is kept for report compatibility; it is the analytics participant id.
                     SELECT CAST(telegram_id AS TEXT) AS manager_id
                     FROM telegram_users
-                    WHERE role = 'manager' AND status = 'active'
+                    WHERE status = 'active'
+                      AND analytics_participant = 1
                 ),
                 latest_feedback_ids AS (
                     SELECT
@@ -329,7 +337,7 @@ def get_manager_config_report(
                         f.config_name,
                         MAX(f.id) AS feedback_id
                     FROM feedback f
-                    JOIN active_managers m
+                    JOIN analytics_participants m
                       ON m.manager_id = CAST(f.telegram_chat_id AS TEXT)
                     WHERE f.{VALID_CONFIG_SQL}
                     GROUP BY CAST(f.telegram_chat_id AS TEXT), f.card_id, f.config_name
@@ -357,7 +365,7 @@ def get_manager_config_report(
                     bucket.append(normalized)
 
         managers: dict[str, dict[str, Any]] = {}
-        for manager in active_managers:
+        for manager in analytics_participants:
             manager_id = str(manager["telegram_id"])
             managers[manager_id] = {
                 "manager_id": manager_id,
@@ -426,7 +434,7 @@ def get_manager_config_report(
 
         return {
             "summary": {
-                "active_managers": len(active_managers),
+                "active_managers": len(analytics_participants),
                 "configs_with_data": len(config_names),
                 "feedback_count": feedback_total,
             },

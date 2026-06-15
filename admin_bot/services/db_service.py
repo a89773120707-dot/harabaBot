@@ -44,11 +44,23 @@ def _ensure_telegram_users(conn: sqlite3.Connection) -> None:
             first_name TEXT,
             role TEXT DEFAULT 'manager',
             status TEXT DEFAULT 'pending',
+            analytics_participant INTEGER NOT NULL DEFAULT 0,
             created_at TEXT,
             updated_at TEXT
         )
     """)
     # Проверить индексы
+    columns = {
+        row["name"] for row in conn.execute("PRAGMA table_info(telegram_users)").fetchall()
+    }
+    analytics_column_created = False
+    if "analytics_participant" not in columns:
+        conn.execute("""
+            ALTER TABLE telegram_users
+            ADD COLUMN analytics_participant INTEGER NOT NULL DEFAULT 0
+        """)
+        analytics_column_created = True
+
     conn.execute("""
         CREATE INDEX IF NOT EXISTS idx_telegram_users_status
         ON telegram_users(status)
@@ -57,6 +69,17 @@ def _ensure_telegram_users(conn: sqlite3.Connection) -> None:
         CREATE INDEX IF NOT EXISTS idx_telegram_users_role
         ON telegram_users(role)
     """)
+    conn.execute("""
+        CREATE INDEX IF NOT EXISTS idx_telegram_users_analytics_participant
+        ON telegram_users(analytics_participant, status)
+    """)
+    if analytics_column_created:
+        conn.execute("""
+            UPDATE telegram_users
+            SET analytics_participant = 1
+            WHERE status = 'active'
+              AND role IN ('manager', 'owner')
+        """)
 
 
 def _ensure_pipeline_runs(conn: sqlite3.Connection) -> None:
@@ -88,8 +111,10 @@ def ensure_owner_exists() -> None:
             # Создать owner
             now = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
             conn.execute(
-                """INSERT INTO telegram_users (telegram_id, role, status, created_at, updated_at)
-                   VALUES (?, 'owner', 'active', ?, ?)""",
+                """INSERT INTO telegram_users (
+                       telegram_id, role, status, analytics_participant, created_at, updated_at
+                   )
+                   VALUES (?, 'owner', 'active', 1, ?, ?)""",
                 (OWNER_ID, now, now)
             )
             print(f"Owner {OWNER_ID} создан в telegram_users")
@@ -97,7 +122,12 @@ def ensure_owner_exists() -> None:
             # Убедиться, что role=owner, status=active
             if existing["role"] != "owner" or existing["status"] != "active":
                 conn.execute(
-                    "UPDATE telegram_users SET role='owner', status='active', updated_at=? WHERE telegram_id=?",
+                    """UPDATE telegram_users
+                       SET role='owner',
+                           status='active',
+                           analytics_participant=1,
+                           updated_at=?
+                       WHERE telegram_id=?""",
                     (datetime.now().strftime("%Y-%m-%d %H:%M:%S"), OWNER_ID)
                 )
                 print(f"Owner {OWNER_ID} обновлён: role=owner, status=active")
