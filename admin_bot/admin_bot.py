@@ -18,6 +18,7 @@ from admin_bot.handlers.start import start_handler, unknown_handler
 from admin_bot.handlers.menu import menu_callback_handler, user_callback_handler
 from admin_bot.handlers.learning import (
     learning_callback_handler,
+    manager_dashboard_command_handler,
     manager_config_report_command_handler,
 )
 
@@ -50,6 +51,9 @@ def main():
     application.add_handler(CommandHandler("menu", start_handler))  # /menu = /start
     application.add_handler(
         CommandHandler("manager_config_report", manager_config_report_command_handler)
+    )
+    application.add_handler(
+        CommandHandler("manager_dashboard", manager_dashboard_command_handler)
     )
 
     # Callback-кнопки (меню + действия с пользователями + обучение)

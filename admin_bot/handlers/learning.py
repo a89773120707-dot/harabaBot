@@ -14,6 +14,7 @@ from admin_bot.handlers.menu import safe_edit
 from admin_bot.keyboards import back_keyboard
 from admin_bot.permissions import is_admin
 from ris_analytics import get_config_report, get_learning_reasons, get_learning_report
+from ris_manager_dashboard import format_manager_dashboard, get_manager_dashboard
 from ris_manager_config_report import get_manager_config_report
 
 
@@ -27,6 +28,12 @@ def _learning_keyboard() -> InlineKeyboardMarkup:
             [InlineKeyboardButton("📊 Learning Report", callback_data="learning_report")],
             [InlineKeyboardButton("📋 Причины", callback_data="learning_reasons")],
             [InlineKeyboardButton("⚙️ Config Report", callback_data="config_report")],
+            [
+                InlineKeyboardButton(
+                    "📊 Dashboard",
+                    callback_data="learning_manager_dashboard",
+                )
+            ],
             [
                 InlineKeyboardButton(
                     "👥 Manager Config Report",
@@ -86,6 +93,10 @@ async def learning_callback_handler(update: Update, context: ContextTypes.DEFAUL
         )
         return
 
+    if data == "learning_manager_dashboard":
+        await handle_manager_dashboard(update, context)
+        return
+
     if data == "learning_manager_config_report":
         await handle_manager_config_report(update, context)
 
@@ -95,6 +106,35 @@ async def manager_config_report_command_handler(
 ):
     """Handle /manager_config_report with the same access rules as callbacks."""
     await handle_manager_config_report(update, context)
+
+
+async def manager_dashboard_command_handler(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
+    """Handle /manager_dashboard with the same access rules as callbacks."""
+    await handle_manager_dashboard(update, context)
+
+
+async def handle_manager_dashboard(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
+    """Build and send the read-only manager dashboard."""
+    user = update.effective_user
+    if user is None or not is_admin(user.id):
+        await _send_access_denied(update)
+        return
+
+    try:
+        dashboard = get_manager_dashboard(DB_PATH)
+        text = format_manager_dashboard(dashboard)
+        parts = split_telegram_messages(text, title="Manager Dashboard")
+        await _send_report_parts(update, parts)
+    except (sqlite3.Error, OSError):
+        logger.exception("Manager Dashboard database error")
+        await _send_dashboard_error(update)
+    except Exception:
+        logger.exception("Manager Dashboard generation error")
+        await _send_dashboard_error(update)
 
 
 async def handle_manager_config_report(
@@ -129,6 +169,15 @@ async def _send_access_denied(update: Update) -> None:
 
 async def _send_report_error(update: Update) -> None:
     text = "⚠️ Manager Config Report временно недоступен."
+    query = update.callback_query
+    if query is not None:
+        await safe_edit(query, text, reply_markup=_learning_back_keyboard())
+    elif update.message is not None:
+        await update.message.reply_text(text, reply_markup=_learning_back_keyboard())
+
+
+async def _send_dashboard_error(update: Update) -> None:
+    text = "⚠️ Manager Dashboard временно недоступен."
     query = update.callback_query
     if query is not None:
         await safe_edit(query, text, reply_markup=_learning_back_keyboard())
@@ -255,7 +304,9 @@ def format_manager_config_report_telegram(report: dict[str, Any]) -> str:
 
 
 def split_telegram_messages(
-    text: str, max_length: int = MAX_TELEGRAM_MESSAGE_LENGTH
+    text: str,
+    max_length: int = MAX_TELEGRAM_MESSAGE_LENGTH,
+    title: str = "Manager Config Report",
 ) -> list[str]:
     """Split plain text without exceeding Telegram's message limit."""
     if max_length < 64:
@@ -281,7 +332,10 @@ def split_telegram_messages(
         chunks.append(current)
 
     total = len(chunks)
-    return [f"Manager Config Report ({index}/{total})\n\n{chunk}" for index, chunk in enumerate(chunks, 1)]
+    return [
+        f"{title} ({index}/{total})\n\n{chunk}"
+        for index, chunk in enumerate(chunks, 1)
+    ]
 
 
 def _split_oversized_paragraph(paragraph: str, limit: int) -> list[str]:
