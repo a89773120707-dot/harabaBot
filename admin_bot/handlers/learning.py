@@ -14,6 +14,7 @@ from admin_bot.handlers.menu import safe_edit
 from admin_bot.keyboards import back_keyboard
 from admin_bot.permissions import is_admin
 from ris_analytics import get_config_report, get_learning_reasons, get_learning_report
+from ris_config_suggestions import format_config_suggestions, get_config_suggestions
 from ris_manager_dashboard import format_manager_dashboard, get_manager_dashboard
 from ris_manager_config_report import get_manager_config_report
 
@@ -32,6 +33,12 @@ def _learning_keyboard() -> InlineKeyboardMarkup:
                 InlineKeyboardButton(
                     "📊 Dashboard",
                     callback_data="learning_manager_dashboard",
+                )
+            ],
+            [
+                InlineKeyboardButton(
+                    "💡 Рекомендации",
+                    callback_data="learning_config_suggestions",
                 )
             ],
             [
@@ -97,6 +104,10 @@ async def learning_callback_handler(update: Update, context: ContextTypes.DEFAUL
         await handle_manager_dashboard(update, context)
         return
 
+    if data == "learning_config_suggestions":
+        await handle_config_suggestions(update, context)
+        return
+
     if data == "learning_manager_config_report":
         await handle_manager_config_report(update, context)
 
@@ -113,6 +124,35 @@ async def manager_dashboard_command_handler(
 ):
     """Handle /manager_dashboard with the same access rules as callbacks."""
     await handle_manager_dashboard(update, context)
+
+
+async def config_suggestions_command_handler(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
+    """Handle /config_suggestions with the same access rules as callbacks."""
+    await handle_config_suggestions(update, context)
+
+
+async def handle_config_suggestions(
+    update: Update, context: ContextTypes.DEFAULT_TYPE
+):
+    """Build and send read-only config suggestions."""
+    user = update.effective_user
+    if user is None or not is_admin(user.id):
+        await _send_access_denied(update)
+        return
+
+    try:
+        suggestions = get_config_suggestions(DB_PATH)
+        text = format_config_suggestions(suggestions)
+        parts = split_telegram_messages(text, title="Config Suggestions")
+        await _send_report_parts(update, parts)
+    except (sqlite3.Error, OSError):
+        logger.exception("Config Suggestions database error")
+        await _send_config_suggestions_error(update)
+    except Exception:
+        logger.exception("Config Suggestions generation error")
+        await _send_config_suggestions_error(update)
 
 
 async def handle_manager_dashboard(
@@ -178,6 +218,15 @@ async def _send_report_error(update: Update) -> None:
 
 async def _send_dashboard_error(update: Update) -> None:
     text = "⚠️ Manager Dashboard временно недоступен."
+    query = update.callback_query
+    if query is not None:
+        await safe_edit(query, text, reply_markup=_learning_back_keyboard())
+    elif update.message is not None:
+        await update.message.reply_text(text, reply_markup=_learning_back_keyboard())
+
+
+async def _send_config_suggestions_error(update: Update) -> None:
+    text = "⚠️ Config Suggestions временно недоступны."
     query = update.callback_query
     if query is not None:
         await safe_edit(query, text, reply_markup=_learning_back_keyboard())

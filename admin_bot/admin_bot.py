@@ -17,6 +17,7 @@ from admin_bot.services.db_service import ensure_tables, ensure_owner_exists
 from admin_bot.handlers.start import start_handler, unknown_handler
 from admin_bot.handlers.menu import menu_callback_handler, user_callback_handler
 from admin_bot.handlers.learning import (
+    config_suggestions_command_handler,
     learning_callback_handler,
     manager_dashboard_command_handler,
     manager_config_report_command_handler,
@@ -54,6 +55,9 @@ def main():
     )
     application.add_handler(
         CommandHandler("manager_dashboard", manager_dashboard_command_handler)
+    )
+    application.add_handler(
+        CommandHandler("config_suggestions", config_suggestions_command_handler)
     )
 
     # Callback-кнопки (меню + действия с пользователями + обучение)
