@@ -636,20 +636,21 @@ def sample_formatter_suggestions():
 def test_formatter_contains_global_summary_and_groups():
     text = format_config_suggestions(sample_formatter_suggestions())
 
-    assert "💡 Config Suggestions" in text
+    assert "💡 Рекомендации по конфигам" in text
+    assert "Config Suggestions" not in text
     assert "📊 Всего конфигов: 5" in text
     assert "🟡 Готовы к анализу: 3" in text
     assert "⚪ Недостаточно данных: 2" in text
-    assert "🟠 LOW:" in text
+    assert "🟠 Наблюдаем:" in text
     assert "Hyundai Santa Fe" in text
 
 
 def test_formatter_groups_in_readiness_order():
     text = format_config_suggestions(sample_formatter_suggestions())
 
-    high_section = text.index("\n🟢 HIGH\n")
-    medium_section = text.index("\n🟡 MEDIUM\n")
-    low_section = text.index("\n🟠 LOW\n")
+    high_section = text.index("\n🟢 Готово к изменениям\n")
+    medium_section = text.index("\n🟡 Нужна проверка\n")
+    low_section = text.index("\n🟠 Наблюдаем\n")
     not_ready_section = text.index("\n⚪ Недостаточно данных\n")
 
     assert high_section < medium_section
@@ -659,7 +660,7 @@ def test_formatter_groups_in_readiness_order():
 
 def test_formatter_puts_recommendation_before_reasons_and_data():
     text = format_config_suggestions(sample_formatter_suggestions())
-    item_start = text.index("🟠 LOW Hyundai Santa Fe")
+    item_start = text.index("🟠 Hyundai Santa Fe")
     recommendation = text.index("💡 Что сделать:", item_start)
     reasons = text.index("Почему:", item_start)
     data = text.index("Данные:", item_start)
@@ -670,6 +671,9 @@ def test_formatter_puts_recommendation_before_reasons_and_data():
     assert "think=" not in text
     assert "skip=" not in text
     assert "Participants:" not in text
+    assert "Confidence:" not in text
+    assert "score " not in text
+    assert "интерес +4" in text
 
 
 def test_formatter_uses_owner_human_format():
@@ -699,12 +703,29 @@ def test_formatter_limits_comments_to_two_and_omits_empty_comment_sections():
     assert "Комментарии: —" not in text
 
 
-def test_formatter_uses_high_medium_low_icons():
+def test_formatter_uses_human_readiness_labels_and_icons():
     text = format_config_suggestions(sample_formatter_suggestions())
 
-    assert "🟢 HIGH High Config" in text
-    assert "🟡 MEDIUM Medium Config" in text
-    assert "🟠 LOW Hyundai Santa Fe" in text
+    assert "🟢 Готово к изменениям" in text
+    assert "🟡 Нужна проверка" in text
+    assert "🟠 Наблюдаем" in text
+    assert "🟢 High Config" in text
+    assert "🟡 Medium Config" in text
+    assert "🟠 Hyundai Santa Fe" in text
+    assert "🟢 HIGH" not in text
+    assert "🟡 MEDIUM" not in text
+    assert "🟠 LOW" not in text
+
+
+def test_formatter_uses_human_confidence_labels():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "Уверенность: высокая" in text
+    assert "Уверенность: средняя" in text
+    assert "Уверенность: низкая" in text
+    assert "Confidence: HIGH" not in text
+    assert "Confidence: MEDIUM" not in text
+    assert "Confidence: LOW" not in text
 
 
 def test_formatter_hides_internal_reason_codes():

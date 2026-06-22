@@ -436,17 +436,38 @@ def _percent(value: float) -> str:
 
 
 READINESS_LABELS = {
-    "HIGH": "🟢 HIGH",
-    "MEDIUM": "🟡 MEDIUM",
-    "LOW": "🟠 LOW",
-    "NOT_READY": "⚪ NOT_READY",
+    "HIGH": "🟢 Готово к изменениям",
+    "MEDIUM": "🟡 Нужна проверка",
+    "LOW": "🟠 Наблюдаем",
+    "NOT_READY": "⚪ Недостаточно данных",
 }
 
 READINESS_ORDER = ("HIGH", "MEDIUM", "LOW", "NOT_READY")
 
+READINESS_ICONS = {
+    "HIGH": "🟢",
+    "MEDIUM": "🟡",
+    "LOW": "🟠",
+    "NOT_READY": "⚪",
+}
+
+CONFIDENCE_LABELS = {
+    "HIGH": "высокая",
+    "MEDIUM": "средняя",
+    "LOW": "низкая",
+}
+
 
 def _readiness_label(readiness: str) -> str:
     return READINESS_LABELS.get(readiness, readiness)
+
+
+def _readiness_icon(readiness: str) -> str:
+    return READINESS_ICONS.get(readiness, "")
+
+
+def _confidence_label(confidence: str) -> str:
+    return CONFIDENCE_LABELS.get(confidence, confidence.lower())
 
 
 def _reaction_word(count: int) -> str:
@@ -485,8 +506,10 @@ def _format_ready_item(item: dict[str, Any]) -> list[str]:
     feedback_count = int(item["feedback_count"])
     participants_count = int(item["participants_count"])
     interest_score = int(item["interest_score"])
+    readiness = str(item["readiness"])
+    confidence = str(item.get("confidence", ""))
     lines = [
-        f"{_readiness_label(str(item['readiness']))} {item['config_name']}",
+        f"{_readiness_icon(readiness)} {item['config_name']}",
         "",
         "💡 Что сделать:",
         str(item["recommendation_text"]),
@@ -513,8 +536,9 @@ def _format_ready_item(item: dict[str, Any]) -> list[str]:
         "Данные: "
         f"{feedback_count} {_reaction_word(feedback_count)} | "
         f"{participants_count} {_participant_word(participants_count)} | "
-        f"score {interest_score:+d}"
+        f"интерес {interest_score:+d}"
     )
+    lines.append(f"Уверенность: {_confidence_label(confidence)}")
 
     if item.get("owner_signal_present"):
         owner_feedback_count = int(item.get("owner_feedback_count", 0))
@@ -549,7 +573,7 @@ def format_config_suggestions(suggestions: dict[str, Any]) -> str:
     grouped = _group_suggestions(items)
     not_ready_count = len(grouped.get("NOT_READY", []))
     lines = [
-        "💡 Config Suggestions",
+        "💡 Рекомендации по конфигам",
         "",
         f"📊 Всего конфигов: {int(summary.get('configs_count', 0))}",
         f"🟡 Готовы к анализу: {int(summary.get('ready_configs', 0))}",
@@ -562,7 +586,7 @@ def format_config_suggestions(suggestions: dict[str, Any]) -> str:
 
     low_items = grouped.get("LOW", [])
     if low_items:
-        lines.extend(["", "🟠 LOW:", *[str(item["config_name"]) for item in low_items]])
+        lines.extend(["", "🟠 Наблюдаем:", *[str(item["config_name"]) for item in low_items]])
 
     for readiness in ("HIGH", "MEDIUM", "LOW"):
         group = grouped.get(readiness, [])
