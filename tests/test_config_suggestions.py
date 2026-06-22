@@ -504,14 +504,60 @@ def test_summary_counts_ready_configs():
     assert summary["ready_configs"] == 1
 
 
-def test_formatter_contains_required_sections_and_hides_internal_codes():
-    suggestions = {
+def sample_formatter_suggestions():
+    return {
         "summary": {
-            "configs_count": 1,
-            "ready_configs": 1,
-            "analytics_participants": 2,
+            "configs_count": 5,
+            "ready_configs": 3,
+            "analytics_participants": 3,
         },
         "suggestions": [
+            {
+                "config_name": "High Config",
+                "feedback_count": 20,
+                "participants_count": 3,
+                "review_count": 12,
+                "think_count": 6,
+                "skip_count": 2,
+                "interest_score": 26,
+                "readiness": "HIGH",
+                "confidence": "HIGH",
+                "dominant_reasons": [
+                    {
+                        "reason_code": "liquid_model",
+                        "reason_text": "Ликвидная модель",
+                        "count": 11,
+                        "pressure": 11 / 20,
+                    }
+                ],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Модель интересная, оставить как есть.",
+            },
+            {
+                "config_name": "Medium Config",
+                "feedback_count": 12,
+                "participants_count": 2,
+                "review_count": 4,
+                "think_count": 5,
+                "skip_count": 3,
+                "interest_score": 7,
+                "readiness": "MEDIUM",
+                "confidence": "MEDIUM",
+                "dominant_reasons": [
+                    {
+                        "reason_code": "good_price",
+                        "reason_text": "Хорошая цена",
+                        "count": 6,
+                        "pressure": 0.5,
+                    }
+                ],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Модель даёт интересные варианты.",
+            },
             {
                 "config_name": "Hyundai Santa Fe",
                 "feedback_count": 9,
@@ -533,28 +579,140 @@ def test_formatter_contains_required_sections_and_hides_internal_codes():
                 "comments_evidence": [
                     {
                         "participant_id": "1",
-                        "comment": "Цена выглядит дороговато",
+                        "comment": "Надо посмотреть детально",
+                        "created_at": "2026-01-03T10:00:00",
+                    },
+                    {
+                        "participant_id": "1",
+                        "comment": "Цена не соответствует состоянию",
+                        "created_at": "2026-01-02T10:00:00",
+                    },
+                    {
+                        "participant_id": "1",
+                        "comment": "Третий комментарий не должен попасть",
                         "created_at": "2026-01-01T10:00:00",
                     }
                 ],
                 "owner_signal_present": True,
                 "owner_feedback_count": 4,
                 "recommendation_text": "Проверить ценовой диапазон.",
-            }
+            },
+            {
+                "config_name": "Volkswagen Touareg",
+                "feedback_count": 2,
+                "participants_count": 1,
+                "review_count": 0,
+                "think_count": 1,
+                "skip_count": 1,
+                "interest_score": -1,
+                "readiness": "NOT_READY",
+                "confidence": "LOW",
+                "dominant_reasons": [],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Недостаточно данных.",
+            },
+            {
+                "config_name": "Mitsubishi Pajero IV",
+                "feedback_count": 1,
+                "participants_count": 1,
+                "review_count": 0,
+                "think_count": 1,
+                "skip_count": 0,
+                "interest_score": 1,
+                "readiness": "NOT_READY",
+                "confidence": "LOW",
+                "dominant_reasons": [],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Недостаточно данных.",
+            },
         ],
     }
 
-    text = format_config_suggestions(suggestions)
 
-    assert "CONFIG SUGGESTIONS" in text
+def test_formatter_contains_global_summary_and_groups():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "💡 Config Suggestions" in text
+    assert "📊 Всего конфигов: 5" in text
+    assert "🟡 Готовы к анализу: 3" in text
+    assert "⚪ Недостаточно данных: 2" in text
+    assert "🟠 LOW:" in text
     assert "Hyundai Santa Fe" in text
-    assert "Причины:" in text
-    assert "Высокая цена: 5 (55.6%)" in text
-    assert "Комментарии:" in text
-    assert '"Цена выглядит дороговато"' in text
-    assert "Recommendation:" in text
-    assert "Owner contributed 4 feedback" in text
+
+
+def test_formatter_groups_in_readiness_order():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    high_section = text.index("\n🟢 HIGH\n")
+    medium_section = text.index("\n🟡 MEDIUM\n")
+    low_section = text.index("\n🟠 LOW\n")
+    not_ready_section = text.index("\n⚪ Недостаточно данных\n")
+
+    assert high_section < medium_section
+    assert medium_section < low_section
+    assert low_section < not_ready_section
+
+
+def test_formatter_puts_recommendation_before_reasons_and_data():
+    text = format_config_suggestions(sample_formatter_suggestions())
+    item_start = text.index("🟠 LOW Hyundai Santa Fe")
+    recommendation = text.index("💡 Что сделать:", item_start)
+    reasons = text.index("Почему:", item_start)
+    data = text.index("Данные:", item_start)
+
+    assert recommendation < reasons < data
+    assert "Actions:" not in text
+    assert "review=" not in text
+    assert "think=" not in text
+    assert "skip=" not in text
+    assert "Participants:" not in text
+
+
+def test_formatter_uses_owner_human_format():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "👤 Owner участвовал: 4 реакции" in text
+    assert "Owner contributed 4 feedback" not in text
+
+
+def test_formatter_compacts_not_ready_configs():
+    text = format_config_suggestions(sample_formatter_suggestions())
+    not_ready_start = text.index("⚪ Недостаточно данных")
+
+    assert "Volkswagen Touareg — 2 реакции, нужно ещё 3" in text
+    assert "Mitsubishi Pajero IV — 1 реакция, нужно ещё 4" in text
+    assert "⚪ NOT_READY Volkswagen Touareg" not in text
+    assert text.index("Volkswagen Touareg", not_ready_start) > not_ready_start
+
+
+def test_formatter_limits_comments_to_two_and_omits_empty_comment_sections():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "💬 Комментарии" in text
+    assert "• Надо посмотреть детально" in text
+    assert "• Цена не соответствует состоянию" in text
+    assert "Третий комментарий не должен попасть" not in text
+    assert "Комментарии: —" not in text
+
+
+def test_formatter_uses_high_medium_low_icons():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "🟢 HIGH High Config" in text
+    assert "🟡 MEDIUM Medium Config" in text
+    assert "🟠 LOW Hyundai Santa Fe" in text
+
+
+def test_formatter_hides_internal_reason_codes():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "Высокая цена — 5 из 9" in text
     assert "high_price" not in text
+    assert "liquid_model" not in text
 
 
 def test_formatter_handles_empty_report():

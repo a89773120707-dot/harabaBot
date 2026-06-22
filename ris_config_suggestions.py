@@ -435,70 +435,148 @@ def _percent(value: float) -> str:
     return f"{value * 100:.1f}%"
 
 
+READINESS_LABELS = {
+    "HIGH": "🟢 HIGH",
+    "MEDIUM": "🟡 MEDIUM",
+    "LOW": "🟠 LOW",
+    "NOT_READY": "⚪ NOT_READY",
+}
+
+READINESS_ORDER = ("HIGH", "MEDIUM", "LOW", "NOT_READY")
+
+
+def _readiness_label(readiness: str) -> str:
+    return READINESS_LABELS.get(readiness, readiness)
+
+
+def _reaction_word(count: int) -> str:
+    remainder = abs(count) % 100
+    if 11 <= remainder <= 14:
+        return "реакций"
+    last_digit = remainder % 10
+    if last_digit == 1:
+        return "реакция"
+    if 2 <= last_digit <= 4:
+        return "реакции"
+    return "реакций"
+
+
+def _participant_word(count: int) -> str:
+    remainder = abs(count) % 100
+    if 11 <= remainder <= 14:
+        return "участников"
+    last_digit = remainder % 10
+    if last_digit == 1:
+        return "участник"
+    if 2 <= last_digit <= 4:
+        return "участника"
+    return "участников"
+
+
+def _group_suggestions(items: list[dict[str, Any]]) -> dict[str, list[dict[str, Any]]]:
+    grouped = {readiness: [] for readiness in READINESS_ORDER}
+    for item in items:
+        readiness = str(item.get("readiness") or "NOT_READY")
+        grouped.setdefault(readiness, []).append(item)
+    return grouped
+
+
+def _format_ready_item(item: dict[str, Any]) -> list[str]:
+    feedback_count = int(item["feedback_count"])
+    participants_count = int(item["participants_count"])
+    interest_score = int(item["interest_score"])
+    lines = [
+        f"{_readiness_label(str(item['readiness']))} {item['config_name']}",
+        "",
+        "💡 Что сделать:",
+        str(item["recommendation_text"]),
+        "",
+    ]
+
+    if item.get("dominant_reasons"):
+        lines.append("Почему:")
+        for reason in item["dominant_reasons"][:3]:
+            lines.append(
+                f"• {reason['reason_text']} — {reason['count']} из {feedback_count}"
+            )
+        lines.append("")
+
+    comments = item.get("comments_evidence", [])[:2]
+    if comments:
+        lines.append("💬 Комментарии")
+        lines.append("")
+        for comment in comments:
+            lines.append(f"• {comment['comment']}")
+        lines.append("")
+
+    lines.append(
+        "Данные: "
+        f"{feedback_count} {_reaction_word(feedback_count)} | "
+        f"{participants_count} {_participant_word(participants_count)} | "
+        f"score {interest_score:+d}"
+    )
+
+    if item.get("owner_signal_present"):
+        owner_feedback_count = int(item.get("owner_feedback_count", 0))
+        lines.append(
+            f"👤 Owner участвовал: {owner_feedback_count} "
+            f"{_reaction_word(owner_feedback_count)}"
+        )
+
+    return lines
+
+
+def _format_not_ready_items(items: list[dict[str, Any]]) -> list[str]:
+    if not items:
+        return []
+
+    lines = ["⚪ Недостаточно данных", ""]
+    for item in items:
+        feedback_count = int(item["feedback_count"])
+        needed = max(0, 5 - feedback_count)
+        lines.append(
+            f"{item['config_name']} — "
+            f"{feedback_count} {_reaction_word(feedback_count)}, "
+            f"нужно ещё {needed}"
+        )
+    return lines
+
+
 def format_config_suggestions(suggestions: dict[str, Any]) -> str:
     """Format suggestions for CLI or Telegram-compatible plain text."""
     summary = suggestions.get("summary", {})
     items = suggestions.get("suggestions", [])
+    grouped = _group_suggestions(items)
+    not_ready_count = len(grouped.get("NOT_READY", []))
     lines = [
-        "CONFIG SUGGESTIONS",
-        "=" * 60,
-        f"Конфигов: {int(summary.get('configs_count', 0))}",
-        f"Готовы к рекомендациям: {int(summary.get('ready_configs', 0))}",
-        f"Участников аналитики: {int(summary.get('analytics_participants', 0))}",
+        "💡 Config Suggestions",
+        "",
+        f"📊 Всего конфигов: {int(summary.get('configs_count', 0))}",
+        f"🟡 Готовы к анализу: {int(summary.get('ready_configs', 0))}",
+        f"⚪ Недостаточно данных: {not_ready_count}",
     ]
 
     if not items:
         lines.extend(["", "Данных для рекомендаций пока нет."])
         return "\n".join(lines)
 
-    for item in items:
-        lines.extend(
-            [
-                "",
-                str(item["config_name"]),
-                "-" * 60,
-                (
-                    f"Feedback: {item['feedback_count']} | "
-                    f"Participants: {item['participants_count']} | "
-                    f"Score: {int(item['interest_score']):+d}"
-                ),
-                (
-                    "Actions: "
-                    f"review={item['review_count']}, "
-                    f"think={item['think_count']}, "
-                    f"skip={item['skip_count']}"
-                ),
-                f"Readiness: {item['readiness']}",
-                f"Confidence: {item['confidence']}",
-            ]
-        )
+    low_items = grouped.get("LOW", [])
+    if low_items:
+        lines.extend(["", "🟠 LOW:", *[str(item["config_name"]) for item in low_items]])
 
-        if item.get("dominant_reasons"):
-            lines.append("Причины:")
-            for reason in item["dominant_reasons"]:
-                lines.append(
-                    f"- {reason['reason_text']}: {reason['count']} "
-                    f"({_percent(float(reason['pressure']))})"
-                )
-        else:
-            lines.append("Причины: —")
+    for readiness in ("HIGH", "MEDIUM", "LOW"):
+        group = grouped.get(readiness, [])
+        if not group:
+            continue
+        lines.extend(["", _readiness_label(readiness), ""])
+        for index, item in enumerate(group):
+            if index:
+                lines.append("")
+            lines.extend(_format_ready_item(item))
 
-        if item.get("comments_evidence"):
-            lines.append("Комментарии:")
-            for comment in item["comments_evidence"][:3]:
-                lines.append(f"- \"{comment['comment']}\"")
-        else:
-            lines.append("Комментарии: —")
-
-        lines.extend(
-            [
-                "Recommendation:",
-                str(item["recommendation_text"]),
-            ]
-        )
-
-        if item.get("owner_signal_present"):
-            lines.append(f"Evidence: Owner contributed {item['owner_feedback_count']} feedback")
+    not_ready_lines = _format_not_ready_items(grouped.get("NOT_READY", []))
+    if not_ready_lines:
+        lines.extend(["", *not_ready_lines])
 
     return "\n".join(lines)
 
