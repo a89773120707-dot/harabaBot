@@ -648,9 +648,9 @@ def test_formatter_contains_global_summary_and_groups():
 def test_formatter_groups_in_readiness_order():
     text = format_config_suggestions(sample_formatter_suggestions())
 
-    high_section = text.index("\n🟢 Готово к изменениям\n")
-    medium_section = text.index("\n🟡 Нужна проверка\n")
-    low_section = text.index("\n🟠 Наблюдаем\n")
+    high_section = text.index("\n🟢 High Config\n")
+    medium_section = text.index("\n🟡 Medium Config\n")
+    low_section = text.index("\n🟠 Hyundai Santa Fe\n")
     not_ready_section = text.index("\n⚪ Недостаточно данных\n")
 
     assert high_section < medium_section
@@ -706,15 +706,89 @@ def test_formatter_limits_comments_to_two_and_omits_empty_comment_sections():
 def test_formatter_uses_human_readiness_labels_and_icons():
     text = format_config_suggestions(sample_formatter_suggestions())
 
-    assert "🟢 Готово к изменениям" in text
-    assert "🟡 Нужна проверка" in text
-    assert "🟠 Наблюдаем" in text
+    assert "🟠 Наблюдаем:" in text
     assert "🟢 High Config" in text
     assert "🟡 Medium Config" in text
     assert "🟠 Hyundai Santa Fe" in text
+    assert "\n🟢 Готово к изменениям\n" not in text
+    assert "\n🟡 Нужна проверка\n" not in text
+    assert "\n🟠 Наблюдаем\n" not in text
     assert "🟢 HIGH" not in text
     assert "🟡 MEDIUM" not in text
     assert "🟠 LOW" not in text
+
+
+def test_formatter_does_not_duplicate_readiness_group_header_before_cards():
+    text = format_config_suggestions(sample_formatter_suggestions())
+
+    assert "🟠 Наблюдаем:" in text
+    assert "🟠 Hyundai Santa Fe" in text
+    assert "🟠 Наблюдаем Hyundai Santa Fe" not in text
+    assert "\n🟠 Наблюдаем\n\n🟠 Hyundai Santa Fe" not in text
+
+
+def test_formatter_low_overview_lists_all_configs_without_duplicate_header():
+    suggestions = {
+        "summary": {
+            "configs_count": 2,
+            "ready_configs": 2,
+            "analytics_participants": 1,
+        },
+        "suggestions": [
+            {
+                "config_name": "Hyundai Santa Fe",
+                "feedback_count": 5,
+                "participants_count": 1,
+                "review_count": 1,
+                "think_count": 4,
+                "skip_count": 0,
+                "interest_score": 6,
+                "readiness": "LOW",
+                "confidence": "LOW",
+                "dominant_reasons": [
+                    {
+                        "reason_code": "high_price",
+                        "reason_text": "Высокая цена",
+                        "count": 3,
+                        "pressure": 0.6,
+                    }
+                ],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Проверить ценовой диапазон.",
+            },
+            {
+                "config_name": "Ford Kuga",
+                "feedback_count": 5,
+                "participants_count": 1,
+                "review_count": 0,
+                "think_count": 5,
+                "skip_count": 0,
+                "interest_score": 5,
+                "readiness": "LOW",
+                "confidence": "LOW",
+                "dominant_reasons": [
+                    {
+                        "reason_code": "high_price",
+                        "reason_text": "Высокая цена",
+                        "count": 3,
+                        "pressure": 0.6,
+                    }
+                ],
+                "comments_evidence": [],
+                "owner_signal_present": False,
+                "owner_feedback_count": 0,
+                "recommendation_text": "Проверить ценовой диапазон.",
+            },
+        ],
+    }
+    text = format_config_suggestions(suggestions)
+
+    assert "🟠 Наблюдаем:\nHyundai Santa Fe\nFord Kuga\n\n🟠 Hyundai Santa Fe" in text
+    assert "🟠 Ford Kuga" in text
+    assert "\n🟠 Наблюдаем\n\n🟠 Hyundai Santa Fe" not in text
+    assert "\n🟠 Наблюдаем\n\n🟠 Ford Kuga" not in text
 
 
 def test_formatter_uses_human_confidence_labels():

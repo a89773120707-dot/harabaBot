@@ -584,15 +584,13 @@ def format_config_suggestions(suggestions: dict[str, Any]) -> str:
         lines.extend(["", "Данных для рекомендаций пока нет."])
         return "\n".join(lines)
 
-    low_items = grouped.get("LOW", [])
-    if low_items:
-        lines.extend(["", "🟠 Наблюдаем:", *[str(item["config_name"]) for item in low_items]])
-
     for readiness in ("HIGH", "MEDIUM", "LOW"):
         group = grouped.get(readiness, [])
         if not group:
             continue
-        lines.extend(["", _readiness_label(readiness), ""])
+        lines.append("")
+        if readiness == "LOW":
+            lines.extend(["🟠 Наблюдаем:", *[str(item["config_name"]) for item in group], ""])
         for index, item in enumerate(group):
             if index:
                 lines.append("")
